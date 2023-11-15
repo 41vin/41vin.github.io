@@ -1,0 +1,67 @@
+highlighter: rouge
+
+markdown: kramdown
+
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  syntax_highlighter_opts: # Rouge Options › https://github.com/jneen/rouge#full-options
+    css_class: "highlight"
+  math_engine: mathjax
+
+plugins:
+  - jekyll-paginate
+  - jekyll-sitemap
+  - jekyll-feed
+
+paginate: 7
+paginate_path: "page:num"
+layout: post
+permalink: /:categories/:title
+excerpt_separator: "[-----]"
+
+url: https://41vin.github.io # Required: replace this with your domain
+name: Alvin # Required: will be displayed on every page's header
+title: Alvin's Blog # Required: site's default title
+shout: # Required: **TWO** lines, will be displayed on page's header.
+  - Passionate Researcher
+  - 내가 틀릴 수도 있습니다
+description: "Alvin's Dev Blog" # Required
+
+disqus:
+  comments: true # Global toggle on/off disqus comment
+  shortname: "alvinnote" # Required if you use disqus. Replace with your disqus shortname here
+
+gitalk:
+  comments: false # Global toggle on/off gitalk comment
+  # replace all of those below with your own
+  client_id: baeea51800be67550b52
+  client_secret: 4a521ccafa96b8b2b128659c35468bdd7ba5d4aa
+  repo: jekyll-theme-textalic
+  owner: unifreak
+  admin: unifreak
+  distraction_free_mode: true
+
+google_analytics:
+  id: "" # Required if you use google analytics. Replace with your tracking id here
+
+collections: # Define post series here
+  algorithm:
+    output: true
+  CKA:
+    output: true
+  Open_RAN:
+    output: true
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: "post"
+
+# Analytics
+analytics:
+  provider: "google-gtag"
+  google:
+    tracking_id: "G-Y3JQ64LC5Z"
+    anonymize_ip: false
