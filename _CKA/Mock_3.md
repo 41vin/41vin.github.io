@@ -4,8 +4,10 @@
 
 # Q1
 
-Create a new service account with the name `pvviewer`. Grant this Service account access to `list` all PersistentVolumes in the cluster by creating an appropriate cluster role called `pvviewer-role` and ClusterRoleBinding called `pvviewer-role-binding`.
-Next, create a pod called `pvviewer` with the image: `redis` and serviceAccount: `pvviewer` in the default namespace.
+> Create a new service account with the name `pvviewer`. Grant this Service account access to `list` all PersistentVolumes in the cluster by creating an appropriate cluster role called `pvviewer-role` and ClusterRoleBinding called `pvviewer-role-binding`.
+> Next, create a pod called `pvviewer` with the image: `redis` and serviceAccount: `pvviewer` in the default namespace.
+
+
 
 Pods authenticate to the API Server using ServiceAccounts. If the serviceAccount name is not specified, the default service account for the namespace is used during a pod creation.
 
@@ -78,7 +80,7 @@ $ kubectl get nodes -o json | grep -i internalip -B 100
 
 
 Explore the jsonpath loop.
-`kubectl get nodes -o jsonpath='{.items[*].status.addresses[?(@.type=="InternalIP")].address}'` > /root/CKA/node_ips
+`kubectl get nodes -o jsonpath='{.items[*].status.addresses[?(@.type=="InternalIP")].address}' > /root/CKA/node_ips`
 
 
 
@@ -170,10 +172,12 @@ kubectl exec -it non-root-pod -- id
 
 # Q5
 
-We have deployed a new pod called `np-test-1` and a service called `np-test-service`. Incoming connections to this service are not working. Troubleshoot and fix it.
-Create NetworkPolicy, by the name `ingress-to-nptest` that allows incoming connections to the service over port `80`.
-
-Important: Don't delete any current objects deployed.
+> We have deployed a new pod called `np-test-1` and a service called `np-test-service`. Incoming connections to this service are not working. Troubleshoot and fix it.
+> Create NetworkPolicy, by the name `ingress-to-nptest` that allows incoming connections to the service over port `80`.
+>
+> Important: Don't delete any current objects deployed.
+>
+> 
 
 Solution manifest file to create a network policy `ingress-to-nptest` as follows:
 
