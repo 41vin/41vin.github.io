@@ -46,7 +46,7 @@ google_analytics:
   id: "" # Required if you use google analytics. Replace with your tracking id here
 
 collections: # Define post series here
-  algorithm:
+  3GPP:
     output: true
   CKA:
     output: true
