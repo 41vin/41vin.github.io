@@ -1,5 +1,5 @@
 ---
-
+Typora-root-url: ../
 ---
 
 
