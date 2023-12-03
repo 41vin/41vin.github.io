@@ -1,5 +1,5 @@
 ---
-Typora-root-url:../
+typora-root-url:../
 ---
 
 
@@ -26,96 +26,101 @@ Typora-root-url:../
 
 
 
+MDT는 다음과 같은 요구 사항을 준수함
+
+1. UE 측정 구성 (UE Measurement Configuration)
+2. UE 측정 수집 및 보고 (UE Measurement Collection and Reporting)
+3. 측정 로깅의 지리적 범위 (Geographical Scope of Measurement Logging)
+4. 위치 정보 (Location Information)
+5. 시간 정보 (Time Information)
+6. 장치 유형 정보 (Device Type Information)
+7. SON (Self-Organizing Networks) 의존성
+
+또한, 다음과 같은 제약사항을 고려함
+
+1. UE 측정 (UE Measurements)
+
+2. 위치 정보 (Location Information)
+
+   
+
 ## 3. Use Cases
 
-- 커버리지 최적화, 모빌리티 최적화, 용량 최적화 등의 다양한 네트워크 시나리오들을 포함하고 있음
-- 새로운 셀의 배치, 주요 인프라 구축(빌딩, 다리 등), 고객 불만 대응 및 주기적인 drive tests 등의 상황에서 적용됨
+- 커버리지 최적화 (Coverage Optimization)
+
+  - 네트워크 커버리지 정보는 네트워크 계획, 최적화 및 RRM(Radio Resource Management) 파라미터 최적화에 필수적임
+
+  - **네트워크 제공 커버리지/처리량을 알아내기 위해 엄격한 “드라이브 테스트”가 수행됨**
+
+  - 주요 트리거:
+    1. **새 기지국/셀 배포**
+    2. **새로운 고속도로/철도/주요 건물 건설**
+    3. **고객 불만**
+    4. **주기적 드라이브 테스트**
+
+- 이동성 최적화 (Mobility Optimization)
+  - 이동성 문제나 실패 정보는 커버리지 부족 또는 네트워크 파라미터 설정의 필요성을 식별하는 데 사용됨
+
+- 용량 최적화 (Capacity Optimization)
+  - 새 셀의 배치, 공용 채널 구성 및 기타 용량 관련 네트워크 파라미터를 최적화하는 데 도움이 됨
+
+- 공용 채널의 파라미터화 (Parameterization for Common Channels)
+  - UL 또는 DL 공용 채널 커버리지 문제 탐지나 성능 분석은 네트워크 파라미터 설정 및 시스템 성능 최적화를 위해 도움이 됨
+
+- QoS 검증 (QoS Verification)
+  - 네트워크 성능 분석의 목적 중 하나는 서비스 품질 검증이다. 이는 중요한 조건을 탐지하고 네트워크 구성, 파라미터 설정 또는 용량 확장의 필요성을 결정하는 데 도움이 됨
 
 
 
 ## 4. UE Measurements
 
-- 기존의 RRC signaling principles을 활용해 필요한 정보를 수집
-- 새로운 기능의 필요는 최소화하고, 기존에 간으한 measurement functionalities를 최대한 활용
+- 기본 모델/원칙
+  - 네트워크는 UE에 일부 측정 로깅을 요청할 수 있으며, UE는 위치 정보 가용성과 같은 특정 제약 사항을 고려하여 요청된 로깅을 수행한다.
+- 라디오 환경 측정 (Cell Measurements)
+  - OAM 요구 사항에 기반하여 구성된 측정을 위해 적절한 측정이 RRM에 의해 제어된다.
+- 위치 정보
+  - UE의 위치 결정 구성 요소 사용을 지나치게 많이 사용하면 UE의 전력 소비가 크게 증가할 수 있다.
 
 
 
 ## 5. Measurement Logging Types
 
-- 다양한 유형의 logging이 상세히 설명됨: 주기적 다운링크 파일럿 측정, 서빙 셀의 임계값 이하 측정 등.
-- 각 로깅 유형의 benefits, triggers, configuration parameters에 대한 정보 제공됨.
-- 예를 들어, 주기적 다운링크 파일럿 측정은 일정 시간 간격(예: 2초)으로 DL 측정치를 logging하며, 이는 커버리지 데이터의 정확도를 30% 이상 향상시킬 수 있음.
+### UE 측정 로깅 (UE Measurement Logging)
+
+#### 주기적 다운링크 파일럿 측정 (Periodical Downlink Pilot Measurements)
+
+- **설명**: CPICH RSCP, CPICH Ec/No, TDD P-CCPCH RSCP 및 ISCP, RSRP 및 RSRQ(연결 모드 전용)와 같은 라디오 환경 측정이 주기적으로 기록된다.
+- **이점**: 운영자는 DL 커버리지/달성 가능한 처리량을 파악하기 위해 DL 공용 파일럿 수신 레벨과 SIR 레벨을 주요 측정한다.
+
+#### 기타 중요한 UE 측정 로깅
+
+- **서빙 셀이 임계값보다 나빠짐 (Serving Cell Becomes Worse Than Threshold)**
+- **전송 파워 헤드룸이 임계값보다 적음 (Transmit Power Headroom Becomes Less Than Threshold)**
+- **랜덤 액세스 실패 (Random Access Failure)**
+- **페이징 채널 실패 (Paging Channel Failure - PCCH Decode Error)**
+- **방송 채널 실패 (Broadcast Channel Failure)**
+- **라디오 링크 실패 보고 (Radio Link Failure Report)**
 
 
 
 ## 6. Impact Analysis
 
-- UE power consumption 및 memory에 미치는 영향 분석 포함.
-- 추가 기능에 대한 필요성과 location information 요구사항, memory requirements에 대한 논의 진행.
-- 예를 들어, 주기적 로깅이 활성화되면 UE의 power consumption이 평균 10-15% 증가할 수 있으나, 이는 network maintenance cost의 20% 감소로 상쇄될 수 있음.
+- UE 영향 (UE Impact)
 
+  - UE 전력 소비 (UE Power Consumption)
 
+    - **MDT 측정의 활성 모드 중 가용성**: 추가 측정 수행 및 저장 필요
+
+    - **유휴 모드 및 DRX가 MDT 측정에 미치는 영향**: 유휴 모드 측정에 대한 상세 요구 사항은 명시되어 있지 않음
+
+    - **UE에서 위치 정보의 가용성 및 정확도**: MDT에 대한 위치 정보 요구 사항은 UE의 전력 소비에 영향을 미칠 수 있음
+
+  - UE 메모리 영향 (UE Memory Impact)
+    - 독립적인 로깅 트리거와 보고 트리거는 UE가 네트워크에 보고될 때까지 측정을 저장해야 함을 시사함
+
+- End-User 영향
+- 기타 영향
 
 ## 7. Conclusion
 
-- MDT implementation은 network operators에게 많은 혜택을 제공함. 드라이브 테스트 필요성 감소 및 network maintenance cost 절감에 도움이 될 것으로 예측
-
-
-
-
-
----
-
-CHATGPT
-
-
-
-**1. 서론**
-
-- 본 보고서는 LTE 및 HSPA 네트워크에서의 3GPP Release 9에 따른 MDT의 변화와 그 중요성에 대해 다룸.
-- MDT의 목적은 실제 환경에서 네트워크 성능을 평가하는 드라이브 테스트의 필요성을 최소화하는 것임.
-- 드라이브 테스트의 최소화는 네트워크 운영의 효율성을 높이고 비용을 절감하는 중요한 단계임.
-
-**2. MDT의 중요성**
-
-- 전통적인 드라이브 테스트는 많은 시간과 자원을 요구하는 과정임.
-- MDT는 이러한 과정을 자동화하여 네트워크 운영자들이 네트워크의 커버리지와 성능 문제를 보다 효과적으로 식별하고 해결할 수 있도록 함.
-- 특히 데이터 트래픽이 급증하는 현대의 모바일 네트워크 환경에서 MDT의 중요성은 더욱 강조됨.
-
-**3. MDT의 기능과 메커니즘**
-
-- MDT는 UE로부터 실시간 또는 비실시간으로 네트워크 데이터를 수집함.
-- 이 데이터에는 신호 강도, 품질, 연결 상태 등 네트워크 성능 지표가 포함됨.
-- 수집된 데이터는 네트워크의 커버리지 및 성능 문제를 식별하는 데 사용됨.
-
-**4. MDT와 SON의 관계**
-
-- SON은 네트워크의 자동 구성, 최적화 및 치유를 담당함.
-- MDT는 SON 시스템과 독립적으로 기능해야 함, 이는 SON 기능이 없는 네트워크에서도 MDT를 사용할 수 있도록 보장함.
-- MDT와 SON을 함께 사용하면 네트워크 관리 및 최적화의 효과를 극대화할 수 있음.
-- MDT가 SON에 의존하지 않음으로써, 네트워크 관리자는 네트워크의 자체 최적화 기능에 의존하지 않고도 MDT의 이점을 활용할 수 있음.
-- 이는 MDT를 보다 광범위하게 적용할 수 있게 하며, 다양한 네트워크 환경에서의 유연성을 제공함.
-
-**5. MDT의 구현 및 적용**
-
-- MDT를 효과적으로 구현하기 위해서는 여러 기술적 과제가 존재함.
-- 이에는 대규모 데이터의 수집, 저장 및 처리, 네트워크 성능 지표의 정확한 해석 등이 포함됨.
-- MDT 데이터는 네트워크 플래닝, 운영 및 유지 관리에 중요한 정보를 제공함.
-
-**6. MDT의 기술적 도전**
-
-- 대용량 데이터의 실시간 처리 및 분석은 MDT의 주요 기술적 도전 중 하나임.
-- 이를 위해 고급 데이터 분석 기법 및 머신 러닝 알고리즘의 적용이 필요할 수 있음.
-- 또한, 네트워크의 변화하는 요구사항에 맞춰 MDT 시스템을 지속적으로 업데이트하고 최적화해야 함.
-
-**7. MDT의 미래 전망**
-
-- 5G와 IoT(Internet of Things) 기술의 발전은 MDT의 중요성을 더욱 증가시킬 것으로 예상됨.
-- 더 높은 데이터 속도와 커넥티비티를 제공하는 차세대 네트워크에서는 MDT를 통한 세밀한 네트워크 관리가 필수적임.
-- 인공지능(AI) 및 빅 데이터 기술과의 통합을 통해 MDT는 보다 효과적이고 자동화된 네트워크 관리 솔루션으로 발전할 수 있음.
-
-**8. 결론**
-
-- MDT는 네트워크 운영자에게 중요한 도구로서, 드라이브 테스트의 필요성을 줄이고 네트워크 효율성을 높이는 데 기여함.
-- 3GPP Release 9의 MDT 관련 규정 및 지침은 네트워크 기술의 발전에 따라 지속적으로 발전할 것임.
-
+- MDT implementation은 network operators에게 많은 혜택을 제공함. 드라이브 테스트 필요성 감소 및 network maintenance cost 절감에 도움이 될 것으로 예측됨
