@@ -52,6 +52,8 @@ collections: # Define post series here
     output: true
   Open_RAN:
     output: true
+  Optimization:
+    output: true
 
 defaults:
   - scope:
