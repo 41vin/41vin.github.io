@@ -26,7 +26,7 @@ title: Alvin's Blog # Required: site's default title
 shout: # Required: **TWO** lines, will be displayed on page's header.
   - Passionate Researcher
   - Cool Head and Warm Heart
-description: "Alvin's Dev Blog" # Required
+description: "Alvin's Research Blog" # Required
 
 disqus:
   comments: true # Global toggle on/off disqus comment

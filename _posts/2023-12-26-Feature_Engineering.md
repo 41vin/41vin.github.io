@@ -64,15 +64,15 @@ In this section, we will discuss several of the most important operations that y
 
 Scaling의 가장 대표적인 방법은 [0, 1] 사이로 scaling을 하는 것이다. 아래와 같이 scaling을 수행할 수 있다.
 
-$$ x' = {{x - min(x)} \over  {max(x) - min(x)}} $$
+$$ x' = {% raw %}{{x - min(x)}}{% endraw %} \over  {% raw %}{{max(x) - min(x)}}{% endraw %} $$
 
 임의의 숫자 범위 [a, b]로 scaling을 원한다면 아래와 같은 식을 사용하면 된다.
 
-$$ x' = a + {{(x - min(x))(b-a)} \over {max(x) - min(x)}} $$
+$$ x' = a + {% raw %}{{(x - min(x))(b-a)}}{% endraw %} \over {% raw %}{{max(x) - min(x)}}{% endraw %} $$
 
 또한, 변수들이 normal distribution을 따른다면, 아래와 같은 식을 통해 *standardization*을 수행할 수 있다.
 
-$$ x' = {{x - \bar{x}} \over \sigma}  $$
+$$ x' = {% raw %}{{x - \bar{x}}}{% endraw %} \over \sigma $$
 
 
 
