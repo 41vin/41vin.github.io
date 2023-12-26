@@ -231,6 +231,8 @@ An algorithm may evaluate an expression directly, iteratively, by calling itself
 
 
 
+[알고리즘의 종류는 다음과 같음]
+
 ### Brute force
 
 모든 가능한 경우의 수를 다 고려한 뒤 최적의 방법을 결정함
