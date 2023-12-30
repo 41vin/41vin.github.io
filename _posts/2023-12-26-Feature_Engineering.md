@@ -21,7 +21,7 @@ In this section, we will discuss several of the most important operations that y
 
 ### 결측치의 세 가지 종류
 
-![image-20231226154224730](/Users/mcl/Desktop/Project/Geon/Portfolio/41vin.github.io/assets/img/2023-12-26-Feature_Engineering/image-20231226154224730.png)
+![image-20231226154224730](../assets/img/2023-12-26-Feature_Engineering/image-20231226154224730.png)
 
 - Missing not at random (MNAR)
   - 결측값이 해당 데이터의 실제 값과 관련이 있을 때 발생한다. 예를 들어, 높은 소득을 가진 사람들이 소득 정보를 공개하지 않는 경우, 이는 '높은 소득'이라는 데이터의 특성 때문에 결측값이 생긴 것이다.
