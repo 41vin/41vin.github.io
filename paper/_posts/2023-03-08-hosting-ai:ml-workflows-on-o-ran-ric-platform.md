@@ -3,7 +3,7 @@ layout: post
 title: Hosting AI/ML Workflows on O-RAN RIC Platform
 description: >
   Samsung Research에서 나온 논문을 정리한 글입니다.
-image: /assets/img/blog/development_setting.png
+image: /assets/img/blog/o-ran.png
 sitemap: false
 ---
 
