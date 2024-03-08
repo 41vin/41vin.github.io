@@ -8,19 +8,23 @@ author1:
   # Used at the bottom of each page and at the top of the `about` layout
   # Markdown enabled, can use multiple paragraphs (enabled by `|`)
   about:             |
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-    
-    Open `_data/authors.yml` to edit this text.
+    경희대학교 이동통신연구실에서 차세대 통신 인프라를 연구하고 있습니다. 
+
+    Virtualized RAN을 중심적으로 연구하고 있고, DevOps 스택에 관심이 많습니다.
+
+    연구 내용을 모두 공개하고 있으니 편하게 둘러보세요.
+
+    저에게 관심이 있으시다면 언제든지 편하게 아래의 아이콘들을 클릭해 연락해주세요.
+
+    방문해 주셔서 감사합니다. 
 
   # This photo will be used in the about section
   picture:
-    path:            https://placehold.it/128x128
+    path:            /assets/img/profile/profile.jpeg
     # srcset is optional, but can be used to provide higher res versions for retina displays
     srcset:
-      1x:            https://placehold.it/128x128
-      2x:            https://placehold.it/256x256
+      1x:            /assets/img/profile/profile.jpeg
+      2x:            /assets/img/profile/profile.jpeg
 
   # Social media icons in sidebar
   # Comment/uncommet to show/hide
