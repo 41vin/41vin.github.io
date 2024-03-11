@@ -13,26 +13,31 @@
 
 
 
+  <meta name="robots" content="noindex">
+
 
 
   
     
 <!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>W3C SOFTWARE NOTICE AND LICENSE | Geon Kim</title>
+<title>Hosting AI/ML Workflows on O-RAN RIC Platform | Geon Kim</title>
 <meta name="generator" content="Jekyll v3.9.5" />
-<meta property="og:title" content="W3C SOFTWARE NOTICE AND LICENSE" />
+<meta property="og:title" content="Hosting AI/ML Workflows on O-RAN RIC Platform" />
 <meta name="author" content="Geon Kim" />
 <meta property="og:locale" content="en" />
-<meta name="description" content="Hydejack is a boutique Jekyll theme for hackers, nerds, and academics, with a focus on personal sites that are meant to impress." />
-<meta property="og:description" content="Hydejack is a boutique Jekyll theme for hackers, nerds, and academics, with a focus on personal sites that are meant to impress." />
-<link rel="canonical" href="http://localhost:4000/licenses/W3C-20150513/" />
-<meta property="og:url" content="http://localhost:4000/licenses/W3C-20150513/" />
+<meta name="description" content="Samsung Research에서 나온 논문을 정리한 글입니다." />
+<meta property="og:description" content="Samsung Research에서 나온 논문을 정리한 글입니다." />
+<link rel="canonical" href="http://localhost:4000/blog/paper/2023-03-08-hosting-ai-ml-workflows-on-o-ran-ric-platform/" />
+<meta property="og:url" content="http://localhost:4000/blog/paper/2023-03-08-hosting-ai-ml-workflows-on-o-ran-ric-platform/" />
 <meta property="og:site_name" content="Geon Kim" />
-<meta property="og:type" content="website" />
-<meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="W3C SOFTWARE NOTICE AND LICENSE" />
+<meta property="og:image" content="http://localhost:4000/assets/img/blog/o-ran.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2023-03-08T00:00:00+09:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="http://localhost:4000/assets/img/blog/o-ran.png" />
+<meta property="twitter:title" content="Hosting AI/ML Workflows on O-RAN RIC Platform" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Geon Kim"},"description":"Hydejack is a boutique Jekyll theme for hackers, nerds, and academics, with a focus on personal sites that are meant to impress.","headline":"W3C SOFTWARE NOTICE AND LICENSE","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/img/logo.png"},"name":"Geon Kim"},"url":"http://localhost:4000/licenses/W3C-20150513/"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Geon Kim"},"dateModified":"2023-03-08T00:00:00+09:00","datePublished":"2023-03-08T00:00:00+09:00","description":"Samsung Research에서 나온 논문을 정리한 글입니다.","headline":"Hosting AI/ML Workflows on O-RAN RIC Platform","image":"http://localhost:4000/assets/img/blog/o-ran.png","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/blog/paper/2023-03-08-hosting-ai-ml-workflows-on-o-ran-ric-platform/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/img/logo.png"},"name":"Geon Kim"},"url":"http://localhost:4000/blog/paper/2023-03-08-hosting-ai-ml-workflows-on-o-ran-ric-platform/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -60,7 +65,7 @@
 <meta name="generator" content="Hydejack v9.1.6" />
 
 
-<link rel="alternate" href="http://localhost:4000/licenses/W3C-20150513/" hreflang="en">
+<link rel="alternate" href="http://localhost:4000/blog/paper/2023-03-08-hosting-ai-ml-workflows-on-o-ran-ric-platform/" hreflang="en">
 
 <link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Geon Kim" />
 
@@ -175,7 +180,7 @@ html{--accent-color: rgb(79,177,186);--accent-color-faded: rgba(79,177,186,0.5);
 
   <main
   id="_main"
-  class="content layout-page"
+  class="content layout-post"
   role="main"
 >
   <nav id="breadcrumbs" class="screen-only"><ul>
@@ -188,70 +193,311 @@ html{--accent-color: rgb(79,177,186);--accent-color-faded: rgba(79,177,186,0.5);
           <span>/</span>
           
           
-          <a href="/licenses/">licenses</a>
+          <a href="/blog/">blog</a>
         
       </li>
     
       <li>
         
           <span>/</span>
-          <span>W3C-20150513</span>
+          
+          
+          <a href="/blog/paper/">paper</a>
+        
+      </li>
+    
+      <li>
+        
+          <span>/</span>
+          <span>2023-03-08-hosting-ai-ml-workflows-on-o-ran-ric-platform</span>
         
       </li>
     
   
 </ul></nav>
-  <article class="page mb6" role="article">
+  
+
+
+
+
+
+
+
+
+
+
+<article id="post-blog-paper-hosting-ai:ml-workflows-on-o-ran-ric-platform" class="page post mb6" role="article">
   <header>
-    <h1 class="page-title">W3C SOFTWARE NOTICE AND LICENSE</h1>
+    <h1 class="post-title flip-project-title">
+      
+        Hosting AI/ML Workflows on O-RAN RIC Platform
+      
+    </h1>
+
+    <div class="post-date">
+      
+      <span class="ellipsis mr1">
+        <time datetime="2023-03-08T00:00:00+09:00">08 Mar 2023</time> in <a href="/blog/paper/" class="flip-title">Paper</a> 
+      </span>
+      
+        
+      
+    </div>
+
+    
+    
+      
+        <div class="img-wrapper lead aspect-ratio sixteen-nine flip-project-img">
+          
+
+
+<img
+  
+    src="/assets/img/blog/o-ran.png"
+  
+  alt="Hosting AI/ML Workflows on O-RAN RIC Platform"
+  
+  
+  width="864"
+  height="486"
+  loading="lazy"
+/>
+
+        </div>
+      
+      
+    
+
     
 
 
 
-  <div class="hr pb0"></div>
+  
+    <p class="note-sm" >
+      Samsung Research에서 나온 논문을 정리한 글입니다.
+
+    </p>
+  
 
 
   </header>
 
-  <p><strong>Status</strong>: This license takes effect 13 May, 2015.</p>
+  
+    <p class="note">본 글은 OAIC의 공식문서를 참고하여 작성하였습니다.</p>
 
-<p>This work is being provided by the copyright holders under the following license.</p>
-
-<h2 id="license">License</h2>
-
-<p>By obtaining and/or copying this work, you (the licensee) agree that you have read, understood, and will comply with the following terms and conditions.</p>
-
-<p>Permission to copy, modify, and distribute this work, with or without modification, for any purpose and without fee or royalty is hereby granted, provided that you include the following on ALL copies of the work or portions thereof, including modifications:</p>
-
+<p>RIC 테스트베드를 구성하고 있는 프로그램들의 버전은 다음과 같습니다.</p>
 <ul>
-  <li>The full text of this NOTICE in a location viewable to users of the redistributed or derivative work.</li>
-  <li>Any pre-existing intellectual property disclaimers, notices, or terms and conditions. If none exist, the W3C Software and Document Short Notice should be included.</li>
-  <li>Notice of any changes or modifications, through a copyright statement on the new code or document such as “This software or document includes material copied from or derived from [title and URI of the W3C document]. Copyright © [YEAR] W3C® (MIT, ERCIM, Keio, Beihang).”</li>
+  <li>Helm: v.3.2.3</li>
+  <li>Kubernetes: v1.16.0</li>
+  <li>CNI: v0.7.5</li>
 </ul>
 
-<h2 id="disclaimers">Disclaimers</h2>
+<p>이 중 Kubernetes의 버전이 너무 오래되어 apt 저장소에서 누락되었습니다.
+따라서 binary 파일을 직접 다운받아 Kubernetes 환경을 구성하였습니다.</p>
 
-<p>THIS WORK IS PROVIDED “AS IS,” AND COPYRIGHT HOLDERS MAKE NO REPRESENTATIONS OR WARRANTIES, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO, WARRANTIES OF MERCHANTABILITY OR FITNESS FOR ANY PARTICULAR PURPOSE OR THAT THE USE OF THE SOFTWARE OR DOCUMENT WILL NOT INFRINGE ANY THIRD PARTY PATENTS, COPYRIGHTS, TRADEMARKS OR OTHER RIGHTS.</p>
-
-<p>COPYRIGHT HOLDERS WILL NOT BE LIABLE FOR ANY DIRECT, INDIRECT, SPECIAL OR CONSEQUENTIAL DAMAGES ARISING OUT OF ANY USE OF THE SOFTWARE OR DOCUMENT.</p>
-
-<p>The name and trademarks of copyright holders may NOT be used in advertising or publicity pertaining to the work without specific, written prior permission. Title to copyright in this work will at all times remain with copyright holders.</p>
-
-<h2 id="notes">Notes</h2>
-
-<p>This version: <a href="http://www.w3.org/Consortium/Legal/2015/copyright-software-and-document">http://www.w3.org/Consortium/Legal/2015/copyright-software-and-document</a></p>
-
-<p>Previous version: <a href="http://www.w3.org/Consortium/Legal/2002/copyright-software-20021231">http://www.w3.org/Consortium/Legal/2002/copyright-software-20021231</a></p>
-
-<p>This version makes clear that the license is applicable to both software and text, by changing the name and substituting “work” for instances of “software and its documentation.” It moves “notice of changes or modifications to the files” to the copyright notice, to make clear that the license is compatible with other liberal licenses.</p>
-
+  
 </article>
+
 
 
   <hr class="dingbat related mb6" />
 
 
 
+
+
+
+  
+     
+
+
+  <aside class="about related mt4 mb4" role="complementary">
+    
+    
+
+<div class="author mt4">
+  
+
+  
+    
+
+
+<img
+  
+    src="/assets/img/profile/profile.jpeg"
+    srcset="/assets/img/profile/profile.jpeg 1x,/assets/img/profile/profile.jpeg 2x"
+    
+  
+  alt="Geon Kim"
+  class="avatar"
+  
+  width="120"
+  height="120"
+  loading="lazy"
+/>
+
+  
+
+  
+  
+  <h2  class="page-title hr-bottom">
+    About
+  </h2>
+
+  <p>경희대학교 이동통신연구실에서 차세대 통신 인프라를 연구하고 있습니다.</p>
+
+<p>Virtualized RAN을 중심적으로 연구하고 있고, DevOps 스택에 관심이 많습니다.</p>
+
+<p>연구 내용을 모두 공개하고 있으니 편하게 둘러보세요.</p>
+
+<p>저에게 관심이 있으시다면 언제든지 편하게 아래의 아이콘들을 클릭해 연락해주세요.</p>
+
+<p>방문해 주셔서 감사합니다.</p>
+
+
+  <div class="sidebar-social">
+    <span class="sr-only">Social:</span>
+<ul>
+  
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://github.com/41vin" title="GitHub" class="no-mark-external">
+      <span class="icon-github"></span>
+      <span class="sr-only">GitHub</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="mailto:erudite.gun@gmail.com" title="Email" class="no-mark-external">
+      <span class="icon-mail"></span>
+      <span class="sr-only">Email</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://www.youtube.com/channel/UClv7hh6WL_rMNAQ4iLevELw" title="YouTube" class="no-mark-external">
+      <span class="icon-youtube"></span>
+      <span class="sr-only">YouTube</span>
+    </a>
+  </li>
+
+
+    
+  
+</ul>
+
+  </div>
+</div>
+
+  </aside>
+
+
+  
+
+  
+    
+
+
+  
+
+  
+    
+
+
+  <aside class="other-projects related mb0" role="complementary">  <h2>Related Posts</h2>  <div class="columns">          <div class="column column-1-2">                  <article class="project-card">  <a href="/blog/ric/2023-03-08-setting-up-development-environment/" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine flip-project-img">              <img      src="/assets/img/blog/development_setting.png"    alt="Setting Up Development Environment for RIC"      width="864"  height="486"  loading="lazy"/>          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/blog/ric/2023-03-08-setting-up-development-environment/" class="flip-title">Setting Up Development Environment for RIC</a>  </h3>      <p class="project-card-text fine" property="disambiguatingDescription">      O-RAN SC near real time RIC을 구축하기 위한 개발 환경 세팅을 정리한 글입니다.    </p>      <a class="fill-card no-hover" href="/blog/ric/2023-03-08-setting-up-development-environment/" tabindex="-1"><span class="sr-only">Continue reading Setting Up Development Environment for RIC</span></a></article>              </div>          <div class="column column-1-2">                  <article class="project-card">  <a href="/blog/example/2021-02-13-whats-new-in-hydejack-9-1/" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine flip-project-img">              <img      src="/assets/img/blog/jj-ying.jpg"    alt="What’s New in Hydejack 9.1?"      width="864"  height="486"  loading="lazy"/>          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/blog/example/2021-02-13-whats-new-in-hydejack-9-1/" class="flip-title">What’s New in Hydejack 9.1?</a>  </h3>      <p class="project-card-text fine" property="disambiguatingDescription">      Version 9.1 provides minor design changes, new features, and closes multiple issues.    </p>      <a class="fill-card no-hover" href="/blog/example/2021-02-13-whats-new-in-hydejack-9-1/" tabindex="-1"><span class="sr-only">Continue reading What’s New in Hydejack 9.1?</span></a></article>              </div>      </div></aside>
+
+  
+
+  
+    
+
+
+  <aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Random Posts</h2>  <ul class="related-posts">          <li class="h4">  <a href="/blog/example/2021-02-13-whats-new-in-hydejack-9-1/" class="flip-title"><span>What’s New in Hydejack 9.1?</span></a>  <time class="faded fine" datetime="2021-02-13T00:00:00+09:00">13 Feb 2021</time></li>          <li class="h4">  <a href="/blog/example/2017-11-23-example-content-ii/" class="flip-title"><span>Example Content II</span></a>  <time class="faded fine" datetime="2017-11-23T00:00:00+09:00">23 Nov 2017</time></li>          <li class="h4">  <a href="/blog/example/2020-07-03-introducing-hydejack-9/" class="flip-title"><span>Introducing Hydejack 9</span></a>  <time class="faded fine" datetime="2020-07-03T00:00:00+09:00">03 Jul 2020</time></li>      </ul></aside>
+
+  
+
+  
+    
+<aside class="comments related" role="complementary">
+  <h2 class="hr-bottom">Comments</h2>
+  
+
+<div id="disqus_thread"></div>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+<script>!function(w, d) {
+  if (d.getElementById("disqus_thread")) {
+    if (w.DISQUS) {
+      w.DISQUS.reset({
+        reload: true,
+        config() {
+          this.page.url = w.location.href;
+          this.page.title = d.title;
+        },
+      });
+    } else {
+      w.disqus_config = function disqusConfig() {
+        this.page.url = w.location.href;
+        this.page.title = d.title;
+      };
+      w.loadJSDeferred(d.getElementById("_hrefDisqus").href + '/embed.js');
+    }
+  }
+}(window, document);</script>
+
+
+</aside>
+
+
+  
 
 
   
