@@ -106,7 +106,7 @@
   w._search = {
     DATA_URL: '/assets/sitedata.json?no-cache',
     STORAGE_KEY: 'mini-search/',
-    INDEX_KEY: 'index--2024-03-11T11:01:27+09:00',
+    INDEX_KEY: 'index--2024-03-12T18:38:45+09:00',
   };
   w._clapButton = true;
 }(window);</script>
@@ -283,17 +283,353 @@ html{--accent-color: rgb(79,177,186);--accent-color-faded: rgba(79,177,186,0.5);
   </header>
 
   
-    <p class="note">본 글은 OAIC의 공식문서를 참고하여 작성하였습니다.</p>
+    <p class="note">본 글은 O-RAN SC Community의 공식문서를 참고하여 작성하였습니다.</p>
 
-<p>RIC 테스트베드를 구성하고 있는 프로그램들의 버전은 다음과 같습니다.</p>
+<p>본 포스트는 O-RAN SC의 Near RT RIC(RAN Intelligent Controller) Release <code class="language-plaintext highlighter-rouge">I</code>를 설치하는 과정을 처음부터 정리한 것입니다.</p>
+
+<p>Near-RT RIC을 구축하는 방법에는 크게 3가지 방법이 있습니다.</p>
+<ol>
+  <li>‘Traditional’ install shell script을 이용하는 방법: 기존 공식 Documents에서 기술되어 있습니다.</li>
+  <li>Using a kubernetes operator</li>
+  <li>Using an “umbrella” helm chart</li>
+</ol>
+
+<p>2번과 3번 방법은 <code class="language-plaintext highlighter-rouge">I</code> release에서부터 추가된 방법입니다.</p>
+
+<p>본 내용에 들어가기에 앞서 개발을 진행한 컴퓨터는</p>
+
 <ul>
-  <li>Helm: v.3.2.3</li>
-  <li>Kubernetes: v1.16.0</li>
-  <li>CNI: v0.7.5</li>
+  <li>OS: Ubuntu 20.04 LTS</li>
+  <li>Intel NUC 12</li>
 </ul>
 
-<p>이 중 Kubernetes의 버전이 너무 오래되어 apt 저장소에서 누락되었습니다.
-따라서 binary 파일을 직접 다운받아 Kubernetes 환경을 구성하였습니다.</p>
+<p>임을 미리 알려드립니다.</p>
+
+<hr />
+
+<p>본 포스트에서는 수동으로 kubernetes 클러스터를 만든 후 Near-RT RIC 환경을 배포해보겠습니다.</p>
+
+<p>기존 쿠버네티스 버전이 1.16.0으로 너무 오래되었기 때문에 virtualbox를 이용하여 v1.29.2의 kubernetes 클러스터를 구축해보았습니다.</p>
+
+<p>Node의 구성은</p>
+<ul>
+  <li>OS: ubuntu 20.04</li>
+  <li>Controlplane: 1</li>
+  <li>Worker: 2</li>
+</ul>
+
+<p>로 설정하였습니다.</p>
+
+<h2 id="가상머신-구성">가상머신 구성</h2>
+
+<h3 id="1-링크를-클릭하여-홈페이지에-들어가-virtualbox를-설치합니다">1. 링크를 클릭하여 홈페이지에 들어가 <a href="https://www.virtualbox.org/">virtualbox</a>를 설치합니다.</h3>
+
+<p>가장 최신 버전인 v7.0.14로 설치하였습니다.</p>
+
+<h3 id="2-vagrant를-설치합니다">2. Vagrant를 설치합니다.</h3>
+<p>Vagrant는 개발 환경을 구축하고 관리하기 위한 오픈 소스 소프트웨어입니다. 쉽게 말해 가상화 플랫폼(e.g. virtualbox) 가상 머신을 쉽게 생성, 구성, 관리할 수 있게 도와주는 도구라고 생각하시면 됩니다. <a href="https://developer.hashicorp.com/vagrant/install?product_intent=vagrant">링크</a>를 첨부합니다.</p>
+
+<ol>
+  <li>
+    <p>Vagrantfile을 이용해 가상머신을 구동시킵니다.</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c"># 원하는 디렉토리 이동 후 입력</span>
+ vagrant init
+</code></pre></div>    </div>
+    <p><code class="language-plaintext highlighter-rouge">vagrant init</code>을 입력하게 되면, Vagrantfile이 생깁니다. 이 Vagrantfile을 열어 아래의 내용을 복사, 붙여넣기 합니다.</p>
+
+    <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code> Vagrant.configure("2") do |config|
+   config.vm.boot_timeout = 3000
+
+   config.vm.define "master" do |master|
+     master.vm.box = "ubuntu/focal64"
+     master.vm.network "private_network", ip: "192.168.56.10"
+     master.vm.hostname = "master"
+
+     master.vm.provider "virtualbox" do |v|
+       v.memory = 10240
+       v.cpus = 10
+     end
+   end
+
+   config.vm.define "worker1" do |worker1|
+     worker1.vm.box = "ubuntu/focal64"
+     worker1.vm.network "private_network", ip: "192.168.56.11" 
+     worker1.vm.hostname = "worker1" 
+
+     worker1.vm.provider "virtualbox" do |v|
+       v.memory = 2048
+       v.cpus = 2
+     end
+   end
+  
+   config.vm.define "worker2" do |worker2|
+     worker2.vm.box = "ubuntu/focal64"
+     worker2.vm.network "private_network", ip: "192.168.56.12" 
+     worker2.vm.hostname = "worker2" 
+
+     worker2.vm.provider "virtualbox" do |v|
+       v.memory = 2048
+       v.cpus = 2
+     end
+   end    
+ end
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<p>이제 쿠버네티스 클러스터를 위한 가상머신 구축이 끝났습니다.</p>
+
+<hr />
+<h2 id="master-노드">Master 노드</h2>
+
+<p>가장 먼저, master 노드를 구성합니다.</p>
+
+<h3 id="1-master--노드-shell-접속">1. Master  노드 shell 접속</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  vagrant ssh master
+</code></pre></div></div>
+
+<h3 id="2-네트워크-설정">2. 네트워크 설정</h3>
+
+<ul>
+  <li>
+    <p>br_netfilter 셋업
+br_netfilter라는 요소를 활성화 합니다. 이 과정을 거쳐야 iptables가 bridge 인터페이스의 패킷을 제어하여 bridge 인터페이스를 사용하는 프로세스(pod, container 등) 간 통신이 가능해집니다.</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>su
+<span class="nb">echo</span> <span class="s2">"br_netfilter"</span> <span class="o">&gt;</span> /etc/modules-load.d/br_netfilter.conf
+<span class="nb">exit</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>iptables에서 br_netfilter 사용 활성화
+iptables에서 앞에서 활성화한 br_netfilter를 사용하도록 설정합니다.
+이를 설정해주어야 컨테이너에서 발생한 패킷이 호스트의 iptables에서 제어됩니다.</p>
+
+    <p>bridge-nf가 앞에서 로드한 모듈 br_netfilter를 의미합니다. {: note}</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cat</span> <span class="o">&lt;&lt;-</span><span class="sh">'</span><span class="no">EOF</span><span class="sh">' &gt;/etc/sysctl.d/kubernetes.conf
+net.bridge.bridge-nf-call-iptables = 1
+net.bridge.bridge-nf-call-ip6tables = 1
+net.ipv4.ip_forward = 1
+</span><span class="no">EOF
+</span></code></pre></div>    </div>
+
+    <p>앞에서 설정한 내용을 적용하기 위해 아래의 명령어를 입력합니다.</p>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>sysctl <span class="nt">--system</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h3 id="3-컨테이너-런타임-설치">3. 컨테이너 런타임 설치</h3>
+
+<p>다음으로 kubernetes에서 동작될 컨테이너 런타임을 설치합니다. 저는 <code class="language-plaintext highlighter-rouge">containerd</code>를 사용하였습니다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nb">sudo </span>apt-get <span class="nt">-y</span> update
+
+  <span class="nb">sudo </span>apt-get <span class="nb">install</span> <span class="nt">-y</span> curl gnupg2 software-properties-common apt-transport-https ca-certificates
+
+  <span class="nb">sudo </span>curl <span class="nt">-fsSL</span> https://download.docker.com/linux/ubuntu/gpg | <span class="nb">sudo </span>gpg <span class="nt">--dearmour</span> <span class="nt">-o</span> /etc/apt/trusted.gpg.d/docker.gpg
+
+  <span class="nb">sudo </span>add-apt-repository <span class="nt">-y</span> <span class="s2">"deb [arch=amd64] https://download.docker.com/linux/ubuntu </span><span class="si">$(</span>lsb_release <span class="nt">-cs</span><span class="si">)</span><span class="s2"> stable"</span>
+
+  <span class="nb">sudo </span>apt-get <span class="nt">-y</span> update
+
+  <span class="nb">sudo </span>apt-get <span class="nb">install</span> <span class="nt">-y</span> containerd.io
+
+  containerd config default | <span class="nb">sudo tee</span> /etc/containerd/config.toml <span class="o">&gt;</span>/dev/null 2&gt;&amp;1
+
+  <span class="nb">sudo sed</span> <span class="nt">-i</span> <span class="s1">'s/SystemdCgroup \= false/SystemdCgroup \= true/g'</span> /etc/containerd/config.toml
+
+  <span class="nb">sudo </span>systemctl restart containerd
+
+  <span class="nb">sudo </span>systemctl <span class="nb">enable </span>containerd
+</code></pre></div></div>
+
+<p>커맨드 입력을 통해 systemctl로 containerd를 실행하게 됩니다.</p>
+
+<h3 id="4-kubelet-kubectl-kubeadm-설치">4. kubelet, kubectl, kubeadm 설치</h3>
+
+<p>설치에 들어가기 앞서, 각 구성요소의 역할을 간단하게 설명드리겠습니다.</p>
+
+<ul>
+  <li>kubelet
+    <ul>
+      <li>정의: <code class="language-plaintext highlighter-rouge">kubelet</code>은 각 노드에 할당된 pod가 실행되고 있는지 관리하고, kubernetes master와 통신하여 작업을 받습니다.</li>
+      <li>역할: <code class="language-plaintext highlighter-rouge">kubelet</code>은 pod의 스펙을 모니터링하고, 상태를 확인한 다음 이 정보를 kubernetes master에 보고합니다. 또한, pod가 요구하는 리소스(container image 다운로드, 네트워크 설정 등)를 준비하고, container를 실행합니다.</li>
+    </ul>
+  </li>
+  <li>kubectl
+    <ul>
+      <li>정의: <code class="language-plaintext highlighter-rouge">kubectl</code>은 kubernetes 클러스터를 조작하기 위한 CLI 도구입니다.</li>
+      <li>역할: 사용자는 <code class="language-plaintext highlighter-rouge">kubelet</code>을 사용하여 애플리케이션을 배포하고, cluster 리소스를 검사 및 관리하며, 로그를 확인할 수 있습니다.</li>
+    </ul>
+  </li>
+  <li>kubeadm
+    <ul>
+      <li>정의: <code class="language-plaintext highlighter-rouge">kubeadm</code>은 kubernetes 클러스터를 쉽게 구성하는데 사용되는 도구입니다.</li>
+      <li>역할: <code class="language-plaintext highlighter-rouge">kubeadm init</code>과 <code class="language-plaintext highlighter-rouge">kubeadm join</code> 명령을 사용하여 클러스터의 master 노드와 worker 노드를 설정할 수 있습니다. <code class="language-plaintext highlighter-rouge">kubeadm</code>은 kubernetes 클러스터의 구성, 클러스터 인증서 생성, <code class="language-plaintext highlighter-rouge">kubelet</code> 설정 등의 작업을 자동화하여 사용자가 kubernetes 클러스터를 쉽게 구축할 수 있도록 도와줍니다.</li>
+    </ul>
+  </li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>su
+
+<span class="c"># Master 노드 IP 설정</span>
+<span class="nb">cat</span> <span class="o">&lt;&lt;-</span><span class="sh">'</span><span class="no">EOF</span><span class="sh">' &gt;/etc/default/kubelet
+KUBELET_EXTRA_ARGS=--node-ip=192.168.56.10
+</span><span class="no">EOF
+
+</span><span class="nb">exit</span>
+</code></pre></div></div>
+
+<p>아래의 커맨드를 입력하여 <code class="language-plaintext highlighter-rouge">kubelet</code>, <code class="language-plaintext highlighter-rouge">kubeadm</code>, <code class="language-plaintext highlighter-rouge">kubectl</code> 설치를 진행합니다. 가장 최신의 버전으로 kubernetes를 구축하게 됩니다. <a href="https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/">쿠버네티스 공식 문서</a>를 바탕으로 설치하였습니다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt-get update
+
+<span class="c"># apt-transport-https may be a dummy package; if so, you can skip that package</span>
+<span class="nb">sudo </span>apt-get <span class="nb">install</span> <span class="nt">-y</span> apt-transport-https ca-certificates curl gpg
+
+<span class="c"># If the folder `/etc/apt/keyrings` does not exist, it should be created before the curl command, read the note below.</span>
+<span class="c"># sudo mkdir -p -m 755 /etc/apt/keyrings</span>
+curl <span class="nt">-fsSL</span> https://pkgs.k8s.io/core:/stable:/v1.29/deb/Release.key | 
+
+<span class="nb">sudo </span>gpg <span class="nt">--dearmor</span> <span class="nt">-o</span> /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+
+<span class="c"># This overwrites any existing configuration in /etc/apt/sources.list.d/kubernetes.list</span>
+<span class="nb">echo</span> <span class="s1">'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.29/deb/ /'</span> | <span class="nb">sudo tee</span> /etc/apt/sources.list.d/kubernetes.list
+</code></pre></div></div>
+
+<p>다음을 수행한 후 apt-get update를 진행합니다. 그 후 최신 버전의 <code class="language-plaintext highlighter-rouge">kubelet</code>, <code class="language-plaintext highlighter-rouge">kubeadm</code>, <code class="language-plaintext highlighter-rouge">kubectl</code>을 설치합니다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt-get update
+<span class="nb">sudo </span>apt-get <span class="nb">install</span> <span class="nt">-y</span> kubelet kubeadm kubectl
+<span class="nb">sudo </span>apt-mark hold kubelet kubeadm kubectl
+</code></pre></div></div>
+
+<h3 id="4-클러스터-생성">4. 클러스터 생성</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>kubeadm init <span class="nt">--pod-network-cidr</span><span class="o">=</span>10.244.0.0/16 <span class="nt">--control-plane-endpoint</span><span class="o">=</span>192.168.56.10 <span class="nt">--apiserver-advertise-address</span><span class="o">=</span>192.168.56.10
+</code></pre></div></div>
+
+<p>커맨드를 실행하게 되면 아래 사진과 같은 결과가 출력됩니다.</p>
+
+<p>결과들 중 다음 정보가 중요합니다.</p>
+
+<p><img src="/assets/img/blog/0312-k8s-configuration.png" alt="800x400" title="K8s configuration" /></p>
+
+<p>아래의 커맨드를 입력하여 master 노드가 클러스터를 컨트롤 할 수 있는 권한을 부여합니다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mkdir</span> <span class="nt">-p</span> <span class="nv">$HOME</span>/.kube
+<span class="nb">sudo cp</span> /etc/kubernetes/admin.conf <span class="nv">$HOME</span>/.kube/config
+<span class="nb">sudo chown</span> <span class="si">$(</span><span class="nb">id</span> <span class="nt">-u</span><span class="si">)</span>:<span class="si">$(</span><span class="nb">id</span> <span class="nt">-g</span><span class="si">)</span> <span class="nv">$HOME</span>/.kube/config
+</code></pre></div></div>
+
+<h3 id="5-network-add-on-flannel-설치">5. Network add-on: flannel 설치</h3>
+
+<p><code class="language-plaintext highlighter-rouge">Flannel</code>은 pod간 통신이 가능하도록 도와주는 CNI(Container Network Interface)입니다. 다음을 입력하여 <code class="language-plaintext highlighter-rouge">flannel</code>을 설치합니다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl apply <span class="nt">-f</span> https://github.com/flannel-io/flannel/releases/latest/download/kube-flannel.yml
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">flannel</code>을 사용하기 위해 kubeadm init 명령어 시 –pod-network-cidr=10.244.0.0/16을 입력하였습니다. <code class="language-plaintext highlighter-rouge">flannel</code>의 inet 부분도 10.244.0.0으로 동일합니다.</p>
+
+<hr />
+
+<h2 id="worker-노드">Worker 노드</h2>
+
+<p>Worker 노드에서 <code class="language-plaintext highlighter-rouge">kubeadm join</code>으로 앞에서 구축한 클러스터에 가입합니다.</p>
+
+<p>그 전에 필요한 요소를 먼저 설치합시다. <strong>Worker 노드 모두 접속하여 다음의 작업을 각각 수행해야 합니다.</strong></p>
+
+<h3 id="1-worker-노드-shell-접속">1. Worker 노드 shell 접속</h3>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vagrant ssh worker1 <span class="c"># 192.168.56.11</span>
+</code></pre></div></div>
+
+<h3 id="2-네트워크-설정-1">2. 네트워크 설정</h3>
+
+<p>Master 노드와 동일하게 셋팅을 진행합니다.</p>
+
+<ul>
+  <li>br_netfilter 셋업
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>modprobe br_netfilter
+</code></pre></div>    </div>
+  </li>
+  <li>iptables에서 br_netfilter 사용 활성화
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cat</span> <span class="o">&lt;&lt;-</span><span class="sh">'</span><span class="no">EOF</span><span class="sh">' &gt;/etc/sysctl.d/kubernetes.conf
+net.bridge.bridge-nf-call-iptables = 1
+net.bridge.bridge-nf-call-ip6tables = 1
+net.ipv4.ip_forward = 1
+</span><span class="no">EOF
+</span></code></pre></div>    </div>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>sysctl <span class="nt">--system</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h3 id="3-컨테이너-런타임-설치-1">3. 컨테이너 런타임 설치</h3>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt-get <span class="nt">-y</span> update
+<span class="nb">sudo </span>apt-get <span class="nb">install</span> <span class="nt">-y</span> curl gnupg2 software-properties-common apt-transport-https ca-certificates
+
+<span class="nb">sudo </span>curl <span class="nt">-fsSL</span> https://download.docker.com/linux/ubuntu/gpg | <span class="nb">sudo </span>gpg <span class="nt">--dearmour</span> <span class="nt">-o</span> /etc/apt/trusted.gpg.d/docker.gpg
+<span class="nb">sudo </span>add-apt-repository <span class="nt">-y</span> <span class="s2">"deb [arch=amd64] https://download.docker.com/linux/ubuntu </span><span class="si">$(</span>lsb_release <span class="nt">-cs</span><span class="si">)</span><span class="s2"> stable"</span>
+
+<span class="nb">sudo </span>apt-get <span class="nt">-y</span> update
+<span class="nb">sudo </span>apt-get <span class="nb">install</span> <span class="nt">-y</span> containerd.io
+
+containerd config default | <span class="nb">sudo tee</span> /etc/containerd/config.toml <span class="o">&gt;</span>/dev/null 2&gt;&amp;1
+<span class="nb">sudo sed</span> <span class="nt">-i</span> <span class="s1">'s/SystemdCgroup \= false/SystemdCgroup \= true/g'</span> /etc/containerd/config.toml
+
+<span class="nb">sudo </span>systemctl restart containerd
+<span class="nb">sudo </span>systemctl <span class="nb">enable </span>containerd
+</code></pre></div></div>
+
+<h3 id="4-kubelet-kubeadm-설치">4. kubelet, kubeadm 설치</h3>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cat</span> <span class="o">&lt;&lt;-</span><span class="sh">'</span><span class="no">EOF</span><span class="sh">' &gt;/etc/default/kubelet
+KUBELET_EXTRA_ARGS=--node-ip=192.168.56.10
+</span><span class="no">EOF
+
+</span><span class="nb">sudo </span>apt-get update
+
+<span class="c"># apt-transport-https may be a dummy package; if so, you can skip that package</span>
+<span class="nb">sudo </span>apt-get <span class="nb">install</span> <span class="nt">-y</span> apt-transport-https ca-certificates curl gpg
+
+<span class="c"># If the folder `/etc/apt/keyrings` does not exist, it should be created before the curl command, read the note below.</span>
+<span class="c"># sudo mkdir -p -m 755 /etc/apt/keyrings</span>
+curl <span class="nt">-fsSL</span> https://pkgs.k8s.io/core:/stable:/v1.29/deb/Release.key | 
+
+<span class="nb">sudo </span>gpg <span class="nt">--dearmor</span> <span class="nt">-o</span> /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+
+<span class="c"># This overwrites any existing configuration in /etc/apt/sources.list.d/kubernetes.list</span>
+<span class="nb">echo</span> <span class="s1">'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.29/deb/ /'</span> | <span class="nb">sudo tee</span> /etc/apt/sources.list.d/kubernetes.list
+</code></pre></div></div>
+
+<p>다음을 입력해 <code class="language-plaintext highlighter-rouge">kubelet</code>, <code class="language-plaintext highlighter-rouge">kubelet</code>을 설치합니다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt-get <span class="nb">install</span> <span class="nt">-y</span> kubelet kubeadm 
+<span class="nb">sudo </span>apt-mark hold kubelet kubeadm 
+</code></pre></div></div>
+
+<h3 id="5-master-노드에서-kubeadm-init시-생성된-join-명령문을-실행합니다">5. Master 노드에서 kubeadm init시 생성된 join 명령문을 실행합니다.</h3>
+
+<p>성공적으로 join이 되었다면 아래와 같은 출력이 뜨게 됩니다.</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>This node has joined the cluster:
+<span class="k">*</span> Certificate signing request was sent to apiserver and a response was received.
+<span class="k">*</span> The Kubelet was informed of the new secure connection details.
+
+RUN <span class="sb">`</span>kubectl get nodes<span class="sb">`</span> on the control-plane to see this node <span class="nb">join </span>the cluster.
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="cluster-구성-확인">Cluster 구성 확인</h2>
+<p>Master 노드에서 아래의 커맨드를 입력합니다.</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl get node
+</code></pre></div></div>
+
+<p>모든 노드가 Ready 상태라면 성공적으로 클러스터가 구축된 것입니다.
+<img src="/assets/img/blog/0312-k8s-configuration-confirm.png" alt="400x200" title="Large example image" /></p>
 
   
 </article>
@@ -461,7 +797,7 @@ html{--accent-color: rgb(79,177,186);--accent-color-faded: rgba(79,177,186,0.5);
     
 
 
-  <aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Random Posts</h2>  <ul class="related-posts">          <li class="h4">  <a href="/blog/example/2021-02-13-whats-new-in-hydejack-9-1/" class="flip-title"><span>What’s New in Hydejack 9.1?</span></a>  <time class="faded fine" datetime="2021-02-13T00:00:00+09:00">13 Feb 2021</time></li>          <li class="h4">  <a href="/blog/example/2017-11-23-example-content-ii/" class="flip-title"><span>Example Content II</span></a>  <time class="faded fine" datetime="2017-11-23T00:00:00+09:00">23 Nov 2017</time></li>          <li class="h4">  <a href="/blog/example/2020-07-03-introducing-hydejack-9/" class="flip-title"><span>Introducing Hydejack 9</span></a>  <time class="faded fine" datetime="2020-07-03T00:00:00+09:00">03 Jul 2020</time></li>      </ul></aside>
+  <aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Random Posts</h2>  <ul class="related-posts">          <li class="h4">  <a href="/blog/example/2021-02-13-whats-new-in-hydejack-9-1/" class="flip-title"><span>What’s New in Hydejack 9.1?</span></a>  <time class="faded fine" datetime="2021-02-13T00:00:00+09:00">13 Feb 2021</time></li>          <li class="h4">  <a href="/blog/example/2012-02-07-example-content/" class="flip-title"><span>Example Content</span></a>  <time class="faded fine" datetime="2012-02-07T00:00:00+09:00">07 Feb 2012</time></li>          <li class="h4">  <a href="/blog/example/2017-11-23-example-content-ii/" class="flip-title"><span>Example Content II</span></a>  <time class="faded fine" datetime="2017-11-23T00:00:00+09:00">23 Nov 2017</time></li>      </ul></aside>
 
   
 
