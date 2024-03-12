@@ -335,6 +335,7 @@ sudo apt-mark hold kubelet kubeadm
 ```
 
 ### 5. Master 노드에서 kubeadm init시 생성된 join 명령문을 실행합니다.
+![800x400](https://learn.microsoft.com/ko-kr/sql/big-data-cluster/media/deploy-with-kubeadm/kubeadm-join.png?view=sql-server-ver15 "from k8s")
 
 성공적으로 join이 되었다면 아래와 같은 출력이 뜨게 됩니다.
 ``` bash
