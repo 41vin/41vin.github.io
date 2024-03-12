@@ -3,7 +3,7 @@ layout: post
 title: Kubernetes 클러스터 구축하기
 description: >
   On-premise 환경에서 클러스터를 구축하는 방법을 정리하였습니다
-image: /assets/img/blog/Kubernetes_logo.png
+image: /assets/img/blog/k8s_logo.png
 sitemap: false
 ---
 
