@@ -49,6 +49,7 @@ Node의 구성은
 
 ### 2. Vagrant를 설치합니다. 
 Vagrant는 개발 환경을 구축하고 관리하기 위한 오픈 소스 소프트웨어입니다. 쉽게 말해 가상화 플랫폼(e.g. virtualbox) 가상 머신을 쉽게 생성, 구성, 관리할 수 있게 도와주는 도구라고 생각하시면 됩니다. [링크](https://developer.hashicorp.com/vagrant/install?product_intent=vagrant)를 첨부합니다.
+Vagrant의 버전은 2.4.1입니다.
 
 홈페이지에 들어가 vagrant를 설치 후, 아래의 과정을 진행합니다.
 
@@ -126,7 +127,6 @@ vagrant up
   ``` bash
   sudo su
   echo "br_netfilter" > /etc/modules-load.d/br_netfilter.conf
-  exit
   ```
 
 - iptables에서 br_netfilter 사용 활성화
@@ -151,6 +151,10 @@ vagrant up
 ### 3. 컨테이너 런타임 설치
 
 다음으로 kubernetes에서 동작될 컨테이너 런타임을 설치합니다. 저는 `containerd`를 사용하였습니다.
+
+한번에 복사 붙여넣기 하면 커맨드 입력이 무시될 수도 있으니 한줄 한줄 복사해서 붙여넣어주세요
+{: note}
+
 
   ``` bash
   sudo apt-get -y update
@@ -283,6 +287,8 @@ sudo modprobe br_netfilter
 
 - iptables에서 br_netfilter 사용 활성화
 ``` bash
+sudo su
+
 cat <<-'EOF' >/etc/sysctl.d/kubernetes.conf
 net.bridge.bridge-nf-call-iptables = 1
 net.bridge.bridge-nf-call-ip6tables = 1
@@ -296,12 +302,15 @@ sudo sysctl --system
 ### 3. 컨테이너 런타임 설치
 ``` bash
 sudo apt-get -y update
+
 sudo apt-get install -y curl gnupg2 software-properties-common apt-transport-https ca-certificates
 
 sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmour -o /etc/apt/trusted.gpg.d/docker.gpg
+
 sudo add-apt-repository -y "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
 
 sudo apt-get -y update
+
 sudo apt-get install -y containerd.io
 
 containerd config default | sudo tee /etc/containerd/config.toml >/dev/null 2>&1
@@ -323,7 +332,7 @@ sudo apt-get update
 sudo apt-get install -y apt-transport-https ca-certificates curl gpg
 
 # If the folder `/etc/apt/keyrings` does not exist, it should be created before the curl command, read the note below.
-# sudo mkdir -p -m 755 /etc/apt/keyrings
+# sudo mkdir -p -m 755 /etc/apt/keyrings (**Ubuntu 22.04보다 오래된 버전에는 /etc/apt/keyrings 폴더가 만들어져 있지 않습니다. 옆의 명령어를 입력하여 수동으로 설치해주시면 됩니다.**)
 curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.29/deb/Release.key | 
 
 sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
@@ -332,9 +341,10 @@ sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
 echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.29/deb/ /' | sudo tee /etc/apt/sources.list.d/kubernetes.list
 ```
 
-다음을 입력해 `kubelet`, `kubelet`을 설치합니다.
+다음을 입력해 `kubeadm`, `kubelet`을 설치합니다.
 
 ``` bash
+sudo apt-get update
 sudo apt-get install -y kubelet kubeadm 
 sudo apt-mark hold kubelet kubeadm 
 ```
@@ -361,3 +371,24 @@ kubectl get node
 
 모든 노드가 Ready 상태라면 성공적으로 클러스터가 구축된 것입니다.
 ![400x200](/assets/img/blog/0312-k8s-configuration-confirm.png "Large example image")
+
+
+## Hello 어플리케이션 실행
+
+``` bash
+kubectl apply -f https://k8s.io/examples/service/access/hello-application.yaml
+kubectl expose deployment hello-world --type=NodePort --name=example-service
+kubectl describe services example-service
+```
+위의 커맨드를 입력하면 결과가 여러줄이 출력되는데 이 중, NodePort 뒤에 있는 숫자를 기억하고 있어야 합니다.
+
+``` bash
+curl http://<public-node-ip>:<node-port>
+```
+
+위의 커맨드에 worker 노드의 public ip와 NodePort의 번호를 입력해줍니다.
+
+``` bash
+curl http://<public-node-ip>:<node-port>
+```
+**Hello Kubernetes!**가 성공적으로 출력되었다면 성공입니다!ㄴㄴ
