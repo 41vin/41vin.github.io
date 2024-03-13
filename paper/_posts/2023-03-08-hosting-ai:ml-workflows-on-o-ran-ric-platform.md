@@ -375,6 +375,8 @@ kubectl get node
 
 ## Hello 어플리케이션 실행
 
+Master 노드에서 아래의 명령어를 입력합니다.
+
 ``` bash
 kubectl apply -f https://k8s.io/examples/service/access/hello-application.yaml
 kubectl expose deployment hello-world --type=NodePort --name=example-service
@@ -391,4 +393,4 @@ curl http://<public-node-ip>:<node-port>
 ``` bash
 curl http://<public-node-ip>:<node-port>
 ```
-**Hello Kubernetes!**가 성공적으로 출력되었다면 성공입니다!ㄴㄴ
+**Hello Kubernetes!**가 성공적으로 출력되었다면 성공입니다!
