@@ -268,6 +268,7 @@ Worker 노드에서 `kubeadm join`으로 앞에서 구축한 클러스터에 가
 그 전에 필요한 요소를 먼저 설치합시다. **Worker 노드 모두 접속하여 다음의 작업을 각각 수행해야 합니다.**
 
 ### 1. Worker 노드 shell 접속
+
 ``` bash
 vagrant ssh worker1 # 192.168.56.11
 ```
@@ -277,11 +278,13 @@ vagrant ssh worker1 # 192.168.56.11
 Master 노드와 동일하게 셋팅을 진행합니다.
 
 - br_netfilter 셋업
+  
 ``` bash
 sudo modprobe br_netfilter
 ```
 
 - iptables에서 br_netfilter 사용 활성화
+  
 ``` bash
 cat <<-'EOF' >/etc/sysctl.d/kubernetes.conf
 net.bridge.bridge-nf-call-iptables = 1
@@ -289,11 +292,13 @@ net.bridge.bridge-nf-call-ip6tables = 1
 net.ipv4.ip_forward = 1
 EOF
 ```
+
 ``` bash
 sudo sysctl --system
 ```
 
 ### 3. 컨테이너 런타임 설치
+
 ``` bash
 sudo apt-get -y update
 sudo apt-get install -y curl gnupg2 software-properties-common apt-transport-https ca-certificates
@@ -312,6 +317,7 @@ sudo systemctl enable containerd
 ```
 
 ### 4. kubelet, kubeadm 설치
+
 ``` bash
 cat <<-'EOF' >/etc/default/kubelet
 KUBELET_EXTRA_ARGS=--node-ip=192.168.56.10
