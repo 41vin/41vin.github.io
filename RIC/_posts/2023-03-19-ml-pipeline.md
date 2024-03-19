@@ -3,7 +3,7 @@ layout: post
 title: Machine Learning Pipeline
 description: >
   Machine Learning Pipeline에 대해 간단하게 정리한 글입니다.
-image: /assets/img/blog/development_setting.png
+image: /assets/img/blog/MLOps.png
 sitemap: false
 ---
 
@@ -82,3 +82,10 @@ sitemap: false
 
 이 단계에서는 모델의 성능에 대한 중요한 정보를 측정할 수 있습니다. 두 가지 수동 검토 단계(모델 분석 단계와 피드백 단계)를 제외하고 전체 파이프라인을 자동화할 수 있습니다. 데이터 과학자는 기존 모델을 업데이트하고 유지하는 것이 아니라 새로운 모델을 개발하는데 집중할 수 있어야 합니다.
 ![800x400](/assets/img/blog/ml-pipeline-9.png "모델 반복")
+
+### 개인 정보 보호
+
+데이터 개인 정보 보호에 대한 고려사항은 표준 머신러닝 파이프라인 외부에 있습니다. 데이터 사용에 대한 소비자의 우려가 커지고, 개인 데이터의 사용을 제한하는 새로운 법률이 도입됨에 따라 향후 이러한 상황이 달라질 것으로 예상됩니다. 이로 인해 개인 정보 보호 기법이 머신러닝 파이프라인을 구축하기 위한 도구로 통합됩니다.
+- 차등 개인 정보 보호(Differential Privacy)
+- 연합 학습(Federated Learning)
+- 암호화된 머신 러닝(Encrypted Machine Learning)
