@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+<html lang="en"><!--
+ __  __                __                                     __
+/\ \/\ \              /\ \             __                    /\ \
+\ \ \_\ \   __  __    \_\ \      __   /\_\      __       ___ \ \ \/'\
+ \ \  _  \ /\ \/\ \   /'_` \   /'__`\ \/\ \   /'__`\    /'___\\ \ , <
+  \ \ \ \ \\ \ \_\ \ /\ \L\ \ /\  __/  \ \ \ /\ \L\.\_ /\ \__/ \ \ \\`\
+   \ \_\ \_\\/`____ \\ \___,_\\ \____\ _\ \ \\ \__/.\_\\ \____\ \ \_\ \_\
+    \/_/\/_/ `/___/> \\/__,_ / \/____//\ \_\ \\/__/\/_/ \/____/  \/_/\/_/
+                /\___/                \ \____/
+                \/__/                  \/___/
+
+Powered by Hydejack v9.1.6 <https://hydejack.com/>
+-->
+
+
+
+
+
+
+
+<head>
+  
+
+
+
+
+  <meta name="robots" content="noindex">
+
+
+
+  
+    
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>(IEEE’22)OpenRAN Gym-AI/ML Development, Data Collection, and Testing for O-RAN on PAWR Platforms | Escape Diary</title>
+<meta name="generator" content="Jekyll v3.9.5" />
+<meta property="og:title" content="(IEEE’22)OpenRAN Gym-AI/ML Development, Data Collection, and Testing for O-RAN on PAWR Platforms" />
+<meta name="author" content="Geon Kim" />
+<meta property="og:locale" content="en" />
+<meta name="description" content="Authors: Leonardo Bonati, Michele Polese, Salvatore D’Oro, Stefano Basagni, Tommaso Melodia" />
+<meta property="og:description" content="Authors: Leonardo Bonati, Michele Polese, Salvatore D’Oro, Stefano Basagni, Tommaso Melodia" />
+<link rel="canonical" href="http://localhost:4000/blog/paper/2024-05-28-OpenRAN-Gym/" />
+<meta property="og:url" content="http://localhost:4000/blog/paper/2024-05-28-OpenRAN-Gym/" />
+<meta property="og:site_name" content="Escape Diary" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2024-05-28T00:00:00+09:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="(IEEE’22)OpenRAN Gym-AI/ML Development, Data Collection, and Testing for O-RAN on PAWR Platforms" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Geon Kim"},"dateModified":"2024-05-28T00:00:00+09:00","datePublished":"2024-05-28T00:00:00+09:00","description":"Authors: Leonardo Bonati, Michele Polese, Salvatore D’Oro, Stefano Basagni, Tommaso Melodia","headline":"(IEEE’22)OpenRAN Gym-AI/ML Development, Data Collection, and Testing for O-RAN on PAWR Platforms","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/blog/paper/2024-05-28-OpenRAN-Gym/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/img/logo.png"},"name":"Geon Kim"},"url":"http://localhost:4000/blog/paper/2024-05-28-OpenRAN-Gym/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  
+
+  
+    <meta name="keywords" content="IT,6G,RAN,vlog,AI/ML">
+  
+
+
+
+  <meta name="theme-color" content="rgb(25,55,71)">
+
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Escape Diary">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+<meta name="application-name" content="Escape Diary">
+
+<meta name="generator" content="Hydejack v9.1.6" />
+
+
+<link rel="alternate" href="http://localhost:4000/blog/paper/2024-05-28-OpenRAN-Gym/" hreflang="en">
+
+<link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Escape Diary" />
+
+
+<link rel="shortcut icon"    href="/assets/icons/favicon.ico">
+<link rel="apple-touch-icon" href="/assets/icons/icon-192x192.png">
+
+<link rel="manifest" href="/assets/site.webmanifest">
+
+<link rel="dns-prefetch" href="https://fonts.googleapis.com"><link rel="dns-prefetch" href="https://fonts.gstatic.com">
+
+
+  <link rel="dns-prefetch" href="https://www.google-analytics.com">
+
+
+<link rel="preload" href="/assets/img/swipe.svg" as="image" id="_hrefSwipeSVG">
+
+<link rel="dns-prefetch" href="/assets/js/search-worker-9.1.6.js" as="worker" id="_hrefSearch">
+
+
+
+
+<link rel="dns-prefetch" href="https://alvinnote.disqus.com" id="_hrefDisqus">
+
+
+<script>!function(r,c){"use strict";function a(e,t,n,o){e.addEventListener?e.addEventListener(t,n,o):e.attachEvent?e.attachEvent("on"+t,n):e["on"+t]=n}r.loadJS=function(e,t){var n=c.createElement("script"),e=(n.src=e,t&&a(n,"load",t,{once:!0}),c.scripts[0]);return e.parentNode.insertBefore(n,e),n},r._loaded=!1,r.loadJSDeferred=function(e,t){var n=c.createElement("script");function o(){r._loaded=!0,t&&a(n,"load",t,{once:!0});var e=c.scripts[0];e.parentNode.insertBefore(n,e)}return n.src=e,r._loaded?o():a(r,"load",o,{once:!0}),n},r.setRel=r.setRelStylesheet=function(e){a(c.getElementById(e),"load",function(){this.rel="stylesheet"},{once:!0})}}(window,document);
+!function(a){"use strict";var b=function(b,c,d){function e(a){return h.body?a():void setTimeout(function(){e(a)})}function f(){i.addEventListener&&i.removeEventListener("load",f),i.media=d||"all"}var g,h=a.document,i=h.createElement("link");if(c)g=c;else{var j=(h.body||h.getElementsByTagName("head")[0]).childNodes;g=j[j.length-1]}var k=h.styleSheets;i.rel="stylesheet",i.href=b,i.media="only x",e(function(){g.parentNode.insertBefore(i,c?g:g.nextSibling)});var l=function(a){for(var b=i.href,c=k.length;c--;)if(k[c].href===b)return a();setTimeout(function(){l(a)})};return i.addEventListener&&i.addEventListener("load",f),i.onloadcssdefined=l,l(f),i};"undefined"!=typeof exports?exports.loadCSS=b:a.loadCSS=b}("undefined"!=typeof global?global:this);
+!function(a){if(a.loadCSS){var b=loadCSS.relpreload={};if(b.support=function(){try{return a.document.createElement("link").relList.supports("preload")}catch(b){return!1}},b.poly=function(){for(var b=a.document.getElementsByTagName("link"),c=0;c<b.length;c++){var d=b[c];"preload"===d.rel&&"style"===d.getAttribute("as")&&(a.loadCSS(d.href,d,d.getAttribute("media")),d.rel=null)}},!b.support()){b.poly();var c=a.setInterval(b.poly,300);a.addEventListener&&a.addEventListener("load",function(){b.poly(),a.clearInterval(c)}),a.attachEvent&&a.attachEvent("onload",function(){a.clearInterval(c)})}}}(this);
+!function(w) {
+  w._baseURL = '/';
+  w._publicPath = '/assets/js/';
+  w._noPushState = false;
+  w._noDrawer = false;
+  w._noNavbar = false;
+  w._noToc = false;
+  w._noSearch = false;
+  w._advertise = true;
+  w._search = {
+    DATA_URL: '/assets/sitedata.json?no-cache',
+    STORAGE_KEY: 'mini-search/',
+    INDEX_KEY: 'index--2024-05-28T21:51:14+09:00',
+  };
+  w._clapButton = true;
+}(window);</script>
+
+
+<script async src="/assets/bower_components/MathJax/es5/tex-mml-chtml.js" id="_MathJax"></script>
+
+
+<!--[if gt IE 8]><!---->
+
+  
+
+
+
+
+<link rel="stylesheet" href="/assets/css/hydejack-9.1.6.css" id="_stylePreload">
+<link rel="stylesheet" href="/assets/icomoon/style.css" id="_iconsPreload">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab:700%7CNoto+Sans:400,400i,700,700i&display=swap" id="_fontsPreload">
+
+
+
+  <style id="_pageStyle">
+
+html{--accent-color: rgb(79,177,186);--accent-color-faded: rgba(79,177,186,0.5);--accent-color-highlight: rgba(79,177,186,0.1);--accent-color-darkened: #409ba3;--theme-color: rgb(25,55,71);--dark-mode-body-bg: #2a2d2f;--dark-mode-border-color: #363a3d}
+
+</style>
+
+
+<!--<![endif]-->
+
+
+
+
+
+</head>
+
+<body class="no-break-layout">
+  
+<script>
+  window._sunrise = 6;
+  window._sunset =  18;
+  !function(e,s){var d="light-mode",o="dark-mode",a=(new Date).getHours();"matchMedia"in e&&e.matchMedia("(prefers-color-scheme)")||(e=(a=a<=e._sunrise||a>=e._sunset?o:d)==o?d:o,s.body.classList.add(a),s.body.classList.remove(e))}(window,document);
+
+</script>
+
+
+
+<hy-push-state
+  id="_pushState"
+  replace-selector="#_main"
+  link-selector="a[href]:not([href^='/assets/']):not(.external):not(.no-push-state)"
+  script-selector="script"
+  duration="500"
+  hashchange
+>
+  
+  
+  <div id="_navbar" class="navbar fixed-top">
+  <div class="content">
+    <span class="sr-only">Jump to:</span>
+    <div class="nav-btn-bar">
+      <a id="_menu" class="nav-btn no-hover" href="#_drawer--opened">
+        <span class="sr-only">Navigation</span>
+        <span class="icon-menu"></span>
+      </a>
+      <div class="nav-span"></div>
+    </div>
+  </div>
+</div>
+<hr class="sr-only" hidden />
+
+  <main
+  id="_main"
+  class="content layout-post"
+  role="main"
+>
+  <nav id="breadcrumbs" class="screen-only"><ul>
+  
+  
+    <li><a href="/">home</a></li>
+    
+      <li>
+        
+          <span>/</span>
+          
+          
+          <a href="/blog/">blog</a>
+        
+      </li>
+    
+      <li>
+        
+          <span>/</span>
+          
+          
+          <a href="/blog/paper/">paper</a>
+        
+      </li>
+    
+      <li>
+        
+          <span>/</span>
+          <span>2024-05-28-OpenRAN-Gym</span>
+        
+      </li>
+    
+  
+</ul></nav>
+  
+
+
+
+
+
+
+
+
+
+
+<article id="post-blog-paper-OpenRAN-Gym" class="page post mb6" role="article">
+  <header>
+    <h1 class="post-title flip-project-title">
+      
+        (IEEE'22)OpenRAN Gym-AI/ML Development, Data Collection, and Testing for O-RAN on PAWR Platforms
+      
+    </h1>
+
+    <div class="post-date">
+      
+      <span class="ellipsis mr1">
+        <time datetime="2024-05-28T00:00:00+09:00">28 May 2024</time> in <a href="/blog/paper/" class="flip-title">Paper</a> on <a href="/tag-o-ran/" class="flip-title">O-RAN</a>, <a href="/tag-ieee/" class="flip-title">IEEE</a>
+      </span>
+      
+    </div>
+
+    
+    
+
+    
+
+
+
+  
+    <p class="note-sm" >
+      <strong>Authors</strong>: Leonardo Bonati, Michele Polese, Salvatore D’Oro, Stefano Basagni, Tommaso Melodia
+
+    </p>
+  
+
+
+  </header>
+
+  
+    <p class="note" title="Keywords">Open RAN, AI/ML, SDK</p>
+
+<h1 id="1-why-this-paper">1. Why this paper</h1>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">MaveRIC</code> 시뮬레이터에 쓰일 알고리즘 공부</li>
+  <li>RIC에 쓰일 알고리즘 구상에 필요한 프로그램</li>
+</ul>
+
+<h1 id="2-summary-of-paper">2. Summary of paper</h1>
+
+<h2 id="21-introduction">2.1 Introduction</h2>
+<p><code class="language-plaintext highlighter-rouge">Open RAN</code>은 네트워크 운영자들이 하드웨어 인프라를 교체하지 않고 네트워크 컨디션과 사용자의 요구에 맞춰 맞춤형 서비스를 제공할 수 있게 한다. 또한 하드웨어 교체가 필요없기 때문에 Operational cost를 효과적으로 감소시킬 수 있다.</p>
+
+<p class="note" title="Attention">O-RAN Alliance는 Open RAN을 O-RAN으로 브랜딩하여 표준을 개발중이다.</p>
+
+<p>O-RAN은 두 개의 RAN Intelligent Controller들을 제안하였다.</p>
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">near-RT RIC</code>
+    <ul>
+      <li>RAN 구성요소들(CUs, DUs)들과 <code class="language-plaintext highlighter-rouge">E2</code> 인터페이스로 연결되어 있으며 10ms와 1s 사이에서 작동하는 control loop들을 담당한다.</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">non-RT RIC</code>
+    <ul>
+      <li>Service Management and Orchestration(SMO) 프레임워크들을 포함하고 있으며 1s보다 큰 시간 스케일에서 작동한다.</li>
+      <li>하나 혹은 여러개의 near-RT RIC들과 <code class="language-plaintext highlighter-rouge">A1</code> 인터페이스를 통해 연결되어 있으며 이를 통해 policy들과 네트워크 외부 정보들을 전파시킨다.</li>
+      <li>RIC 위에 올라가는 AI/ML 모델을 관리한다.</li>
+    </ul>
+  </li>
+</ol>
+
+<p><code class="language-plaintext highlighter-rouge">SMO</code>는 RAN과 <code class="language-plaintext highlighter-rouge">O1</code> 인터페이스를 통해 연결되며 management와 orchestration을 한다. 또한, virtualization platform(<code class="language-plaintext highlighter-rouge">O-cloud</code>)과 <code class="language-plaintext highlighter-rouge">O2</code> 인터페이스를 통해 연결되어 있다.</p>
+
+<p>AI/ML 알고리즘들을 test/design 하는 것은 다음과 같은 단계들을 포함한다.</p>
+
+<ol>
+  <li><strong>Data collection</strong>: AI/ML 모델의 배포될 상황과 다양한 네트워크의 performance indicatos에 맞춰 practical한 dataset을 수집</li>
+  <li><strong>AI/ML model design</strong>: 모델의 입/출력을 결정하고, training과 teseting을 결정 후, 성능 평가</li>
+  <li><strong>Model deployment</strong>: xApp은 near-RT RIC에 rApp은 non-rt-RIC에 배포</li>
+  <li><strong>Model fine-tuning</strong>: RAN의 런타임 데이터에 맞춰 모델을 서로 다른 프로덕션 환경에 적응시킴</li>
+  <li><strong>Control, inference and/or forecasting</strong>: RAN을 AI/ML을 통해 제어</li>
+</ol>
+
+<p class="note">본 논문에서는 <strong>OpenRAN Gym</strong>(O-RAN 규격을 준수하는 inference와 control AI/ML 알고리즘을 개발하기 위한 오픈소스 toolbox)을 제시하고 있다.</p>
+
+<p>저자는 가장 먼저 OpenRAN Gym의 high-level overview를 제공하고 그 구성요소가 어떻게 data-driven xApp들의 개발, 테스트 workflow들을 실현시키는지 논의한다.</p>
+
+<p>OpenRAN Gym은 end-to-end 디자인, prototyping, testing, 그리고 HetNet 구조에서 실험된 최초의 오픈된, portable한 툴셋이다.</p>
+
+<p><strong>OpenRAN Gym의 contribution</strong>: O-RAN ecosystem에서 AI/ML 솔루션들의 end-to-end 디자인과 테스트를 가능케함</p>
+
+<hr />
+
+<h2 id="22-openran-gym">2.2 OpenRAN Gym</h2>
+
+<h3 id="221-주요-구성요소">2.2.1 주요 구성요소</h3>
+<ol>
+  <li>공식적, 원격으로 접속 가능한 HetNet 환경에서의 <em>experimental wireless platforms</em>, <code class="language-plaintext highlighter-rouge">Colosseum</code></li>
+  <li>Open 프로토콜 스택으로 구현된 <em>softwarized</em> RAN, <code class="language-plaintext highlighter-rouge">srsRAN</code>, <code class="language-plaintext highlighter-rouge">OAI</code></li>
+  <li><em>Data collection and control framework</em>, <code class="language-plaintext highlighter-rouge">SCOPE</code></li>
+  <li><em>O-RAN control architecture</em>, <code class="language-plaintext highlighter-rouge">ColO-RAN</code></li>
+</ol>
+
+<ul>
+  <li>Colosseum
+    <ul>
+      <li>세계에서 가장 큰 네트워크 에뮬레이터. 연구자와 기술자들이 거대한 스케일의 환경에서 연구를 진행할 수 있게 한다.</li>
+    </ul>
+  </li>
+  <li>POWDER
+    <ul>
+      <li>Salt Lake City에 있는 도시 규모의 wireless tesetbed</li>
+    </ul>
+  </li>
+  <li>COSMOS
+    <ul>
+      <li>New York City에 있는 도시 규모의 wireless testbed. mmWave 통신과 edge-computing을 중점으로 구현하였다.</li>
+    </ul>
+  </li>
+</ul>
+
+<p><img src="https://bl6pap003files.storage.live.com/y4mf7YSUL26iumwPZ3h55hIdDO858VACSSNVFA5SX6PKA8bkJjJhNHWGnMP9-072e9U5qTgHsYfoV60orvCXHzcyn3OqLt2WB2Ux7E3ht0P4VrmoOO9aFpX1ptdNDcEt9_xsnghW-xZHOr4POnSUiR3-4236bNBXtGdMA6TYnfFlrAtiOW1dKm45DD3ODnay4jDdFiwfkr59KguyaCrRAFSNVWbnrzjycvJg9-yolerkYM?encodeFailures=1&amp;width=931&amp;height=308" alt="Figure 1. OpenRAN Gym architecture" /></p>
+
+<p>글이 작성된 시점에 OpenRAN Gym은 srsRAN을 이용해 softwarized RAN을 구성하였다. 또한, cellular protocol stack은 SCOPE 프레임워크에 의해 지원되었다. SCOPE를 사용하여 HetNet 환경에서의 데이터 수집을 자동화할 수 있다.</p>
+
+<p>최종적으로, ColO-RAN을 사용해 O-RAN control architecture를 구현하였다. ColO-RAN은 사용자들이 AI/ML 기반 어플리케이션들을 xApp SDK를 사용해 prototype 할 수 있게 한다.</p>
+
+<hr />
+
+<h2 id="23-data-collection-and-control-framework">2.3. DATA Collection and Control Framework</h2>
+
+<p class="note">OpenRAN Gym의 데이터 수집과 control 프레임워크는 SCOPE에 기반한다.</p>
+
+<p>RAN의 런타임에 fine-tune과 데이터 수집을 담당하는 Open API들은 SCOPE에 의해 제공된다.
+SCOPE는 실제 실행되고 있는 HetNet 실험환경에서 RAN KPM들을 수집하는 과정을 촉진시킬 수 있다. 결과적으로, SCOPE는 OSC DU에 있는 O-RAN E2 termination을 O-RAN near-RT RIC과 연결해준다.</p>
+
+<h3 id="23a-starting-scope">2.3.A <em>Starting SCOPE</em></h3>
+<p>SCOPE는 configuration 파일을 통해 cellular base station들을 작동할 수 있는 Command-line Interface (CLI) tool들을 지원한다.OpenRAN Gym에서 사용하는 주요 파라미터들은 다음과 같다.</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">network-slicing</code>: base station에서 network slicing을 가능하게 함</li>
+  <li><code class="language-plaintext highlighter-rouge">slice-allocation</code>: network slicing이 가능하다면, Resource Block Groups(RBGs)를 세팅하는 파라미터
+    <ul>
+      <li><strong>예시</strong>: {0:[0, 5], 1:[6, 10]}의 뜻은 RBG 0-5는 slice 0에 6-10은 slice 1에 할당</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">slice-scheduling-policy</code>: 기지국의 network slice에 scheduling policy를 세팅
+    <ul>
+      <li><strong>예시</strong>: [1, 2]: slice 0에 slicing policy 1울 헐덩, slice 1에 policy 2를 할당(0: round-robin, 1: waterfilling, 2:proportionally fair)</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">slice-users</code>: UE들을 특정 network slice에 associate 시킴.
+    <ul>
+      <li><strong>예시</strong>: {0:[4, 5], 1:[2, 3]}, UE 4,5를 slice 0, UE 2,3을 slice 1에 associate</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">generic-testbed</code>: SCOPE가 Colloseum 이외의 테스트베드에서 실행되고 있는지 여부를 나타냄</li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">SCOPE</code> 구성 파일이 JSON 형식 파일(<em>radio.conf</em>)로 작성된 후 cellular base station, core 네트워크, UE 어플리케이션들은 아래의 커맨드를 통해 시작된다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># !/bin/bash</span>
+<span class="nb">cd </span>radio_api/
+python3 scope_start.py <span class="nt">--config-file</span> radio.conf
+</code></pre></div></div>
+
+<p>런타임 중 RAN으로부터 온 Relevang KPM들은 자동적으로 SCOPE base station들에 로깅된다. KPM 파일들은 CSV 형식으로 저장되고, on-the-fly로도 사용될 수 있다.(AI/ML 모델 훈련). 또한 experiment가 끝나고 offline으로도 회수되어 사용할 수 있다.</p>
+
+<h2 id="24-o-ran-control-architecture">2.4 O-RAN Control Architecture</h2>
+<p>OpenRAN GYM에서 사용하는 O-RAN control architecture는 ColO-RAN에 기반한다. 이 프레임워크는 OSC near-RT RIC의 lightweight 구현을 제공한다. Colosseum 시스템에서 standalone Docker 컨테이너로 구현되기 때문이다.</p>
+
+<p>ColO-RAN의 high level 다이어그램은 아래의 그림과 같다. 
+<img src="https://bl6pap003files.storage.live.com/y4m3-f1XORYznNVC_I8Ayg_mylORL4nUYqx-ZYoR6hz9_I_v6vAMYw5WrojtP06WFqQ9R9S-qoK6m_abJw7B7Ot1dYmzfiObA5OR9W0m0Q6WuuGGma-HC0L46if_WEg0zTDTmZTR4BFHPMBoosS98-HNTd2YePVPjsgB2cDvlNKKL2mJ_TsgLwlryCTUcnBkrtv1c4SFwz1LmSgq-bTvFopK52Bw-e5Ad1cMqelp1XUMKw?encodeFailures=1&amp;width=501&amp;height=233" alt="Figure 2. ColO-RAN xApp" /></p>
+
+<p>ColO-RAN xApp은 두개의 주 구성요소로 이루어져있다,</p>
+
+<ul>
+  <li><em>Service Model(SM) Connector</em>: xApp과 near-RT RIC 사이의 메세지들을 관리</li>
+  <li><em>Data-driven logic unit</em>: RAN base station들로부터 받은 KPM들은 처리하고 AI/ML 모델들로부터 받은 과제 수행
+    <ul>
+      <li><strong>AI/ML model</strong>: 특정 data-driven model로 구성(예, DRL agent, DNN 등)</li>
+      <li><strong>Data processing module</strong>: KPM 데이터들을 AI/ML 모델이 사용할 수 있는 데이터 형식으로 변환</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="24a-starting-the-colo-ran-near-rt-ric">2.4.A Starting the ColO-RAN Near-RT RIC</h3>
+<p>ColO-RAN의 near-RT RIC은 <code class="language-plaintext highlighter-rouge">setup-ric.sh</code>를 이용하여 docker 컨테이너로 빌드될 수 있다. 이 스크립트를 이용해 RIC은 RAN으로부터 메세지를 받고 교환할 수 있다.</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/bash</span>
+<span class="nb">cd </span>setup-scripts/
+./setup-ric.sh col0
+</code></pre></div></div>
+
+<p>ColO-RAN near-RT RIC의 이미지들은 다음과 같은 항목들을 포함한다.</p>
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">e2term</code>: RIC E2 메세지의 종단점</li>
+  <li><code class="language-plaintext highlighter-rouge">e2mgr</code>: E2 인터페이스로 송/수신되는 메시지들을 관리</li>
+  <li><code class="language-plaintext highlighter-rouge">e2rtmansim</code>: RIC 안에서 RIC Message Router(RMR) 프로토콜을 사용하여 E2 메시지들을 라우팅</li>
+  <li><code class="language-plaintext highlighter-rouge">db</code>: Redis 데이터베이스를 이용해 RIC에 연결된 RAN 노드들의 기록을 저장</li>
+</ol>
+
+<p>Docker 이미지 빌드 후, E2 termination 종단점을 통해 다가올 연결을 listening하는 RIC 컨테이너들이 생성된다.</p>
+
+<h3 id="24b-connecting-the-scope-base-station-to-colo-ran">2.4.B Connecting the SCOPE Base Station to ColO-RAN</h3>
+
+<p>위의 과정을 통해 ColO-RAN이 세팅되고 시작된 후, cellular base station은 O-RAN E2 termination을 통해 연결될 수 있다. RAN-side E2 termination은 아래의 목적들로 사용될 수 있는데</p>
+<ol>
+  <li>xApp들로부터 <em>RIC Subscription</em> 수신</li>
+  <li><em>RIC Indication</em> 메세지를 통해 xApp들에게 주기적으로 KPM reports를 송신</li>
+  <li>xApp들로부터 받은 control message들에 기반해 base station들의 런타임 동안 configuration을 수정</li>
+</ol>
+
+<p>SCOPE base station의 E2 termination을 초기화하는 커맨드는 다음과 같다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/bash</span>
+<span class="nb">cd </span>colosseum-scope-e2/
+./build_odu.sh clean
+./run_odu.sh
+</code></pre></div></div>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">build_odu.sh</code>: near-RT RIC이 연결할 IP 주소와 포트를 특정</li>
+  <li><code class="language-plaintext highlighter-rouge">run_odu.sh</code>: E2 termination 프로세스 실행, base station과 near-RT RIC 연결</li>
+</ul>
+
+<p>연결이 성공적으로 수행되었다면 <code class="language-plaintext highlighter-rouge">docker logs -f e2term</code> 커맨드를 통해 확인할 수 있다.</p>
+
+<h3 id="24c-initializing-a-sample-xapp">2.4.C Initializing a Sample xApp</h3>
+
+<p>SCOPE base station이 near-RT RIC에 연결된 후, xApp들은 시작될 수 있다. 본 논문에서는 xApp 디자인을 장려하기 위해 <code class="language-plaintext highlighter-rouge">ready-to-use sample xApp</code> 템플릿을 제공하고 있다. 이 템플릿에 연구자들은 AI/ML 모델을 plug-in 하기만 하면 된다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/bash</span>
+<span class="nb">cd </span>setup-scripts/
+./setup-sample-xapp.sh gnb:&lt;example&gt;
+</code></pre></div></div>
+
+<p>xApp이 구독해야하는 base station의 식별자를 커맨드에 입력한다. 그 후 sample xApp의 Docker 이미지를 빌드한다. 스크립트는 near-RT RIC에서 sample-xApp이라는 xApp Docker 컨테이너를 시작한다.</p>
+
+<p>컨테이너 시작 후, xApp 프로세스들은 아래의 커맨드들을 통해 실행된다.</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/bash</span>
+docker <span class="nb">exec</span> <span class="nt">-it</span> sample-xapp /home/sample-xapp/run_xapp.sh
+</code></pre></div></div>
+
+<p>위의 커맨드는 targeted RAN 노드들에 RIC Subscription 메시지, 주기적인 RAN KPMs reports를 통해 xApp subscription을 유발한다.</p>
+
+<h2 id="25-xapp-development-workflow-on-colosseum">2.5 xApp Development Workflow on Colosseum</h2>
+
+<p>Open RAN Gym on Colosseum을 사용해 Data-driven xApp을 개발하는 과정은 아래의 그림과 같이 나타낼 수 있다.</p>
+
+<p><img src="https://bl6pap003files.storage.live.com/y4m101-BVwvePNVHm_3mjDTib8K-_UU4uv5VFr8H-epdKVuYkYzOuwW8mBBn2NELUwiPWSbqccAd9SZIUW_gDstPl2GL9xvLLhgNXrDGHlw6c31vqAUhkjgotll-e9pUNpnkqrITpfrZL8-Tt1b5jR5KxIV1F-RlfletrIDKeicDXAS-dBfUh1pYuJSlBS6hlYnqMIiU4hrwMLHYZWnxAKnjQgYie9T28sHpDvrXG26hP0?encodeFailures=1&amp;width=1080&amp;height=312" alt="OpenRAN Gym xApp Design and testing workflow on Colosseum" /></p>
+
+<ol>
+  <li>
+    <p><strong>Data collection</strong></p>
+
+    <p>xApp에 임베드 되어있는 AI/ML 모델을 train/test하기 위한 데이터 수집</p>
+  </li>
+  <li>
+    <p><strong>Model design, training and testing</strong></p>
+
+    <p>AI/ML 모델이 사용할 알고리즘 선택, input으로 사용할 데이터 선택, output 액션들의 집합 설정을 포함한다. 디자인 phase 이후, offline으로 모델은 학습되고 테스트된다.</p>
+  </li>
+  <li>
+    <p><strong>Deploy the model as an xApp</strong></p>
+
+    <p>모델 test 후,</p>
+  </li>
+</ol>
+
+  
+</article>
+
+
+
+  <hr class="dingbat related mb6" />
+
+
+
+
+
+
+  
+     
+
+
+  <aside class="about related mt4 mb4" role="complementary">
+    
+    
+
+<div class="author mt4">
+  
+
+  
+    
+
+
+<img
+  
+    src="/assets/img/author.jpeg"
+    srcset="https://placehold.it/128x128 1x,https://placehold.it/256x256 2x"
+    
+  
+  alt="Geon Kim"
+  class="avatar"
+  
+  width="120"
+  height="120"
+  loading="lazy"
+/>
+
+  
+
+  
+  
+  <h2  class="page-title hr-bottom">
+    About
+  </h2>
+
+  <p>From the master’s program to the doctoral program, there were many moments during my time in post-graduate school when I wanted to escape.</p>
+
+<p>However, it seems to have been the most significant turning point in my life.</p>
+
+<p>Enjoy reading :)</p>
+
+
+  <div class="sidebar-social">
+    <span class="sr-only">Social:</span>
+<ul>
+  
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://github.com/41vin" title="GitHub" class="no-mark-external">
+      <span class="icon-github"></span>
+      <span class="sr-only">GitHub</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://www.youtube.com/channel/UClv7hh6WL_rMNAQ4iLevELw" title="YouTube" class="no-mark-external">
+      <span class="icon-youtube"></span>
+      <span class="sr-only">YouTube</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://www.linkedin.com/in/41vin" title="LinkedIn" class="no-mark-external">
+      <span class="icon-linkedin2"></span>
+      <span class="sr-only">LinkedIn</span>
+    </a>
+  </li>
+
+
+    
+  
+</ul>
+
+  </div>
+</div>
+
+  </aside>
+
+
+  
+
+  
+    
+
+
+  
+
+  
+    
+
+
+  <aside class="other-projects related mb0" role="complementary">  <h2>Related Posts</h2>  <div class="columns">          <div class="column column-1-2">                  <article class="project-card">  <a href="/blog/example/2021-02-13-whats-new-in-hydejack-9-1/" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine flip-project-img">              <img      src="/assets/img/blog/jj-ying.jpg"    alt="What’s New in Hydejack 9.1?"      width="864"  height="486"  loading="lazy"/>          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/blog/example/2021-02-13-whats-new-in-hydejack-9-1/" class="flip-title">What’s New in Hydejack 9.1?</a>  </h3>      <p class="project-card-text fine" property="disambiguatingDescription">      Version 9.1 provides minor design changes, new features, and closes multiple issues.    </p>      <a class="fill-card no-hover" href="/blog/example/2021-02-13-whats-new-in-hydejack-9-1/" tabindex="-1"><span class="sr-only">Continue reading What’s New in Hydejack 9.1?</span></a></article>              </div>          <div class="column column-1-2">                  <article class="project-card">  <a href="/blog/example/2020-07-03-introducing-hydejack-9/" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine flip-project-img">              <img      src="/assets/img/blog/jeremy-bishop@0,5x.jpg"        sizes="(min-width:86em)27.5rem,(min-width:54em)24.5rem,(min-width:42em)21.5rem,42rem"    alt="Introducing Hydejack 9"      width="864"  height="486"  loading="lazy"/>          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/blog/example/2020-07-03-introducing-hydejack-9/" class="flip-title">Introducing Hydejack 9</a>  </h3>      <p class="project-card-text fine" property="disambiguatingDescription">      Version 9 is the most complete version of Hydejack yet. Modernized design, big headlines, and big new features.    </p>      <a class="fill-card no-hover" href="/blog/example/2020-07-03-introducing-hydejack-9/" tabindex="-1"><span class="sr-only">Continue reading Introducing Hydejack 9</span></a></article>              </div>      </div></aside>
+
+  
+
+  
+    
+
+
+  <aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Random Posts</h2>  <ul class="related-posts">          <li class="h4">  <a href="/blog/example/2020-07-03-introducing-hydejack-9/" class="flip-title"><span>Introducing Hydejack 9</span></a>  <time class="faded fine" datetime="2020-07-03T00:00:00+09:00">03 Jul 2020</time></li>          <li class="h4">  <a href="/blog/example/2018-06-01-example-content-iii/" class="flip-title"><span>Example Content III</span></a>  <time class="faded fine" datetime="2018-06-01T00:00:00+09:00">01 Jun 2018</time></li>          <li class="h4">  <a href="/blog/example/2017-11-23-example-content-ii/" class="flip-title"><span>Example Content II</span></a>  <time class="faded fine" datetime="2017-11-23T00:00:00+09:00">23 Nov 2017</time></li>      </ul></aside>
+
+  
+
+  
+    
+
+  
+
+
+  
+<footer class="content" role="contentinfo">
+  <hr/>
+  
+    <p><small class="copyright">© 2021. All rights reserved.
+</small></p>
+  
+  
+    <nav class="legal"><small>
+    
+      
+      <a class="heading flip-title" href="/LICENSE/">LICENSE</a>
+      |
+    
+      
+      <a class="heading flip-title" href="/NOTICE/">NOTICE</a>
+      |
+    
+      
+      <a class="heading flip-title" href="/CHANGELOG/">CHANGELOG</a>
+      
+    
+    </small></nav>
+  
+  
+    <p><small>Powered by <a class="external" href="https://hydejack.com/">Hydejack</a> v<span id="_version">9.1.6</span></small></p>
+  
+  <hr class="sr-only"/>
+</footer>
+
+
+</main>
+
+  <hy-drawer
+  id="_drawer"
+  class=""
+  side="left"
+  threshold="10"
+  noscroll
+  
+>
+  <header id="_sidebar" class="sidebar" role="banner">
+    
+
+
+
+
+<div class="sidebar-bg sidebar-overlay" style="background-color:rgb(25,55,71);background-image:url(/assets/img/sidebar-bg.jpg)"></div>
+
+    <div class="sidebar-sticky">
+  <div class="sidebar-about">
+    
+      <a class="no-hover" href="/" tabindex="-1">
+        <img src="/assets/img/logo.png" class="avatar" alt="Escape Diary" width="120" height="120" loading="lazy" />
+      </a>
+    
+    <a class="sidebar-title" href="/"><h2 class="h1">Escape Diary</h2></a>
+    
+    
+      <p class="">
+        Standing on the shoulders of giants
+
+      </p>
+    
+  </div>
+
+  <nav class="sidebar-nav heading" role="navigation">
+    <span class="sr-only">Navigation:</span>
+<ul>
+  
+    
+      
+      <li>
+        <a
+          id="_drawer--opened"
+          href="/blog/"
+          class="sidebar-nav-item "
+          
+        >
+          Blog
+        </a>
+      </li>
+    
+      
+      <li>
+        <a
+          
+          href="/projects/"
+          class="sidebar-nav-item "
+          
+        >
+          Projects
+        </a>
+      </li>
+    
+      
+      <li>
+        <a
+          
+          href="/resume/"
+          class="sidebar-nav-item "
+          
+        >
+          Résumé*
+        </a>
+      </li>
+    
+      
+      <li>
+        <a
+          
+          href="/docs/"
+          class="sidebar-nav-item "
+          
+        >
+          Documentation
+        </a>
+      </li>
+    
+  
+</ul>
+
+  </nav>
+
+  
+  <div class="sidebar-social">
+    <span class="sr-only">Social:</span>
+<ul>
+  
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://github.com/41vin" title="GitHub" class="no-mark-external">
+      <span class="icon-github"></span>
+      <span class="sr-only">GitHub</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://www.youtube.com/channel/UClv7hh6WL_rMNAQ4iLevELw" title="YouTube" class="no-mark-external">
+      <span class="icon-youtube"></span>
+      <span class="sr-only">YouTube</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://www.linkedin.com/in/41vin" title="LinkedIn" class="no-mark-external">
+      <span class="icon-linkedin2"></span>
+      <span class="sr-only">LinkedIn</span>
+    </a>
+  </li>
+
+
+    
+  
+</ul>
+
+  </div>
+</div>
+  </header>
+</hy-drawer>
+<hr class="sr-only" hidden />
+
+</hy-push-state>
+
+
+  <!--[if gt IE 10]><!---->
+  <script nomodule>!function(){var t,n=document.createElement("script");!("noModule"in n)&&"onbeforeload"in n&&(t=!1,document.addEventListener("beforeload",function(e){if(e.target===n)t=!0;else if(!e.target.hasAttribute("nomodule")||!t)return;e.preventDefault()},!0),n.type="module",n.src=".",document.head.appendChild(n),n.remove())}();
+</script>
+  <script src="/assets/js/hydejack-9.1.6.js" type="module"></script>
+  <script src="/assets/js/LEGACY-hydejack-9.1.6.js" nomodule defer></script>
+  
+
+  
+  <script>!function(w, d) {
+    w.ga=w.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+
+    /**/
+      if (navigator.CookiesOK) {
+        ga('create', 'G-Y3JQ64LC5Z', 'auto');
+      } else if (d.cookie.indexOf("hy--cookies-ok=true") > -1) {
+        ga('create', 'G-Y3JQ64LC5Z', {
+          'storage': 'none',
+          'clientId': localStorage ? localStorage.getItem('ga--client-id') : undefined
+        });
+      } else {
+        ga('create', 'G-Y3JQ64LC5Z', {
+          'storage': 'none'
+        });
+        ga('set', 'forceSSL', true);
+        ga('set', 'anonymizeIp', true);
+      }
+    /**/
+
+    var pushStateEl = d.getElementById('_pushState');
+    var timeoutId;
+    pushStateEl.addEventListener('hy-push-state-load', function() {
+      w.clearTimeout(timeoutId);
+      timeoutId = w.setTimeout(function() {
+        ga('set', 'page', w.location.pathname);
+        ga('send', 'pageview');
+      }, 500);
+    });
+
+    d.addEventListener('hy--cookies-ok', function () {
+      w.ga(function(tracker) {
+        w.ga("set", "anonymizeIp", undefined);
+        localStorage && localStorage.setItem("ga--client-id", tracker.get("clientId"));
+      });
+    });
+
+    w.loadJSDeferred('https://www.google-analytics.com/analytics.js');
+  }(window, document);</script>
+
+
+  <script type="module">
+    if ('serviceWorker' in navigator) {
+      /**/
+      navigator.serviceWorker.getRegistration()
+        .then(r => r.unregister())
+        .catch(() => {});
+      /**/
+    }
+  </script>
+<!--<![endif]-->
+  
+
+
+
+<div hidden>
+  
+  <h2 class="sr-only">Templates (for web app):</h2>
+
+  <template id="_animation-template">
+  <div class="animation-main fixed-top">
+    <nav id="breadcrumbs" class="screen-only"><ul>
+  
+  
+</ul></nav>
+    <div class="content">
+      <div class="page"></div>
+    </div>
+  </div>
+</template>
+
+  <template id="_loading-template">
+  <div class="loading nav-btn fr">
+    <span class="sr-only">Loading…</span>
+    <span class="icon-cog"></span>
+  </div>
+</template>
+
+  <template id="_error-template">
+  <div class="page">
+    <h1 class="page-title">Error</h1>
+    
+    
+    <p class="lead">
+      Sorry, an error occurred while loading <a class="this-link" href=""></a>.
+
+    </p>
+  </div>
+</template>
+
+  <template id="_permalink-template">
+  <a href="#" class="permalink">
+    <span class="sr-only">Permalink</span>
+    <span class="content-hash"></span>
+  </a>
+</template>
+
+  
+    <template id="_cookies-banner-template">
+  <div id="_cookies-banner" class="navbar fixed-bottom CookiesOK">
+    <div class="content">
+      <div class="nav-btn-bar">
+        <small class="faded">
+          <span>블로그 개편 중입니다. 조금만 기다려주세요 :) <a href="/cookies-policy/">Markdo n allo ed</a>!
+</span>
+          <button id="_cookies-ok" class="btn btn-primary btn-sm">Okay</button>
+        </small>
+      </div>
+    </div>
+  </div>
+</template>
+
+  
+  
+    <template id="_dark-mode-template">
+  <button id="_dark-mode" class="nav-btn no-hover" >
+    <span class="sr-only">Dark Mode</span>
+    <span class="icon-brightness-contrast"></span>
+  </button>
+</template>
+
+  
+  
+    <template id="_search-template">
+  <button id="_search" class="nav-btn no-hover">
+    <label class="sr-only" for="_search-input">Search</label>
+    <span class="icon-search"></span>
+  </button>
+  <div id="_search-box">
+    <div class="nav-btn">
+      <span class="icon-search"></span>
+    </div>
+    <input 
+      id="_search-input"
+      type="search"
+      class="form-control form-control-lg nav-btn"
+      placeholder="Build with JEKYLL_ENV=production to enable search."
+    />
+    <button type="reset" class="nav-btn no-hover">
+      <span class="sr-only">Close</span>
+      <span class="icon-cross"></span>
+    </button>
+  </div>
+  <div id="_hits"></div>
+</template>
+
+  
+</div>
+
+</body>
+</html>
