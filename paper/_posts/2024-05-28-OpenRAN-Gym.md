@@ -197,4 +197,27 @@ Open RAN Gym on Colosseum을 사용해 Data-driven xApp을 개발하는 과정�
 
 3. **Deploy the model as an xApp**
    
-    모델 test 후, 
+    모델 test 후, ColO-RAN near-RT RIC의 xApp으로 배포된다. 정확하게는 AI/ML 모델은 ColO-RAN xApp의 *data-driven logic unit*에 포함된다. 
+
+4. **Online model fine-tuning**
+
+    런타임 중, xApp은 near-RT RIC과 E2 termination을 이용하여 SCOPE base station과 통신한다.
+    {:.note}
+
+    이를 달성하기 위해 다음과 같은 과정을 거친다.
+    1. xApp은 RIC Subscription 메세지를 보내 base station을 subscribe 한다.
+    2. 주기적인 KPMs reports를 trigger 한다.
+    3. Reports는 RIC Indication 메세지를 통해 전송되고, xApp에서 model을 online으로 fine-tune 하기 위해 사용된다.
+
+5. **Perform RAN control/inference**
+
+    이 단계에서 xApp은 RAN에 inference와 control을 실행하는 live 인프라로 사용된다. xApp은 model에 의해 계산된 action을 SCOPE base station에게 RIC Control messages를 통해 전송한다.
+
+### 2.5.A Example of xApps
+
+본 논문에서 제시하고 있는 xApp들은 Colosseum 네트워크 emulator 환경에서 7개의 base station과 42개의 UE들을 사용한 것이다. 각각의 base station들은 SCOPE를 통해 구현되었고, 6개의 UE를 서비스하고 있으며 UE들은 다른 traffic 요구조건을 가지고 있다.
+
+UE들의 트래픽은 두 가지 종류로 나뉜다.
+1. Time-sensitive(URLLC)
+2. Broadband(eMBB, MTC)
+
