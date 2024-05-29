@@ -15,7 +15,7 @@ permalink: /docs/
 
 
 
-## SD-RAN 
+## Git
 * [2024.05.29 Semantic Versioning]{:.heading.flip-title} --- Semantic versioning 내용 정리
 
 
