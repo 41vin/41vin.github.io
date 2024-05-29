@@ -11,6 +11,13 @@ hide_last_modified: true
 Open RAN, AI/ML, SDK
 {:.note title="Keywords"}
 
+
+* this unordered seed list 􏰁ill be replaced by the toc
+{:toc}
+
+
+
+
 # 1. Why this paper
 
 - `MaveRIC` 시뮬레이터에 쓰일 알고리즘 공부

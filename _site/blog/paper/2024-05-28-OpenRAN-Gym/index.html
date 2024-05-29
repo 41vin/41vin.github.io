@@ -118,7 +118,7 @@ Powered by Hydejack v9.1.6 <https://hydejack.com/>
   w._search = {
     DATA_URL: '/assets/sitedata.json?no-cache',
     STORAGE_KEY: 'mini-search/',
-    INDEX_KEY: 'index--2024-05-29T14:31:44+09:00',
+    INDEX_KEY: 'index--2024-05-29T14:38:36+09:00',
   };
   w._clapButton = true;
 }(window);</script>
@@ -273,6 +273,39 @@ html{--accent-color: rgb(79,177,186);--accent-color-faded: rgba(79,177,186,0.5);
 
   
     <p class="note" title="Keywords">Open RAN, AI/ML, SDK</p>
+
+<ul id="markdown-toc">
+  <li><a href="#1-why-this-paper" id="markdown-toc-1-why-this-paper">1. Why this paper</a></li>
+  <li><a href="#2-summary-of-paper" id="markdown-toc-2-summary-of-paper">2. Summary of paper</a>    <ul>
+      <li><a href="#21-introduction" id="markdown-toc-21-introduction">2.1 Introduction</a></li>
+      <li><a href="#22-openran-gym" id="markdown-toc-22-openran-gym">2.2 OpenRAN Gym</a>        <ul>
+          <li><a href="#221-주요-구성요소" id="markdown-toc-221-주요-구성요소">2.2.1 주요 구성요소</a></li>
+        </ul>
+      </li>
+      <li><a href="#23-data-collection-and-control-framework" id="markdown-toc-23-data-collection-and-control-framework">2.3. DATA Collection and Control Framework</a>        <ul>
+          <li><a href="#23a-starting-scope" id="markdown-toc-23a-starting-scope">2.3.A <em>Starting SCOPE</em></a></li>
+        </ul>
+      </li>
+      <li><a href="#24-o-ran-control-architecture" id="markdown-toc-24-o-ran-control-architecture">2.4 O-RAN Control Architecture</a>        <ul>
+          <li><a href="#24a-starting-the-colo-ran-near-rt-ric" id="markdown-toc-24a-starting-the-colo-ran-near-rt-ric">2.4.A Starting the ColO-RAN Near-RT RIC</a></li>
+          <li><a href="#24b-connecting-the-scope-base-station-to-colo-ran" id="markdown-toc-24b-connecting-the-scope-base-station-to-colo-ran">2.4.B Connecting the SCOPE Base Station to ColO-RAN</a></li>
+          <li><a href="#24c-initializing-a-sample-xapp" id="markdown-toc-24c-initializing-a-sample-xapp">2.4.C Initializing a Sample xApp</a></li>
+        </ul>
+      </li>
+      <li><a href="#25-xapp-development-workflow-on-colosseum" id="markdown-toc-25-xapp-development-workflow-on-colosseum">2.5 xApp Development Workflow on Colosseum</a>        <ul>
+          <li><a href="#25a-example-of-xapps" id="markdown-toc-25a-example-of-xapps">2.5.A Example of xApps</a></li>
+        </ul>
+      </li>
+      <li><a href="#26-traveling-containers" id="markdown-toc-26-traveling-containers">2.6 Traveling Containers</a></li>
+      <li><a href="#27-experimental-results" id="markdown-toc-27-experimental-results">2.7 Experimental Results</a>        <ul>
+          <li><a href="#27a-results" id="markdown-toc-27a-results">2.7.A Results</a></li>
+        </ul>
+      </li>
+      <li><a href="#28-conclusions" id="markdown-toc-28-conclusions">2.8 Conclusions</a></li>
+    </ul>
+  </li>
+  <li><a href="#3-take-away" id="markdown-toc-3-take-away">3. Take Away</a></li>
+</ul>
 
 <h1 id="1-why-this-paper">1. Why this paper</h1>
 
@@ -801,7 +834,7 @@ lxc image import scope-with-e2.tar.gz <span class="nt">--alias</span> scope-e2
     
 
 
-  <aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Random Posts</h2>  <ul class="related-posts">          <li class="h4">  <a href="/blog/example/2012-02-07-example-content/" class="flip-title"><span>Example Content</span></a>  <time class="faded fine" datetime="2012-02-07T00:00:00+09:00">07 Feb 2012</time></li>          <li class="h4">  <a href="/blog/example/2018-06-01-example-content-iii/" class="flip-title"><span>Example Content III</span></a>  <time class="faded fine" datetime="2018-06-01T00:00:00+09:00">01 Jun 2018</time></li>          <li class="h4">  <a href="/blog/example/2021-02-13-whats-new-in-hydejack-9-1/" class="flip-title"><span>What’s New in Hydejack 9.1?</span></a>  <time class="faded fine" datetime="2021-02-13T00:00:00+09:00">13 Feb 2021</time></li>      </ul></aside>
+  <aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Random Posts</h2>  <ul class="related-posts">          <li class="h4">  <a href="/blog/example/2017-11-23-example-content-ii/" class="flip-title"><span>Example Content II</span></a>  <time class="faded fine" datetime="2017-11-23T00:00:00+09:00">23 Nov 2017</time></li>          <li class="h4">  <a href="/blog/example/2020-07-03-introducing-hydejack-9/" class="flip-title"><span>Introducing Hydejack 9</span></a>  <time class="faded fine" datetime="2020-07-03T00:00:00+09:00">03 Jul 2020</time></li>          <li class="h4">  <a href="/blog/example/2012-02-07-example-content/" class="flip-title"><span>Example Content</span></a>  <time class="faded fine" datetime="2012-02-07T00:00:00+09:00">07 Feb 2012</time></li>      </ul></aside>
 
   
 
