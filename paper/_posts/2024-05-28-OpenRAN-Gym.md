@@ -1,6 +1,6 @@
 ---
 layout: post
-title: (IEEE'22)OpenRAN Gym-AI/ML Development, Data Collection, and Testing for O-RAN on PAWR Platforms
+title: OpenRAN Gym-AI/ML Development, Data Collection, and Testing for O-RAN on PAWR Platforms
 tags: [o-ran, ieee]
 description: >
   **Authors**: Leonardo Bonati, Michele Polese, Salvatore D'Oro, Stefano Basagni, Tommaso Melodia
@@ -197,8 +197,6 @@ Open RAN Gym on Colosseum을 사용해 Data-driven xApp을 개발하는 과정�
 
 3. **Deploy the model as an xApp**
    
-    모델 test 후, ColO-RAN의 near-RT RIC에 xApp으로 배포된다. 
-=======
     모델 test 후, ColO-RAN near-RT RIC의 xApp으로 배포된다. 정확하게는 AI/ML 모델은 ColO-RAN xApp의 *data-driven logic unit*에 포함된다. 
 
 4. **Online model fine-tuning**
@@ -223,3 +221,103 @@ UE들의 트래픽은 두 가지 종류로 나뉜다.
 1. Time-sensitive(URLLC)
 2. Broadband(eMBB, MTC)
 
+![Figure 4](https://bl6pap003files.storage.live.com/y4mVKLcTvD_0JGMNtV8yCcxL-UueTIvKAC5qkim15Eh7qvtvymGq74Fwsfv2e4vy4002x_lsPqC8X7jfxAx-vTY4-FIbZjEJfTw903t4izVeC-U5Ef4vXCcei-_Z2KmHlwXfVydkMqdBaGNBLXqfU0Uj5oCpN7RUtpbQKOgNzLSI9VgrvRYRy8f8FUifK3-rh0pFqPqZBuDQC-c4SFrq536VpXuol6J9isrFGUCfp8-VFI?encodeFailures=1&width=516&height=293)
+
+위의 그림은 본 논문에서 사용한 xApp의 구조이다.
+
+- **Data-driven logic unit**
+  - **Encoder**: 데이터의 차원을 줄이는 역할, E2 인터페이스로 KPM reports를 수신
+  - **DRL agent**: 수신받은 정보를 네트워크 상태로 바꾸고 최적화 하는 역할
+  
+
+1. **Agent Design**
+
+    DRL Agent는 Actor-critic 기반 구조의 *Proximal Policy Optimization(PPO)*로 구현된다. Actor와 Critic 모두 5 layer로 구성되며, 각 layer는 30개의 neuron을 가지고 있다.
+
+2. **Actions**
+
+    본 논문에서는 서로 다른 두가지 xApp을 훈련시켜 네트워크 최적화 성능을 비교하였다.
+    - `sched`: 스케쥴링 정책(round robin, waterfall 등(만 제어
+    - `sched-slicing`: 스케쥴링 정책 뿐 아니라 각 slice에 할당되는 자원들도 제어
+
+3. **Reward**
+
+    두 xApp 모두 broadband traffic 클래스에서 전송되는 데이터를 최대화하고, time-sensitive traffic 클래스에선 end-to-end latency를 최소화하는 것을 목적으로 하였다.
+    기지국의 데이터에서 직접적으로 end-to-end system latency를 명시하는 항목이 존재하지 않으므로 buffer occupancy 수치를 latency 기준으로 삼았다. 
+    - Buffer occupancy: 각 패킷이 전송 buffer 큐에서 얼마나 시간을 보내는지 측정
+    
+   위에서 언급한 기준들을 reward에 반영하기 위해, throughput 최대화와 downlink buffer size를 최소화하는 것이 reward 함수에 반영되어 있다.
+
+  ![Figure 5](https://bl6pap003files.storage.live.com/y4mqGDswRlTSAEAkMinPZBBF_ccP4ZhcZlC-z6J6a3mC5nvhE8CpPj_PDHoOHZXUbqWJ_EUUsHDtam1D_1A3BrH3-hM0vA3LrmTLQgb9GeahqZj2Ovdt38RFhcNnowC4W9NEi803TFCXROfd_RGIRL6m5T4u0ee-RbYiELj1bkCJvXXwp_kNwmMIP5ldKJHdV5b45oXsmIy5ycwOPS4jQkFxzUysxJ8fPfYc0foqRhYEt4?encodeFailures=1&width=516&height=280)
+
+  `sched-slicing` xApp이 더 좋은 성능을 보임을 그래프에서 확인할 수 있다.
+
+
+## 2.6 Traveling Containers
+
+본 섹션에서는 컨테이너화 된 OpenRAN Gym이 어떻게 다른 testbed로 전송되는지 설명한다.*traveling OpenRAN Gym containers*의 구현 때문에 상당한 노력이 들었다고 한다.
+
+후속 연구자들의 수고를 줄이기 위해 저자는 OpenRAN Gym LXC 컨테이너들을 개발하였다. 실행하고자 하는 testbed에서 LXC 이미지가 전송된 후, 아래의 커맨드를 입력하여 이미지가 import 된다.
+
+``` bash
+# Listing 6
+lxc image import scope-with-e2.tar.gz --alias scope-e2
+```
+
+커맨드 입력 후 `scope`라는 이미지가 실행된다.
+
+ColO-RAN의 경우, RIC과 ColO-RAN 컨테이너 간 메시지들이 직접적으로 통신되기 위해 Network Address Translation(NAT) 규칙들을 구성하는 것이 필수적이다.
+
+위에서 설명한 과정들을 자동화하기 위해 저자는 스크립트 파일들을 오픈 소스로 제공하고 있다. 스크립트 파일들은 아래와 같은 과정들을 포함한다.
+1. 컨테이너에게 정확한 radio interface 전달
+2. 컨테이너에게 적절한 권한 부여
+3. 호스트 머신의 NAT 규칙들 세팅
+4. Importing 된 이미지로부터 OpenRAN Gym LXC 컨테이너들 시작
+
+``` bash
+# Listing 9
+./start-lxc-scope.sh testbed usrp-type [flash]
+```
+SCOPE LXC 컨테이너를 생성, 세팅, 시작하는 스크립트 파일을 실행하는 커맨드
+{:.note}
+
+
+``` bash
+# Listing 10
+./start-lxc-ric.sh
+```
+`Listing 6`에서 생성된 이미지로부터 SCOPE LXC 컨테이너를 생성, 세팅, 실행하는 커맨드
+{:.note}
+
+## 2.7 Experimental Results
+
+이 섹션에서는 작동중인 HetNet에서 작동죽인 OpenRAN Gym에서 실행한 시뮬레이션 결과들을 설명한다.
+
+공정한 비교를 위해 각 테스트베드마다 1개의 cellular base station과 3개의 UE, 1개의 near-RT RIC 노드만을 가지고 시뮬레이션을 진행하였다. 
+
+iPerf3 툴에 의해 생성된 Downlink User Datagram Protocol(UDP) 트래픽을 이용하여 네트워크 성능을 평가하였다.
+
+### 2.7.A Results
+
+![Figure 6,7](https://bl6pap003files.storage.live.com/y4mFbqPlYm7EMXc-5yIet2efVtewJEY4Q47Y65jZrcIunMcMMCs9cqU1K0G0lRMdphaeSAts733FpO1LQT9V-Zp8jLwq3i3gXG4SWU1DVowEI6HeQH65P5DuNJR6lfYZM3GqbzPoZu-2zmio19KlLJi4vj0Hm1njKejQRKp9rscxJv00Q6YdI0gxs1bjk2l-FzhoIIrmSGy88r4wFvDGjUN9umjtZxBclxHCRaxrVZ5iKo?encodeFailures=1&width=1049&height=542)
+![Table 2](https://bl6pap003files.storage.live.com/y4mT85Nwt2amZA_fefp5XRAktqg9f9-VdTCVoIqdCt7-Rodrtw_CxZY2Pv6ags1vmF5T60lM5gIErTIpY9CjL2AGW6ET4-n75IyS49kdho0cFHrfPyx1pspCLzXY6f3GIfqK8RoD_09Jno1d3ph4_4kjAKKuhBCvyFa_iCWG0Bqdcyb98PCy3BGZgOZhQQdGu_72TmqWgrbpJcYy0pQOMb2l1iyB8e8M4jvLTZqGVM4sAI?encodeFailures=1&width=522&height=182)
+
+Figure 6과 7은 각 network slicing마다 RBG들이 다르게 할당되었을 때 전체 네트워크 throughput을 보여준다. 시뮬레이션 결과를 통해 다양한 테스트베드에서 throughput이 다를지라도, 전체적인 추세는 비슷하다는 것을 알 수 있다.
+
+아래의 그림은 SCOPE를 통해 ColO-RAN near-RT RIC이 소프트웨어화 된 RAN을 control하는 것을 구현한 결과이다.
+![Figure 8](https://bl6pap003files.storage.live.com/y4mLTPAfw8I67gSVZiqTfuno5Y8MjPWj-mAD8u8iW2-ENMzroFKllMKRszWYYRcUvOF8T9OzEm-kLObZwZDw-n_7pYwK-Dpo1f252EoKK2m0DCX8L_Lo-HTH0VXjM1fWatwsDK7YeHqKBi6hdyCeIwQqx0bzfyRNlVrCrYu_hS5KQjz9PMMwXg2svZFtB0heoCIzlQXsRA2DnPNTbrV4yfTUOQmQ6XoKq1g_KIC7wFLP5U?encodeFailures=1&width=509&height=554)
+
+Baseline은 RIC에 의한 제어가 없을 때로 설정하였고, 150초마다 xApp이 특정 network slice를 선호하도록 설정하였다. 
+
+O-RAN RAN slicing SM에 의해 각 slice에만 할당된 RBG의 수를 런타임에 재구성하여 수행되며, 해당 slice에 속한 사용자의 transmission을 예약할 수 있다.
+
+## 2.8 Conclusions
+
+본 논문에서는 최초의 publicly-available research 픒랫폼인 OpenRAN Gym을 소개하였다. 또한 다양한 스케일의 테스트베드에서 시뮬레이션을 진행하며 결과를 제시하였고, 많은 연구자들의 사용을 권장한다.
+
+
+# 3. Take Away
+
+- OpenRAN Gym 사용 커맨드를 꼭 기억하여 MaveRIC 시뮬레이터에 사용할 것
+- Container 환경에서 시뮬레이션이 진행된다는 것을 기억
+- HetNet 환경의 에뮬리에션이 가능함
