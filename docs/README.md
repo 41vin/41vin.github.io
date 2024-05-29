@@ -10,6 +10,25 @@ permalink: /docs/
 개인적으로 진행한 공부, vlog 등 기타 내용들을 정리한 공간입니다.
 
 ## Vlog
-* [2023_08_23_OTIC]{:.heading.flip-title} --- 싱가포르 SUTD에서 열린 OTIC 회고
+* [2023.08.23 OTIC]{:.heading.flip-title} --- 싱가포르 SUTD에서 열린 OTIC 회고
 
-[2023_08_23_OTIC]: 2023_08_23_OTIC.md
+
+
+
+## SD-RAN 
+* [2024.05.29 Semantic Versioning]{:.heading.flip-title} --- Semantic versioning 내용 정리
+
+
+
+
+
+
+
+
+
+
+
+
+
+[2023.08.23 OTIC]: 2023_08_23_OTIC.md
+[2024.05.29 Semantic Versioning]: 2024_05_29_SemVer.md
