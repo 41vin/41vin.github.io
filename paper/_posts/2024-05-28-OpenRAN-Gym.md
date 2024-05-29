@@ -197,4 +197,4 @@ Open RAN Gym on Colosseum을 사용해 Data-driven xApp을 개발하는 과정�
 
 3. **Deploy the model as an xApp**
    
-    모델 test 후, 
+    모델 test 후, ColO-RAN의 near-RT RIC에 xApp으로 배포된다. 
