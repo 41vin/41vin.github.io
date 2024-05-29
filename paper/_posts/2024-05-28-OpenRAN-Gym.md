@@ -2,6 +2,7 @@
 layout: post
 title: OpenRAN Gym-AI/ML Development, Data Collection, and Testing for O-RAN on PAWR Platforms
 tags: [o-ran, ieee]
+image: /assets/img/blog/OpenRANgym/thumbnail.jpeg
 description: >
   **Authors**: Leonardo Bonati, Michele Polese, Salvatore D'Oro, Stefano Basagni, Tommaso Melodia
 sitemap: false
