@@ -65,7 +65,7 @@ menu:
     url:               /projects/
   - title:             Résumé*
     url:               /resume/
-  - title:             Documentation
+  - title:             Docs
     url:               /docs/
 
 # Add links to the footer.
