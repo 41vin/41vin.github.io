@@ -1,9 +1,9 @@
 ---
 layout: project
-title: 'Hydejack Site'
-caption: Dogfooding Hydejack to sell Hydejack.
+title: 'O-RAN Software Community'
+caption: AI/ML Workflow 
 description: >
-  While Hydejack is built for personal sites, it's versatility allows it to be used a product page as well.
+  O-RAN Software Community, AIMLFW
 date: '01-01-2016'
 image: 
   path: /assets/img/projects/hydejack-site.jpg

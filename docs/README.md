@@ -11,7 +11,7 @@ permalink: /docs/
 
 ## Vlog
 * [2023.08.23 OTIC]{:.heading.flip-title} --- 싱가포르 SUTD에서 열린 OTIC 회고
-
+* [2024.05.31 SKT]{:.heading.flip-title} --- SKT AI Fellowship 오리엔테이션
 
 
 
@@ -32,3 +32,4 @@ permalink: /docs/
 
 [2023.08.23 OTIC]: 2023_08_23_OTIC.md
 [2024.05.29 Semantic Versioning]: 2024_05_29_SemVer.md
+[2024.05.31 SKT]: 2024_05_31_SKT_OT.md

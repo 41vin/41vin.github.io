@@ -1,11 +1,10 @@
 ---
 layout: project
-title: '@qwtel'
-caption: How I use Hydejack on my personal site.
+title: 'SKT AI Fellowship'
+caption: 5G Green AI Algorithm 개발
 description: >
-  This is how I use Hydejack on my personal site. 
-  Much of the development is informed from my experience of using it myself, creating a tight feedback loop.
-date: 1 Jun 2020
+  AI Solutions for A Planet(ASAP)
+date: 31 May 2024
 image: 
   path: /assets/img/projects/qwtel.jpg
   srcset: 
@@ -14,7 +13,7 @@ image:
     480w:  /assets/img/projects/qwtel@0,25x.jpg
 links:
   - title: Link
-    url: https://qwtel.com/
+    url: https://www.sktaifellowship.com/d5818d3c-16e2-467c-82a1-3f56bd6dfbcb
 accent_color: '#4fb1ba'
 accent_image:
   background: '#193747'
