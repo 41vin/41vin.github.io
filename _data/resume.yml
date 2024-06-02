@@ -4,7 +4,7 @@
 basics:
   name: "Geon Kim"
   label: "Researcher"
-  picture: "https://via.placeholder.com/240x240"
+  picture: "/assets/img/logo.png"
   email: "erudite.gun@gmail.com"
   # phone: "(912) 555-4321"
   website: "https://geonkim.netlify.app"
