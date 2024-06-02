@@ -1,16 +1,16 @@
 ---
 layout: project
 title: 'SKT AI Fellowship'
-caption: 5G Green AI Algorithm 개발
+caption: 5G Green AI Algorithm Development
 description: >
-  AI Solutions for A Planet(ASAP)
+  Team: AI Solutions for A Planet(ASAP)
 date: 31 May 2024
 image: 
-  path: /assets/img/projects/qwtel.jpg
+  path: /assets/img/projects/skt/SKTai.png
   srcset: 
-    1920w: /assets/img/projects/qwtel.jpg
-    960w:  /assets/img/projects/qwtel@0,5x.jpg
-    480w:  /assets/img/projects/qwtel@0,25x.jpg
+    1920w: /assets/img/projects/skt/SKTai.png
+    960w:  /assets/img/projects/skt/SKTai@0,5x.png
+    480w:  /assets/img/projects/skt/SKTai@0,25x.png
 links:
   - title: Link
     url: https://www.sktaifellowship.com/d5818d3c-16e2-467c-82a1-3f56bd6dfbcb

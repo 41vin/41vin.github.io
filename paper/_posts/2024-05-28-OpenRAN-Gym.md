@@ -80,7 +80,7 @@ OpenRAN Gym은 end-to-end 디자인, prototyping, testing, 그리고 HetNet 구�
 - COSMOS
   - New York City에 있는 도시 규모의 wireless testbed. mmWave 통신과 edge-computing을 중점으로 구현하였다.
 
-![Figure 1. OpenRAN Gym architecture](https://bl6pap003files.storage.live.com/y4mf7YSUL26iumwPZ3h55hIdDO858VACSSNVFA5SX6PKA8bkJjJhNHWGnMP9-072e9U5qTgHsYfoV60orvCXHzcyn3OqLt2WB2Ux7E3ht0P4VrmoOO9aFpX1ptdNDcEt9_xsnghW-xZHOr4POnSUiR3-4236bNBXtGdMA6TYnfFlrAtiOW1dKm45DD3ODnay4jDdFiwfkr59KguyaCrRAFSNVWbnrzjycvJg9-yolerkYM?encodeFailures=1&width=931&height=308)
+![Figure 1. OpenRAN Gym architecture](/assets/img/blog/OpenRANgym/article/Figure.1.png)
 
 글이 작성된 시점에 OpenRAN Gym은 srsRAN을 이용해 softwarized RAN을 구성하였다. 또한, cellular protocol stack은 SCOPE 프레임워크에 의해 지원되었다. SCOPE를 사용하여 HetNet 환경에서의 데이터 수집을 자동화할 수 있다.
 
@@ -124,7 +124,7 @@ python3 scope_start.py --config-file radio.conf
 OpenRAN GYM에서 사용하는 O-RAN control architecture는 ColO-RAN에 기반한다. 이 프레임워크는 OSC near-RT RIC의 lightweight 구현을 제공한다. Colosseum 시스템에서 standalone Docker 컨테이너로 구현되기 때문이다.
 
 ColO-RAN의 high level 다이어그램은 아래의 그림과 같다. 
-![Figure 2. ColO-RAN xApp](https://bl6pap003files.storage.live.com/y4m3-f1XORYznNVC_I8Ayg_mylORL4nUYqx-ZYoR6hz9_I_v6vAMYw5WrojtP06WFqQ9R9S-qoK6m_abJw7B7Ot1dYmzfiObA5OR9W0m0Q6WuuGGma-HC0L46if_WEg0zTDTmZTR4BFHPMBoosS98-HNTd2YePVPjsgB2cDvlNKKL2mJ_TsgLwlryCTUcnBkrtv1c4SFwz1LmSgq-bTvFopK52Bw-e5Ad1cMqelp1XUMKw?encodeFailures=1&width=501&height=233)
+![Figure 2. ColO-RAN xApp](/assets/img/blog/OpenRANgym/article/Figure.2.png)
 
 ColO-RAN xApp은 두개의 주 구성요소로 이루어져있다,
 
@@ -193,7 +193,7 @@ docker exec -it sample-xapp /home/sample-xapp/run_xapp.sh
 
 Open RAN Gym on Colosseum을 사용해 Data-driven xApp을 개발하는 과정은 아래의 그림과 같이 나타낼 수 있다.
 
-![OpenRAN Gym xApp Design and testing workflow on Colosseum](https://bl6pap003files.storage.live.com/y4m101-BVwvePNVHm_3mjDTib8K-_UU4uv5VFr8H-epdKVuYkYzOuwW8mBBn2NELUwiPWSbqccAd9SZIUW_gDstPl2GL9xvLLhgNXrDGHlw6c31vqAUhkjgotll-e9pUNpnkqrITpfrZL8-Tt1b5jR5KxIV1F-RlfletrIDKeicDXAS-dBfUh1pYuJSlBS6hlYnqMIiU4hrwMLHYZWnxAKnjQgYie9T28sHpDvrXG26hP0?encodeFailures=1&width=1080&height=312)
+![OpenRAN Gym xApp Design and testing workflow on Colosseum](/assets/img/blog/OpenRANgym/article/Figure.3.png)
 
 1. **Data collection**
    
@@ -229,7 +229,7 @@ UE들의 트래픽은 두 가지 종류로 나뉜다.
 1. Time-sensitive(URLLC)
 2. Broadband(eMBB, MTC)
 
-![Figure 4](https://bl6pap003files.storage.live.com/y4mVKLcTvD_0JGMNtV8yCcxL-UueTIvKAC5qkim15Eh7qvtvymGq74Fwsfv2e4vy4002x_lsPqC8X7jfxAx-vTY4-FIbZjEJfTw903t4izVeC-U5Ef4vXCcei-_Z2KmHlwXfVydkMqdBaGNBLXqfU0Uj5oCpN7RUtpbQKOgNzLSI9VgrvRYRy8f8FUifK3-rh0pFqPqZBuDQC-c4SFrq536VpXuol6J9isrFGUCfp8-VFI?encodeFailures=1&width=516&height=293)
+![Figure 4](/assets/img/blog/OpenRANgym/article/Figure.4.png)
 
 위의 그림은 본 논문에서 사용한 xApp의 구조이다.
 
@@ -256,7 +256,7 @@ UE들의 트래픽은 두 가지 종류로 나뉜다.
     
    위에서 언급한 기준들을 reward에 반영하기 위해, throughput 최대화와 downlink buffer size를 최소화하는 것이 reward 함수에 반영되어 있다.
 
-  ![Figure 5](https://bl6pap003files.storage.live.com/y4mqGDswRlTSAEAkMinPZBBF_ccP4ZhcZlC-z6J6a3mC5nvhE8CpPj_PDHoOHZXUbqWJ_EUUsHDtam1D_1A3BrH3-hM0vA3LrmTLQgb9GeahqZj2Ovdt38RFhcNnowC4W9NEi803TFCXROfd_RGIRL6m5T4u0ee-RbYiELj1bkCJvXXwp_kNwmMIP5ldKJHdV5b45oXsmIy5ycwOPS4jQkFxzUysxJ8fPfYc0foqRhYEt4?encodeFailures=1&width=516&height=280)
+  ![Figure 5](/assets/img/blog/OpenRANgym/article/Figure.5.png)
 
   `sched-slicing` xApp이 더 좋은 성능을 보임을 그래프에서 확인할 수 있다.
 
@@ -307,13 +307,13 @@ iPerf3 툴에 의해 생성된 Downlink User Datagram Protocol(UDP) 트래픽을
 
 ### 2.7.A Results
 
-![Figure 6,7](https://bl6pap003files.storage.live.com/y4mFbqPlYm7EMXc-5yIet2efVtewJEY4Q47Y65jZrcIunMcMMCs9cqU1K0G0lRMdphaeSAts733FpO1LQT9V-Zp8jLwq3i3gXG4SWU1DVowEI6HeQH65P5DuNJR6lfYZM3GqbzPoZu-2zmio19KlLJi4vj0Hm1njKejQRKp9rscxJv00Q6YdI0gxs1bjk2l-FzhoIIrmSGy88r4wFvDGjUN9umjtZxBclxHCRaxrVZ5iKo?encodeFailures=1&width=1049&height=542)
-![Table 2](https://bl6pap003files.storage.live.com/y4mT85Nwt2amZA_fefp5XRAktqg9f9-VdTCVoIqdCt7-Rodrtw_CxZY2Pv6ags1vmF5T60lM5gIErTIpY9CjL2AGW6ET4-n75IyS49kdho0cFHrfPyx1pspCLzXY6f3GIfqK8RoD_09Jno1d3ph4_4kjAKKuhBCvyFa_iCWG0Bqdcyb98PCy3BGZgOZhQQdGu_72TmqWgrbpJcYy0pQOMb2l1iyB8e8M4jvLTZqGVM4sAI?encodeFailures=1&width=522&height=182)
+![Figure 6,7](/assets/img/blog/OpenRANgym/article/Figure.6,7.png)
+![Table 2](/assets/img/blog/OpenRANgym/article/Table 2.png)
 
 Figure 6과 7은 각 network slicing마다 RBG들이 다르게 할당되었을 때 전체 네트워크 throughput을 보여준다. 시뮬레이션 결과를 통해 다양한 테스트베드에서 throughput이 다를지라도, 전체적인 추세는 비슷하다는 것을 알 수 있다.
 
 아래의 그림은 SCOPE를 통해 ColO-RAN near-RT RIC이 소프트웨어화 된 RAN을 control하는 것을 구현한 결과이다.
-![Figure 8](https://bl6pap003files.storage.live.com/y4mLTPAfw8I67gSVZiqTfuno5Y8MjPWj-mAD8u8iW2-ENMzroFKllMKRszWYYRcUvOF8T9OzEm-kLObZwZDw-n_7pYwK-Dpo1f252EoKK2m0DCX8L_Lo-HTH0VXjM1fWatwsDK7YeHqKBi6hdyCeIwQqx0bzfyRNlVrCrYu_hS5KQjz9PMMwXg2svZFtB0heoCIzlQXsRA2DnPNTbrV4yfTUOQmQ6XoKq1g_KIC7wFLP5U?encodeFailures=1&width=509&height=554)
+![Figure 8](/assets/img/blog/OpenRANgym/article/Figure 8.png)
 
 Baseline은 RIC에 의한 제어가 없을 때로 설정하였고, 150초마다 xApp이 특정 network slice를 선호하도록 설정하였다. 
 
