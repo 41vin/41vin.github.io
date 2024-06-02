@@ -63,7 +63,7 @@ menu:
     url:               /blog/
   - title:             Projects
     url:               /projects/
-  - title:             Résumé*
+  - title:             Biography
     url:               /resume/
   - title:             Docs
     url:               /docs/
