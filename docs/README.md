@@ -19,9 +19,9 @@ permalink: /docs/
 * [2024.05.29 Semantic Versioning]{:.heading.flip-title} --- Semantic versioning 내용 정리
 
 
-
-
-
+## Efficient Deep Learning
+* [2024.06.04 EfficientML-01]{:.heading.flip-title} --- 네이버: 딥러닝 경량화 01
+* [2024.06.04 EfficientML-02]{:.heading.flip-title} --- 네이버: 딥러닝 경량화 02
 
 
 
@@ -33,3 +33,5 @@ permalink: /docs/
 [2023.08.23 OTIC]: 2023_08_23_OTIC.md
 [2024.05.29 Semantic Versioning]: 2024_05_29_SemVer.md
 [2024.05.31 SKT]: 2024_05_31_SKT_OT.md
+[2024.06.04 EfficientML-01]: 2024_06_04_efficientML_01.md
+[2024.06.04 EfficientML-02]: 2024_06_04_efficientML_02.md
