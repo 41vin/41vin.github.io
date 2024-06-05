@@ -24,9 +24,8 @@ permalink: /docs/
 * [2024.06.04 EfficientML-02]{:.heading.flip-title} --- 네이버: 딥러닝 경량화 02
 
 
-
-
-
+## Go
+* [2024.06.05 golang-01]{:.heading.flip-title} --- go 언어: 변수
 
 
 
@@ -35,3 +34,4 @@ permalink: /docs/
 [2024.05.31 SKT]: 2024_05_31_SKT_OT.md
 [2024.06.04 EfficientML-01]: 2024_06_04_efficientML_01.md
 [2024.06.04 EfficientML-02]: 2024_06_04_efficientML_02.md
+[2024.06.05 golang-01]: 2024_06_05_golang_var.md

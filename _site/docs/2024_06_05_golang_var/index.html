@@ -25,26 +25,28 @@ Powered by Hydejack v9.1.6 <https://hydejack.com/>
 
 
 
+  <meta name="robots" content="noindex">
+
 
 
   
     
 <!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Escape Diary | Standing on the shoulders of giants</title>
+<title>Golang 변수 | Escape Diary</title>
 <meta name="generator" content="Jekyll v3.9.5" />
-<meta property="og:title" content="Escape Diary" />
+<meta property="og:title" content="Golang 변수" />
 <meta name="author" content="Geon Kim" />
 <meta property="og:locale" content="en" />
-<meta name="description" content="From the master’s program to the doctoral program, there were many moments during my time in post-graduate school when I wanted to escape. However, it seems to have been the most significant turning point in my life. Enjoy reading :)" />
-<meta property="og:description" content="From the master’s program to the doctoral program, there were many moments during my time in post-graduate school when I wanted to escape. However, it seems to have been the most significant turning point in my life. Enjoy reading :)" />
-<link rel="canonical" href="http://localhost:4000/404.html" />
-<meta property="og:url" content="http://localhost:4000/404.html" />
+<meta name="description" content="Go 언어 변수 정리" />
+<meta property="og:description" content="Go 언어 변수 정리" />
+<link rel="canonical" href="http://localhost:4000/docs/2024_06_05_golang_var/" />
+<meta property="og:url" content="http://localhost:4000/docs/2024_06_05_golang_var/" />
 <meta property="og:site_name" content="Escape Diary" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Escape Diary" />
+<meta property="twitter:title" content="Golang 변수" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Geon Kim"},"description":"From the master’s program to the doctoral program, there were many moments during my time in post-graduate school when I wanted to escape. However, it seems to have been the most significant turning point in my life. Enjoy reading :)","headline":"Escape Diary","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/img/logo.png"},"name":"Geon Kim"},"url":"http://localhost:4000/404.html"}</script>
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Geon Kim"},"description":"Go 언어 변수 정리","headline":"Golang 변수","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/img/logo.png"},"name":"Geon Kim"},"url":"http://localhost:4000/docs/2024_06_05_golang_var/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -74,7 +76,7 @@ Powered by Hydejack v9.1.6 <https://hydejack.com/>
 <meta name="generator" content="Hydejack v9.1.6" />
 
 
-<link rel="alternate" href="http://localhost:4000/404.html" hreflang="en">
+<link rel="alternate" href="http://localhost:4000/docs/2024_06_05_golang_var/" hreflang="en">
 
 <link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Escape Diary" />
 
@@ -189,7 +191,7 @@ html{--accent-color: rgb(79,177,186);--accent-color-faded: rgba(79,177,186,0.5);
 
   <main
   id="_main"
-  class="content layout-not-found"
+  class="content layout-page"
   role="main"
 >
   <nav id="breadcrumbs" class="screen-only"><ul>
@@ -200,29 +202,132 @@ html{--accent-color: rgb(79,177,186);--accent-color-faded: rgba(79,177,186,0.5);
       <li>
         
           <span>/</span>
-          <span>404.html</span>
+          
+          
+          <a href="/docs/">docs</a>
+        
+      </li>
+    
+      <li>
+        
+          <span>/</span>
+          <span>2024_06_05_golang_var</span>
         
       </li>
     
   
 </ul></nav>
-  
-
-<div class="page">
-  <h1 class="page-title">404: Page Not Found</h1>
-  <div class="hr pb0"></div>
-
-  
-  
+  <article class="page mb6" role="article">
+  <header>
+    <h1 class="page-title">Golang 변수</h1>
     
-    
-    <p class="lead">
-      Sorry, we've misplaced that URL or it's pointing to something that doesn't exist.
-<a href="/">Head back home</a> to try finding it again.
 
-    </p>
+
+
   
-</div>
+    <div class="hr pb0"></div>
+  
+
+
+  </header>
+
+  <ol id="markdown-toc">
+  <li><a href="#변수란" id="markdown-toc-변수란">변수란?</a>    <ol>
+      <li><a href="#변수가-왜-중요한가" id="markdown-toc-변수가-왜-중요한가">변수가 왜 중요한가?</a></li>
+      <li><a href="#변수의-4가지-속성" id="markdown-toc-변수의-4가지-속성">변수의 4가지 속성</a>        <ol>
+          <li><a href="#숫자-타입" id="markdown-toc-숫자-타입">숫자 타입</a></li>
+          <li><a href="#그-외-타입" id="markdown-toc-그-외-타입">그 외 타입</a></li>
+        </ol>
+      </li>
+      <li><a href="#변수-선언의-다른-형태" id="markdown-toc-변수-선언의-다른-형태">변수 선언의 다른 형태</a></li>
+      <li><a href="#타입-변환" id="markdown-toc-타입-변환">타입 변환</a></li>
+    </ol>
+  </li>
+</ol>
+
+<h1 id="변수란">변수란?</h1>
+
+<p>값을 저장하는 메모리 공간을 가리키는 이름</p>
+
+<h2 id="변수가-왜-중요한가">변수가 왜 중요한가?</h2>
+
+<p>프로그램이란 결국 데이터를 연산/조작 하는 일</p>
+
+<h2 id="변수의-4가지-속성">변수의 4가지 속성</h2>
+
+<ul>
+  <li>이름: <strong>프로그래머</strong>는 이름을 통해 값이 저장된 메모리 공간에 손쉽게 접근할 수 있음</li>
+  <li>값: 변수가 가리키는 메모리 공간에 저장된 값</li>
+  <li>주소: <strong>컴퓨터</strong>가 알아들을 수 있는 변수가 저장된 메모리 공간의 시작 주소</li>
+  <li>타입: 변숫값의 형태. 정수, 실수, 문자열 등의 다양한 타입들이 있으며 자료형, 데이터 타입이라고도 함. 데이터 타입을 알면 사이즈를 알 수 있음
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">int 32</code>: integer 32 bit(4 byte)</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="숫자-타입">숫자 타입</h3>
+
+<ul>
+  <li>uint 8 = unsigned integer 8 bit(1 byte)</li>
+  <li>byte(uint 8): aliasing을 부여</li>
+  <li>rune: 문자 1개 -&gt; UTF-8
+    <ul>
+      <li>1~3 byte이므로 적어도 3 byte 이상이어야 함</li>
+      <li>컴퓨터에서 byte는 2의 지수로 증가하므로 4byte 부여, int32</li>
+    </ul>
+  </li>
+  <li>uint, int: 컴퓨터의 bit 수에 따라 다름
+    <ul>
+      <li>컴퓨터가 64 bit일 때, int64</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="그-외-타입">그 외 타입</h3>
+
+<ul>
+  <li>bool</li>
+  <li>string</li>
+  <li>배열</li>
+  <li>슬라이스</li>
+  <li>구조체</li>
+  <li>포인터</li>
+  <li>함수타입</li>
+  <li>맵</li>
+  <li>인터페이스</li>
+  <li>채널</li>
+</ul>
+
+<h2 id="변수-선언의-다른-형태">변수 선언의 다른 형태</h2>
+
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">package</span> <span class="n">main</span>
+
+<span class="k">import</span> <span class="s">"fmt"</span>
+
+<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="n">a</span> <span class="kt">int</span> <span class="o">=</span> <span class="m">3</span>   <span class="c">// 기본 형태</span>
+    <span class="k">var</span> <span class="n">b</span> <span class="kt">int</span>       <span class="c">// 초깃값 생략, 초깃값은 타입별 기본값으로 대체</span>
+    <span class="k">var</span> <span class="n">c</span> <span class="o">=</span> <span class="m">4</span>       <span class="c">// 타입 생략, 변수 타입은 우변 값의 타입이 됨</span>
+    <span class="n">d</span> <span class="o">:=</span> <span class="m">5</span>          <span class="c">// 선언 대입문 :=을 사용해 var 키워드와 타입 생략(변수 선언이 번거로워 가장 많이 쓰이는 형태)</span>
+
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="타입-변환">타입 변환</h2>
+
+<p>연산의 각 항목의 타입은 <strong>반드시</strong> 같아야 함</p>
+
+
+</article>
+
+
+  <hr class="dingbat related mb6" />
+
+
+
+
 
   
 <footer class="content" role="contentinfo">
