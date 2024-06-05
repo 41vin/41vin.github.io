@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="3.9.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en" /><updated>2024-06-05T10:55:32+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Escape Diary</title><subtitle>From the master's program to the doctoral program, there were many moments during my time in post-graduate school when I wanted to escape. However, it seems to have been the most significant turning point in my life. Enjoy reading :)
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="3.9.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en" /><updated>2024-06-05T13:30:40+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Escape Diary</title><subtitle>From the master's program to the doctoral program, there were many moments during my time in post-graduate school when I wanted to escape. However, it seems to have been the most significant turning point in my life. Enjoy reading :)
 </subtitle><author><name>Geon Kim</name><email>gun@khu.ac.kr</email></author><entry><title type="html">A Lightweight Cell Switching and Traffic Offloading Scheme for Energy Optimization in Ultra-Dense Heterogeneous Netweorks</title><link href="http://localhost:4000/blog/paper/2024-06-04-lightweight-cell-switching/" rel="alternate" type="text/html" title="A Lightweight Cell Switching and Traffic Offloading Scheme for Energy Optimization in Ultra-Dense Heterogeneous Netweorks" /><published>2024-06-04T00:00:00+09:00</published><updated>2024-06-04T00:00:00+09:00</updated><id>http://localhost:4000/blog/paper/lightweight-cell-switching</id><content type="html" xml:base="http://localhost:4000/blog/paper/2024-06-04-lightweight-cell-switching/"><![CDATA[<p class="note" title="Keywords">Cell-switching, HetNet, Traffic-offloading</p>
 
 <ul id="markdown-toc">
@@ -25,7 +25,7 @@
           <li><a href="#26d-results-and-discussions" id="markdown-toc-26d-results-and-discussions">2.6.D Results and Discussions</a></li>
         </ul>
       </li>
-      <li><a href="#27" id="markdown-toc-27">2.7</a></li>
+      <li><a href="#27-conclusion" id="markdown-toc-27-conclusion">2.7 Conclusion</a></li>
     </ul>
   </li>
   <li><a href="#3-take-away" id="markdown-toc-3-take-away">3. Take Away</a></li>
@@ -266,7 +266,7 @@
 
 <p>위의 그래프에서 각 알고리즘의 시간 복잡도를 확인할 수 있다. ES 알고리즘은 SBS의 수가 20개가 넘어가면 기하급수적으로 시간 복잡도가 증가하고, THESIS도 증가하는 추세를 보인다. 하지만 THESIS 알고리즘은 클러스터 내 SBS의 수를 \(B_{th}\)로 제한을 두기 때문에 시간복잡도가 기하급수적으로 증가하는 것을 막을 수 있다.</p>
 
-<h2 id="27">2.7</h2>
+<h2 id="27-conclusion">2.7 Conclusion</h2>
 
 <p>위에서 볼 수 있듯이 본 논문에서 제안한 THESIS 알고리즘은 획기적인 에너지 절감을 실현시킬 수 있다. 또한 AAO 알고리즘에 비해 탄소 절감을 늘릴 수 있다는 장점도 존재한다. 본 논문의 저자는 future work로 UAV-BS를 이용한 traffic offloading을 제안하였다.</p>
 
@@ -275,7 +275,7 @@
 <ul>
   <li>Clustering + heuristic 알고리즘을 이용한 lightweight cell switching</li>
   <li>SBS 두 개를 합쳐 MBS로 가정하는 방법으로 HetNet 시뮬레이션</li>
-</ul>]]></content><author><name>Geon Kim</name><email>gun@khu.ac.kr</email></author><category term="paper" /><category term="es" /><summary type="html"><![CDATA[**Authors**: Attai Ibrahim Abubakar, Hichael S. Mollel, Metin Ozturk, Sajjad Hussain, and Muhammad Ali Imran]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/blog/lightweight-cs/es.png" /><media:content medium="image" url="http://localhost:4000/assets/img/blog/lightweight-cs/es.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">OpenRAN Gym-AI/ML Development, Data Collection, and Testing for O-RAN on PAWR Platforms</title><link href="http://localhost:4000/blog/paper/2024-05-28-OpenRAN-Gym/" rel="alternate" type="text/html" title="OpenRAN Gym-AI/ML Development, Data Collection, and Testing for O-RAN on PAWR Platforms" /><published>2024-05-28T00:00:00+09:00</published><updated>2024-05-28T00:00:00+09:00</updated><id>http://localhost:4000/blog/paper/OpenRAN-Gym</id><content type="html" xml:base="http://localhost:4000/blog/paper/2024-05-28-OpenRAN-Gym/"><![CDATA[<p class="note" title="Keywords">Open RAN, AI/ML, SDK</p>
+</ul>]]></content><author><name>Geon Kim</name><email>gun@khu.ac.kr</email></author><category term="paper" /><category term="es" /><summary type="html"><![CDATA[**Authors**: Attai Ibrahim Abubakar, Hichael S. Mollel, Metin Ozturk, Sajjad Hussain, and Muhammad Ali Imran]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/blog/lightweight-cs/es.png" /><media:content medium="image" url="http://localhost:4000/assets/img/blog/lightweight-cs/es.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">OpenRAN Gym- AI/ML Development, Data Collection, and Testing for O-RAN on PAWR Platforms</title><link href="http://localhost:4000/blog/paper/2024-05-28-OpenRAN-Gym/" rel="alternate" type="text/html" title="OpenRAN Gym- AI/ML Development, Data Collection, and Testing for O-RAN on PAWR Platforms" /><published>2024-05-28T00:00:00+09:00</published><updated>2024-05-28T00:00:00+09:00</updated><id>http://localhost:4000/blog/paper/OpenRAN-Gym</id><content type="html" xml:base="http://localhost:4000/blog/paper/2024-05-28-OpenRAN-Gym/"><![CDATA[<p class="note" title="Keywords">Open RAN, AI/ML, SDK</p>
 
 <ul id="markdown-toc">
   <li><a href="#1-why-this-paper" id="markdown-toc-1-why-this-paper">1. Why this paper</a></li>
@@ -673,4 +673,4 @@ lxc image import scope-with-e2.tar.gz <span class="nt">--alias</span> scope-e2
   <li>OpenRAN Gym 사용 커맨드를 꼭 기억하여 MaveRIC 시뮬레이터에 사용할 것</li>
   <li>Container 환경에서 시뮬레이션이 진행된다는 것을 기억</li>
   <li>HetNet 환경의 에뮬리에션이 가능함</li>
-</ul>]]></content><author><name>Geon Kim</name><email>gun@khu.ac.kr</email></author><category term="paper" /><category term="o-ran" /><category term="ieee" /><summary type="html"><![CDATA[**Authors**: Leonardo Bonati, Michele Polese, Salvatore D'Oro, Stefano Basagni, Tommaso Melodia]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/blog/OpenRANgym/thumbnail.jpeg" /><media:content medium="image" url="http://localhost:4000/assets/img/blog/OpenRANgym/thumbnail.jpeg" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
+</ul>]]></content><author><name>Geon Kim</name><email>gun@khu.ac.kr</email></author><category term="paper" /><category term="ieee" /><category term="o-ran" /><summary type="html"><![CDATA[**Authors**: Leonardo Bonati, Michele Polese, Salvatore D'Oro, Stefano Basagni, Tommaso Melodia]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/blog/OpenRANgym/thumbnail.jpeg" /><media:content medium="image" url="http://localhost:4000/assets/img/blog/OpenRANgym/thumbnail.jpeg" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
