@@ -1,7 +1,7 @@
 ---
 layout: post
-title: OpenRAN Gym-AI/ML Development, Data Collection, and Testing for O-RAN on PAWR Platforms
-tags: [o-ran, ieee]
+title: A Lightweight Cell Switching and Traffic Offloading Scheme for Energy Optimization in Ultra-Dense Heterogeneous Networks 
+tags: [, ieee]
 image: /assets/img/blog/OpenRANgym/thumbnail.jpeg
 description: >
   **Authors**: Leonardo Bonati, Michele Polese, Salvatore D'Oro, Stefano Basagni, Tommaso Melodia
