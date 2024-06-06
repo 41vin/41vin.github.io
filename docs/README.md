@@ -26,7 +26,7 @@ permalink: /docs/
 
 ## Go
 * [2024.06.05 golang-01]{:.heading.flip-title} --- go 언어: 변수
-
+* [2024.06.06 golang-02]{:.heading.flip-title} --- go 언어: fmt
 
 
 [2023.08.23 OTIC]: 2023_08_23_OTIC.md
@@ -35,3 +35,4 @@ permalink: /docs/
 [2024.06.04 EfficientML-01]: 2024_06_04_efficientML_01.md
 [2024.06.04 EfficientML-02]: 2024_06_04_efficientML_02.md
 [2024.06.05 golang-01]: 2024_06_05_golang_var.md
+[2024.06.05 golang-02]: 2024_06_05_golang_fmt.md
