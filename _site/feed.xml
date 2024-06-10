@@ -1,5 +1,117 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="3.9.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en" /><updated>2024-06-10T11:46:47+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Escape Diary</title><subtitle>From the master's program to the doctoral program, there were many moments during my time in post-graduate school when I wanted to escape. However, it seems to have been the most significant turning point in my life. Enjoy reading :)
-</subtitle><author><name>Geon Kim</name><email>gun@khu.ac.kr</email></author><entry><title type="html">A Lightweight Cell Switching and Traffic Offloading Scheme for Energy Optimization in Ultra-Dense Heterogeneous Netweorks</title><link href="http://localhost:4000/blog/paper/2024-06-04-lightweight-cell-switching/" rel="alternate" type="text/html" title="A Lightweight Cell Switching and Traffic Offloading Scheme for Energy Optimization in Ultra-Dense Heterogeneous Netweorks" /><published>2024-06-04T00:00:00+09:00</published><updated>2024-06-04T00:00:00+09:00</updated><id>http://localhost:4000/blog/paper/lightweight-cell-switching</id><content type="html" xml:base="http://localhost:4000/blog/paper/2024-06-04-lightweight-cell-switching/"><![CDATA[<p class="note" title="Keywords">Cell-switching, HetNet, Traffic-offloading</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="3.9.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en" /><updated>2024-06-10T18:44:00+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Escape Diary</title><subtitle>From the master's program to the doctoral program, there were many moments during my time in post-graduate school when I wanted to escape. However, it seems to have been the most significant turning point in my life. Enjoy reading :)
+</subtitle><author><name>Geon Kim</name><email>gun@khu.ac.kr</email></author><entry><title type="html">Forecasting at Scale</title><link href="http://localhost:4000/blog/paper/2024-06-10-Forecasting-at-Scale/" rel="alternate" type="text/html" title="Forecasting at Scale" /><published>2024-06-10T00:00:00+09:00</published><updated>2024-06-10T00:00:00+09:00</updated><id>http://localhost:4000/blog/paper/Forecasting-at-Scale</id><content type="html" xml:base="http://localhost:4000/blog/paper/2024-06-10-Forecasting-at-Scale/"><![CDATA[<p class="note" title="Keywords">Time Series, Statistical Practice, Nonlinear Regression</p>
+
+<ul id="markdown-toc">
+  <li><a href="#1-why-this-paper" id="markdown-toc-1-why-this-paper">1. Why this paper</a></li>
+  <li><a href="#2-summary-of-paper" id="markdown-toc-2-summary-of-paper">2. Summary of paper</a>    <ul>
+      <li><a href="#21-introduction" id="markdown-toc-21-introduction">2.1 Introduction</a></li>
+      <li><a href="#22-features-of-business-time-seriers" id="markdown-toc-22-features-of-business-time-seriers">2.2 Features of Business Time Seriers</a></li>
+      <li><a href="#23-the-prophet-forecasting-model" id="markdown-toc-23-the-prophet-forecasting-model">2.3 The Prophet Forecasting Model</a></li>
+    </ul>
+  </li>
+  <li><a href="#3-take-away" id="markdown-toc-3-take-away">3. Take away</a></li>
+</ul>
+
+<h1 id="1-why-this-paper">1. Why this paper</h1>
+<ul>
+  <li>통계 기반 시계열 예측 알고리즘 조사</li>
+  <li>SKT AI Fellowship 비교 알고리즘 개발에 필요</li>
+</ul>
+
+<h1 id="2-summary-of-paper">2. Summary of paper</h1>
+
+<h2 id="21-introduction">2.1 Introduction</h2>
+
+<ul>
+  <li>비즈니스 단계에서 높은 수준의 시계열 예측이 어려운 이유
+    <ol>
+      <li>완전 자동화된 예측 기술들은 튜닝하기 어렵고, heuristic에 비해 유연하지 않음</li>
+      <li>조직 내 데이터 전문가들이 시계열 예측에 대해 익숙하지 않을 수 있음</li>
+    </ol>
+  </li>
+</ul>
+
+<p class="note">규모에 상관없는 forecasting을 만들기 위한 유용한 가이드라인들을 제공하는 것이 목적임</p>
+
+<p>본 논문에서는 큰 스케일의 시계열 트래픽을 예측하는 것이 상대적으로 간단하다고 한다. 병렬화가 매우 용이하며 예측 결과를 관계형 데이터베이스에 저장하는 것도 어렵지 않기 떄문이다. 진짜 큰 어려움은 <strong>예측 결과의 신뢰성</strong>이다.</p>
+
+<p><img src="/assets/img/blog/prophet/prophet1.png" alt="Figure.1" /></p>
+
+<ol>
+  <li>각 parameter가 쉽게 이해될 수 있도록 유연한 방법으로 시계열을 모델링</li>
+  <li>모델과 기준 모델에 대해 다양한 과거 데이터에 대한 예측을 생성 후, 성능 평가</li>
+  <li>성능이 좋지 않을 경우, 우선순위를 정해 문제를 전문가에게 알림</li>
+  <li>분석가가 이를 검토하고 피드백을 바탕으로 모델을 조정</li>
+</ol>
+
+<h2 id="22-features-of-business-time-seriers">2.2 Features of Business Time Seriers</h2>
+
+<p><img src="/assets/img/blog/prophet/prophet2.png" alt="Figure.2" /></p>
+
+<p class="note">위의 그림은 <strong>R</strong>의 <strong>forecasting</strong> 패키지를 이용해 다양한 알고리즘으로 예측을 수행한 것이다.</p>
+
+<p>전체 시간 중 세개의 구역에서 예측을 수행하였으며, 각각의 예측은 시작 지점 전까지의 시계열 데이터만을 이용하여 해당 날짜에 예측을 수행하는 시뮬레이션을 한 것이다. 예측에는 아래의 알고리즘들이 사용되었다.</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">auto.arima</code>
+    <ul>
+      <li>ARIMA 모델 여러개 중 가장 성능이 좋은 모델을 고름</li>
+      <li>Large trend error에 취약</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">ets</code>
+    <ul>
+      <li>여러 개의 exponential 함moothing model 중 가장 은능이 좋은 모델을 고름</li>
+      <li>주간 trend 데이터의 계절성은 잘 포착하지만, 장기간 trend 계절성은 잘 포착하지 못함</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">snaive</code>
+    <ul>
+      <li>계절성을 가지는 데이터를 예측하는 데 사용되며, 매주 반복되는 패턴을 가진 데이터에 적합함</li>
+      <li>주간 trend 데이터의 계절성은 잘 포착하지만, 장기간 trend 계절성은 잘 포착하지 못함</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">tbats</code>
+    <ul>
+      <li>주간 혹은 연간 계절성을 가지는 데이터에 적합함</li>
+    </ul>
+  </li>
+</ul>
+
+<p class="note">예측이 잘못되었을 때 모델의 parameter들을 튜닝해야 하는데 이 과정에서 시계열 모델에 대한 깊은 이해가 필요함</p>
+
+<h2 id="23-the-prophet-forecasting-model">2.3 The Prophet Forecasting Model</h2>
+
+<p>Harvey &amp; Peters가 제안한 방법을 활용하여 시계열 데이터를 세가지 주요 컴포넌트로 분류하였다: trend, seasonality, and holidays. 아래의 식과 같이 나타낼 수 있다.</p>
+
+\[y(t) = g(t) + s(t) + h(t) + \epsilon_{t}\]
+
+<ul>
+  <li>\(g(t)\) : 시계열 데이터에서 비주기적인 변화를 모델링하는 trend 함수</li>
+  <li>\(s(t)\) : 주기적인 변화(e.g., weekly 혹은 yearly 계절성)를 나타냄</li>
+  <li>\(h(t)\) : 하루 혹은 그 이상으로 불규칙적으로 스케쥴링 된 날들을 모델링하는 holiday 함수</li>
+  <li>\(\epsilon_{t}\) : 모델에 캡쳐되지 않는 독특한 변화들, 후에 normally 분포되었다고 가정할 예정</li>
+</ul>
+
+<p>이러한 구조는 Hastie &amp; Tibshiran이 제안한 Generalized Additive Model(GAM)과 유사하다</p>
+
+<blockquote>
+  <p>Non-linear smoothers가 regressor에 적용된 regression model의 한 종류</p>
+</blockquote>
+
+<p>여기서는 시간만을 regressor로 사용하지만, 시간의 여러 선형 및 비선형 함수들을 구성 요소로 사용할 수 있다.</p>
+
+<p>GAM 공식은 분해하기 쉽고 필수적으로 새로운 컴포넌트들을 포함한다는 장점이 있다. 또한 매우 빠르게 환경에 적응한다. 따라서 사용자들은 모델 parameter들을 이에 맞춰 변화시킬 수 있다.</p>
+
+<p>본 논문의 저자들은 예측 문제를 <strong>curve-fitting exercise</strong>로 정의하였다. 이는 데이터의 시간 의존 구조를 고려하는 시계열 모델과 본질적으로 다르다.</p>
+
+<p>ARIMA와 같은 생성 모델을 이용하면 얻을 수 있는 inferential 장점들을 포기해야 하지만 아래와 같은 practical한 장점들을 얻을 수 있다.</p>
+
+<ul>
+  <li>Flexibility:</li>
+</ul>
+
+<h1 id="3-take-away">3. Take away</h1>]]></content><author><name>Geon Kim</name><email>gun@khu.ac.kr</email></author><category term="paper" /><category term="tp" /><category term="stat" /><summary type="html"><![CDATA[**Authors**: Attai Ibrahim Abubakar, Hichael S. Mollel, Metin Ozturk, Sajjad Hussain, and Muhammad Ali Imran]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/blog/prophet/prophet_logo.webp" /><media:content medium="image" url="http://localhost:4000/assets/img/blog/prophet/prophet_logo.webp" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">A Lightweight Cell Switching and Traffic Offloading Scheme for Energy Optimization in Ultra-Dense Heterogeneous Netweorks</title><link href="http://localhost:4000/blog/paper/2024-06-04-lightweight-cell-switching/" rel="alternate" type="text/html" title="A Lightweight Cell Switching and Traffic Offloading Scheme for Energy Optimization in Ultra-Dense Heterogeneous Netweorks" /><published>2024-06-04T00:00:00+09:00</published><updated>2024-06-04T00:00:00+09:00</updated><id>http://localhost:4000/blog/paper/lightweight-cell-switching</id><content type="html" xml:base="http://localhost:4000/blog/paper/2024-06-04-lightweight-cell-switching/"><![CDATA[<p class="note" title="Keywords">Cell-switching, HetNet, Traffic-offloading</p>
 
 <ul id="markdown-toc">
   <li><a href="#1-why-this-paper" id="markdown-toc-1-why-this-paper">1. Why this paper</a></li>
