@@ -6,7 +6,7 @@ description: >
   Team: AI Solutions for A Planet(ASAP)
 date: 31 May 2024
 image: 
-  path: /assets/img/projects/skt/SKTai.png
+  path: /assets/img/projects/skt/SKTai2.png
   srcset: 
     1920w: /assets/img/projects/skt/SKTai.png
     960w:  /assets/img/projects/skt/SKTai@0,5x.png

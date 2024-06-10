@@ -20,9 +20,9 @@ sitemap: false
 ---
 
 
-# Golang 프로젝트 분석 
+# Golang 프로젝트 분석
   
-## [Standard Go Project Layout](https://github.com/golang-standards/project-layout/blob/master/README.md)
+참고: [Standard Go Project Layout](https://github.com/golang-standards/project-layout/blob/master/README.md)
 
 <details>
 <summary>Go 디렉터리</summary>
@@ -156,5 +156,106 @@ sitemap: false
 - `/src`
   - 주로 Java 개발자들이 패턴에 익숙해져 생성
   - $GOPATH가 /src 디렉토리를 사용하고 있기 때문에, `/src` 디렉토리를 생성하지 않음
+</div>
+</details>
+
+
+
+# Introduction of SD-RAN
+
+<details>
+<summary>SD-RAN - Software-Defined Radio Access Network</summary>
+<div markdown="1">
+ 
+- ONF's new platform for 3GPP complaint software-defined RAN
+- O-RAN 아키텍쳐를 따르고 있음
+- 클라우드 네이티브 플랫폼
+- ONOS 기반의 RIC을 사용해 제어
+
+RAN과 이를 제어하는 컨트롤러를 개발하는 것을 목표로 함
+{:.note}
+
+- 전체 아키텍쳐
+
+![overall-architecture](/assets/img/docs/sd-ran/sd-ran-02.png)
+
+---
+
+
+- SD-RAN 아키텍쳐
+
+![sd-ran_architecture](/assets/img/docs/sd-ran/sd-ran-01.png)
+
+---
+
+- RAN 아키텍쳐 #1: 상용 RU/DU/CU 
+
+![ran_architecture-01](/assets/img/docs/sd-ran/sd-ran-03.png)
+
+---
+
+- RAN 아키텍쳐 #2: ONF/OAI DU/CU [연구실 테스트베드 구조]
+
+![ran_architecture-02](/assets/img/docs/sd-ran/sd-ran-04.png)
+
+---
+
+- RAN 시뮬레이터: 간단한 버전
+
+![ran-simulator-simple](/assets/img/docs/sd-ran/sd-ran-05.png)
+
+---
+
+- RAN 시뮬레이터: 상세한 버전
+
+![ran-simulator-complex](/assets/img/docs/sd-ran/sd-ran-06.png)
+  - 아직 RU/DU/CU 컨셉을 구현하지 못함
+  - `Handler`: xApp 유즈케이스에 따라 서로 다른 `Handler`를 사용하여 서비스 구현 
+  - `Radio Emulation`: RSRP 계산(directional 안테나, free space pathloss)
+  
+</div>
+</details>
+
+<details>
+<summary>RIC</summary>
+<div markdown="1">
+
+### Overall Architecture - RIC
+
+![ric-architecture-01](/assets/img/docs/sd-ran/sd-ran-07.png)
+
+
+</div>
+</details>
+
+<details>
+<summary>SD-RAN Use-Case: Mobility Load Balancing</summary>
+<div markdown="1">
+
+### Mobility Load Balancing
+
+- Mobility load balancing use-case
+  - Goal: Balancing load among cells
+  - Expanding or shrinking handover region by adjusting handover parameter
+    - Overhead: expanding handover region
+    - Under-load: shrinking handover region
+
+
+![Mobility-load-balancing](/assets/img/docs/sd-ran/sd-ran-08.png)
+
+- Monitoring
+  - No E2 subscription on `onos-mlb`
+  - Get monitoring result from `onos-kpimon`
+    - num(UEs): stored by `onos-kpimon`
+    - Neighbors: stored by `onos-pci`
+  - Get cell and E2 node info from `onos-topo`
+- MLB algorithm running with monitoring results
+- Control message
+  - Transmit control message to E2 node through `onos-e2t` 
+    - Service model: `RC-Pre`
+    - Header: neighbor cell ID for Ocn
+    - Message: Ocn index
+- Limitation: only support `E2 node` that has a single cell since control header has neighbor cell ID
+  - Originally, it should have destination cell ID for the control message
 </div>
 </details>
