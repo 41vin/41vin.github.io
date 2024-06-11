@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="3.9.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en" /><updated>2024-06-10T20:23:09+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Escape Diary</title><subtitle>From the master's program to the doctoral program, there were many moments during my time in post-graduate school when I wanted to escape. However, it seems to have been the most significant turning point in my life. Enjoy reading :)
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="3.9.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en" /><updated>2024-06-11T13:37:03+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Escape Diary</title><subtitle>From the master's program to the doctoral program, there were many moments during my time in post-graduate school when I wanted to escape. However, it seems to have been the most significant turning point in my life. Enjoy reading :)
 </subtitle><author><name>Geon Kim</name><email>gun@khu.ac.kr</email></author><entry><title type="html">Forecasting at Scale</title><link href="http://localhost:4000/blog/paper/2024-06-10-Forecasting-at-Scale/" rel="alternate" type="text/html" title="Forecasting at Scale" /><published>2024-06-10T00:00:00+09:00</published><updated>2024-06-10T00:00:00+09:00</updated><id>http://localhost:4000/blog/paper/Forecasting-at-Scale</id><content type="html" xml:base="http://localhost:4000/blog/paper/2024-06-10-Forecasting-at-Scale/"><![CDATA[<p class="note" title="Keywords">Time Series, Statistical Practice, Nonlinear Regression</p>
 
 <ul id="markdown-toc">
@@ -6,7 +6,17 @@
   <li><a href="#2-summary-of-paper" id="markdown-toc-2-summary-of-paper">2. Summary of paper</a>    <ul>
       <li><a href="#21-introduction" id="markdown-toc-21-introduction">2.1 Introduction</a></li>
       <li><a href="#22-features-of-business-time-seriers" id="markdown-toc-22-features-of-business-time-seriers">2.2 Features of Business Time Seriers</a></li>
-      <li><a href="#23-the-prophet-forecasting-model" id="markdown-toc-23-the-prophet-forecasting-model">2.3 The Prophet Forecasting Model</a></li>
+      <li><a href="#23-the-prophet-forecasting-model" id="markdown-toc-23-the-prophet-forecasting-model">2.3 The Prophet Forecasting Model</a>        <ul>
+          <li><a href="#231-the-trend-model" id="markdown-toc-231-the-trend-model">2.3.1 The Trend Model</a>            <ul>
+              <li><a href="#2311-nonlinear-saturating-growth" id="markdown-toc-2311-nonlinear-saturating-growth">2.3.1.1 Nonlinear, Saturating Growth</a></li>
+              <li><a href="#2312-linear-trend-with-changepoints" id="markdown-toc-2312-linear-trend-with-changepoints">2.3.1.2 Linear Trend with Changepoints</a></li>
+              <li><a href="#2313-automatic-changepoint-selection" id="markdown-toc-2313-automatic-changepoint-selection">2.3.1.3 Automatic Changepoint Selection</a></li>
+              <li><a href="#2314-trend-forecast-uncertainty" id="markdown-toc-2314-trend-forecast-uncertainty">2.3.1.4 Trend Forecast Uncertainty</a></li>
+            </ul>
+          </li>
+          <li><a href="#232-seasonality" id="markdown-toc-232-seasonality">2.3.2 Seasonality</a></li>
+        </ul>
+      </li>
     </ul>
   </li>
   <li><a href="#3-take-away" id="markdown-toc-3-take-away">3. Take away</a></li>
@@ -108,7 +118,149 @@
 <p>ARIMA와 같은 생성 모델을 이용하면 얻을 수 있는 inferential 장점들을 포기해야 하지만 아래와 같은 practical한 장점들을 얻을 수 있다.</p>
 
 <ul>
-  <li>Flexibility:</li>
+  <li>Flexibility: 다양한 기간의 계절성을 쉽게 반영할 수 있으며, 분석가가 trend에 대한 다양한 가정을 할 수 있게 한다.</li>
+  <li>ARIMA와 달리 측정값이 규칙적으로 분포될 필요가 없으며, 결측값을 보간할 필요 없다.</li>
+  <li>Fitting 속도가 빠르다.</li>
+  <li>해석하기 쉬운 파라미터들을 가지고 있어 분석가가 다루기 용이하다.</li>
+</ul>
+
+<h3 id="231-the-trend-model">2.3.1 The Trend Model</h3>
+
+<p>본 논문에서는 두가지 trend 모델을 설명하고 있는데,</p>
+
+<ol>
+  <li>Nonlinear, Saturating Growth</li>
+  <li>Linear Trend with Changepoints</li>
+</ol>
+
+<p>가 해당한다.</p>
+
+<h4 id="2311-nonlinear-saturating-growth">2.3.1.1 Nonlinear, Saturating Growth</h4>
+
+<p>Growth 예측에 있어 데이터 생성 프로세스의 중요 구성요소는 population이 어떻게 증가하였고 증가할 것인지를 모델링하는 것이다. 주로 logistic growth 모델을 사용하여 이러한 종류의 growth를 모델링한다.</p>
+
+<p>\(g(t) = \frac{C}{1 + \exp(-l(t - m))}\)</p>
+<ul>
+  <li>\(C\): carrying capacity</li>
+  <li>\(k\): growth rate</li>
+  <li>\(m\): offset 파라미터</li>
+</ul>
+
+<p>하지만 Facebook이 포착해내지 못한 두가지 요소가 있다.</p>
+<ol>
+  <li>Carrying capacity는 일정하지 않다.
+    <ul>
+      <li>해결책: \(C \rightarrow C(t)\)</li>
+    </ul>
+  </li>
+  <li>Growth rate도 일정하지 않다.
+    <ul>
+      <li>해결책: \(k\)를 대체하는 많은 products</li>
+    </ul>
+  </li>
+</ol>
+
+<ul>
+  <li>Growth 모델 안에 있는 trend changes를 포함하기 위해 changepoints를 정의하였다.
+    <ol>
+      <li>시간 \(s_j\) 안에 \(S\)개의 change point</li>
+      <li>Rate adjustment 벡터: \(\delta \in \mathbb{R}^{S}\)</li>
+    </ol>
+    <ul>
+      <li>Adjustment의 식:  \(k+\sum_{j:t&gt;s_j}\delta_{j}\)</li>
+      <li>벡터 \(a(t) \in {0, 1}^{S}\)를 이용해 식을 명확하게 나타내면</li>
+    </ul>
+  </li>
+</ul>
+
+\[a_j(t) = 
+\begin{cases} 
+1, &amp; \text{if } t \geq s_j, \\ 
+0, &amp; \text{otherwise}.
+\end{cases}\]
+
+<p>시간 \(t\)의 rate는 \(k+a(t)^{\intercal}\lambda\)가 된다. Rate \(k\)가 결정되었을 때, offset 파라미터 \(m\)도 각 세그먼트들의 endpoint들을 잇기 위해 조정된다.</p>
+
+<ul>
+  <li>Changeoint \(j\)에서의 correct adjustment는 아래와 같이 정의된다.</li>
+</ul>
+
+\[\gamma_j = \left(s_j - m - \sum_{l&lt;j} \gamma_l \right) \left(1 - \frac{k + \sum_{l&lt;j} \delta_l}{k + \sum_{l \leq j} \delta_l}\right)\]
+
+<ul>
+  <li>각 부분의 logistic growth 모델도 다음과 같다.</li>
+</ul>
+
+\[g(t) = \frac{C(t)}{1 + \exp \left( -(k + a(t)^{\top}\delta) \left( t - (m + a(t)^{\top}\gamma) \right) \right)}\]
+
+<p>본 논문의 모델에서 중요한 파라미터의 집합은 \(C(t)\)이다. 데이터에 인사이트가 깊은 분석가들은 데이터 특성에 맞춰 \(C(t)\)를 설정하곤 한다.</p>
+
+<h4 id="2312-linear-trend-with-changepoints">2.3.1.2 Linear Trend with Changepoints</h4>
+
+<p>Saturating growth를 가지고 있지 않은 forecasting 문제들, 즉 constant rate of growth는 간단하고 유용한 모델을 제공한다.</p>
+
+\[g(t) = (k + a(t)^{\intercal}\lambda)t + (m + a(t)^{\intercal}\gamma)\]
+
+<p>이 때 \(\gamma_{j}\)는 function을 연속적으로 만들기 위해 아래와 같이 설정된다.</p>
+
+\[\gamma_{j} = -s_{j}\lambda_{j}\]
+
+<h4 id="2313-automatic-changepoint-selection">2.3.1.3 Automatic Changepoint Selection</h4>
+
+<p>분석가들은 프로덕트가 시작된 날짜, 다른 growth-altering 사건들에 대한 정보를 이용해 changepoint \(s_j\)를 결정한다. \(s_j\)의 automatic selection은 \(\delta\)에 sparse prior을 둠으로써 자연스럽게 이루어진다.</p>
+
+<p>다수의 changepoint들을 특정할 때 \(\delta_{j} \sim Laplace(0, \tau)\)를 사용한다.</p>
+<ul>
+  <li>\(\tau\): 직접적으로 모델의 flexibility를 조절</li>
+</ul>
+
+<p>Adjustment \(\lambda\)의 spare prior는 primary growth rate \(k\)에 영향을 미치지 않기 때문에, \(\tau\)가 0이 되면 모델은 단순한 logistic 또는 linear growth 모델로 변환된다.</p>
+
+<h4 id="2314-trend-forecast-uncertainty">2.3.1.4 Trend Forecast Uncertainty</h4>
+
+<p>예측의 불확실성을 생성 모델을 이용해서 측정한다. Trend를 위한 generative 모델은 \(T\)개의 데이터 포인트로 구성된 과거 기록에서 \(S\)개의 변화점이 있으며, 각 변화점은 \(\lambda_{j} \sim Laplace(0, \tau)\)의 분포를 가진다.</p>
+
+<p>미래의 rate 변화를 과거의 데이터에서 \(\tau\)를 바꿔 에뮬레이션한 값으로 대체하며 시뮬레이션을 진행한다. Bayesian 프레임워크에서는 \(\tau\)의 hierarchical prior을 이용해 posterior를 구해 진행할 수 있다. 다른 방법으로는 rate scale 파라미터: \(\lambda = \frac{1}{S} \sum_{j=1}^{S} \|\delta_j\|\) 의 maximum likelihood estimate를 사용할 수 있다.</p>
+
+<p>미래의 changepoint들도 과거 chagepoint들의 평균 frequency에 맞춰 랜덤하게 샘플된다.</p>
+
+\[\forall j &gt; T,
+\begin{cases}
+\delta_j = 0 &amp; \text{w.p.} \ \frac{T - S}{T}, \\
+\delta_j \sim \text{Laplace}(0, \lambda) &amp; \text{w.p.} \ \frac{S}{T}.
+\end{cases}\]
+
+<p>미래의 trend가 과거의 trend를 따를것이라는 가정은 강력한 가정이기 때문에 예측에 실패한 구간을 만들 수도 있다.</p>
+
+<p>\(\tau\)가 증가할수록 모델의 과거 데이터를 더 유연하게 맞출 수 있어 training error가 줄어든다. 그러나 이 flexibility로 인해 예측에 실패한 구간이 넓어질 것이다.</p>
+
+<h3 id="232-seasonality">2.3.2 Seasonality</h3>
+
+<p>비즈니스 시계열 데이터는 사람들의 행동 패턴에 따라 계절성을 가지게 된다. 이 계절성을 예측하기 위해 정확하게 계절성 데이터를 모델링해야 한다. 본 논문에서는 periodic effects에 flexible 모델을 제공하기 위해 <code class="language-plaintext highlighter-rouge">Fourier series</code>를 사용한다.</p>
+
+<p>Arbitrary smooth seasonal effects를 다음과 같이 모델링할 수 있다.</p>
+
+\[s(t) = \sum_{n=1}^{N} \left( a_n \cos \left( \frac{2 \pi n t}{P} \right) + b_n \sin \left( \frac{2 \pi n t}{P} \right) \right)\]
+
+<ul>
+  <li>Fourier 계수 추정
+    <ul>
+      <li>Seasonal 패턴을 정의하기 위해 2N개의 parameter를 추정해야 한다.</li>
+      <li>이를 위해 각 시간 \(t\)에 대한 행렬 \(X(t)\)를 구성한다.</li>
+    </ul>
+  </li>
+  <li>계절성 계산
+    <ul>
+      <li>
+\[s(t) = X(t)\beta\]
+        <ul>
+          <li>
+\[\beta \sim Normal(0, \sigma^2)\]
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
 </ul>
 
 <h1 id="3-take-away">3. Take away</h1>]]></content><author><name>Geon Kim</name><email>gun@khu.ac.kr</email></author><category term="paper" /><category term="tp" /><category term="stat" /><summary type="html"><![CDATA[**Authors**: Attai Ibrahim Abubakar, Hichael S. Mollel, Metin Ozturk, Sajjad Hussain, and Muhammad Ali Imran]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/blog/prophet/prophet_logo.webp" /><media:content medium="image" url="http://localhost:4000/assets/img/blog/prophet/prophet_logo.webp" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">A Lightweight Cell Switching and Traffic Offloading Scheme for Energy Optimization in Ultra-Dense Heterogeneous Netweorks</title><link href="http://localhost:4000/blog/paper/2024-06-04-lightweight-cell-switching/" rel="alternate" type="text/html" title="A Lightweight Cell Switching and Traffic Offloading Scheme for Energy Optimization in Ultra-Dense Heterogeneous Netweorks" /><published>2024-06-04T00:00:00+09:00</published><updated>2024-06-04T00:00:00+09:00</updated><id>http://localhost:4000/blog/paper/lightweight-cell-switching</id><content type="html" xml:base="http://localhost:4000/blog/paper/2024-06-04-lightweight-cell-switching/"><![CDATA[<p class="note" title="Keywords">Cell-switching, HetNet, Traffic-offloading</p>
