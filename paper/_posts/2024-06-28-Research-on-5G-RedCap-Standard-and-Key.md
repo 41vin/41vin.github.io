@@ -1,10 +1,10 @@
 ---
 layout: post
-title: RedCap In-depth Research and Market Development Prospect 
+title: Toward Smaller and Lower-Cost 5G Devices with Longer Battery Life - An Overview of 3GPP Release 17 RedCap 
 tags: [tp, stat]
-image: /assets/img/blog/RedCap/RedCap.png
+image: /assets/img/blog/RedCap/RedCap-Usecases.png
 description: >
-  **Authors**: Xiao Li, Xiaohang Xu, Chunlei Hu
+  **Authors**: Sandeep Narayanan Kadan Veedu et al.
 sitemap: false
 hide_last_modified: true
 ---
