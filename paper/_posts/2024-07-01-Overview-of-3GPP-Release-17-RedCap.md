@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Toward Smaller and Lower-Cost 5G Devices with Longer Battery Life - An Overview of 3GPP Release 17 RedCap 
-tags: [3gpp]
+tags: [ieee]
 image: /assets/img/blog/RedCap/RedCap-Usecases.png
 description: >
   **Authors**: Sandeep Narayanan Kadan Veedu et al.
