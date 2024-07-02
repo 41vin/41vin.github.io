@@ -1,5 +1,682 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="3.9.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en" /><updated>2024-06-11T13:37:03+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Escape Diary</title><subtitle>From the master's program to the doctoral program, there were many moments during my time in post-graduate school when I wanted to escape. However, it seems to have been the most significant turning point in my life. Enjoy reading :)
-</subtitle><author><name>Geon Kim</name><email>gun@khu.ac.kr</email></author><entry><title type="html">Forecasting at Scale</title><link href="http://localhost:4000/blog/paper/2024-06-10-Forecasting-at-Scale/" rel="alternate" type="text/html" title="Forecasting at Scale" /><published>2024-06-10T00:00:00+09:00</published><updated>2024-06-10T00:00:00+09:00</updated><id>http://localhost:4000/blog/paper/Forecasting-at-Scale</id><content type="html" xml:base="http://localhost:4000/blog/paper/2024-06-10-Forecasting-at-Scale/"><![CDATA[<p class="note" title="Keywords">Time Series, Statistical Practice, Nonlinear Regression</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="3.9.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en" /><updated>2024-07-02T19:46:17+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Escape Diary</title><subtitle>From the master's program to the doctoral program, there were many moments during my time in post-graduate school when I wanted to escape. However, it seems to have been the most significant turning point in my life. Enjoy reading :)
+</subtitle><author><name>Geon Kim</name><email>gun@khu.ac.kr</email></author><entry><title type="html">Toward Smaller and Lower-Cost 5G Devices with Longer Battery Life - An Overview of 3GPP Release 17 RedCap</title><link href="http://localhost:4000/blog/paper/2024-07-01-Overview-of-3GPP-Release-17-RedCap/" rel="alternate" type="text/html" title="Toward Smaller and Lower-Cost 5G Devices with Longer Battery Life - An Overview of 3GPP Release 17 RedCap" /><published>2024-07-01T00:00:00+09:00</published><updated>2024-07-01T00:00:00+09:00</updated><id>http://localhost:4000/blog/paper/Overview-of-3GPP-Release-17-RedCap</id><content type="html" xml:base="http://localhost:4000/blog/paper/2024-07-01-Overview-of-3GPP-Release-17-RedCap/"><![CDATA[<p class="note" title="Keywords">RedCap, 5G, NR</p>
+
+<ul id="markdown-toc">
+  <li><a href="#1-why-this-paper" id="markdown-toc-1-why-this-paper">1. Why this paper</a></li>
+  <li><a href="#2-summary-of-paper" id="markdown-toc-2-summary-of-paper">2. Summary of paper</a>    <ul>
+      <li><a href="#introduction" id="markdown-toc-introduction">Introduction</a></li>
+      <li><a href="#use-cases-and-requirements" id="markdown-toc-use-cases-and-requirements">Use Cases and Requirements</a></li>
+      <li><a href="#reduced-device-capabilities" id="markdown-toc-reduced-device-capabilities">Reduced Device Capabilities</a></li>
+      <li><a href="#battery-lifetime-enhancement" id="markdown-toc-battery-lifetime-enhancement">Battery Lifetime Enhancement</a>        <ul>
+          <li><a href="#a-extended-drx-for-rrc-idle-and-inactive-states" id="markdown-toc-a-extended-drx-for-rrc-idle-and-inactive-states">A. Extended DRX for RRC idle and inactive states</a></li>
+          <li><a href="#b-rrm-relaxation-for-stationary-devices" id="markdown-toc-b-rrm-relaxation-for-stationary-devices">B. RRM relaxation for stationary devices</a></li>
+        </ul>
+      </li>
+      <li><a href="#coexistence-coverage-and-capacity-impacts" id="markdown-toc-coexistence-coverage-and-capacity-impacts">Coexistence, coverage, and capacity impacts</a>        <ul>
+          <li><a href="#a-coexistence-with-other-nr-devices" id="markdown-toc-a-coexistence-with-other-nr-devices">A. Coexistence with other NR devices</a></li>
+          <li><a href="#b-coverage-impacts" id="markdown-toc-b-coverage-impacts">B. Coverage impacts</a></li>
+          <li><a href="#capacity-imapcts" id="markdown-toc-capacity-imapcts">Capacity imapcts</a></li>
+        </ul>
+      </li>
+      <li><a href="#conclusion" id="markdown-toc-conclusion">Conclusion</a></li>
+    </ul>
+  </li>
+  <li><a href="#3-take-away" id="markdown-toc-3-take-away">3. Take Away</a></li>
+</ul>
+
+<h1 id="1-why-this-paper">1. Why this paper</h1>
+<ul>
+  <li>3GPP Release 17에 정의되어 있는 RedCap 심층조사</li>
+  <li>RedCap을 포함한 RAN Simulator 개발에 필요</li>
+</ul>
+
+<hr />
+
+<h1 id="2-summary-of-paper">2. Summary of paper</h1>
+
+<h2 id="introduction">Introduction</h2>
+<ul>
+  <li>RedCap use cases는 wearables, industrial wireless sensors, 그리고 video surveillance를 포함한다.</li>
+  <li>이러한 use case들을 지원하기 위해, eMBB, URLLC, 그리고 mMTC 사이에 있는 use case들을 지원하기 위해 3GPP는 RedCap NR Device들을 정의하였다.</li>
+  <li>본 논문은 3GPP 표준 시점에서의 RedCap에 대한 overview를 제공한다.</li>
+</ul>
+
+<h2 id="use-cases-and-requirements">Use Cases and Requirements</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>Wearables</th>
+      <th>Industrial wireless sensors</th>
+      <th>Video surveillance</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Data rate</strong> (Reference bit rate)</td>
+      <td>5-50 Mbps in DL and 2-5 Mbps in UL*</td>
+      <td>2 Mbps</td>
+      <td>2-4 Mbps for economic video<br />7.5-25 Mbps for high-end video</td>
+    </tr>
+    <tr>
+      <td><strong>Latency</strong></td>
+      <td>-</td>
+      <td>100 ms</td>
+      <td>500 ms</td>
+    </tr>
+    <tr>
+      <td><strong>Availability/reliability</strong></td>
+      <td>-</td>
+      <td>99.99%</td>
+      <td>99%-99.9%</td>
+    </tr>
+    <tr>
+      <td><strong>Device battery lifetime</strong></td>
+      <td>At least few days and up to 1-2 weeks</td>
+      <td>At least few years</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td><strong>Traffic pattern</strong></td>
+      <td>-</td>
+      <td>UL heavy</td>
+      <td>UL heavy</td>
+    </tr>
+    <tr>
+      <td><strong>Stationarity</strong></td>
+      <td>Non-stationary</td>
+      <td>Stationary</td>
+      <td>Stationary</td>
+    </tr>
+  </tbody>
+</table>
+
+<p class="note">Peak bit rate for wearables can be up to 150 Mbps in DL and 50 Mbps in UL.</p>
+
+<p>명확하게 말하자면, data rate와 latency는 NR eMBB/URLLC 만큼 높지 않고, 요구 배터리 수명은 mMTC만큼 길지 않다.</p>
+
+<p>위의 세 가지 usecase들을 하나의 RedCap에서 지원하는 것이 바람직하다.</p>
+
+<p><img src="/assets/img/blog/RedCap2/Figure1.png" alt="Figure1" /></p>
+
+<p>RedCap은 TR 38.875에서 정의되어있다.</p>
+
+<h2 id="reduced-device-capabilities">Reduced Device Capabilities</h2>
+<p>Release 17 RedCa work item으로 다음과 같은 항목들이 정의되었다.</p>
+<ul>
+  <li>Reduction of maximum device bandwidth</li>
+  <li>Reduction of minimum antenna configuration at the device</li>
+  <li>Reduction of minimum supported number of DL MIMO layers</li>
+  <li>Relaxed maximum DL modulation order</li>
+  <li>Support for half-duplex operation in FDD bands</li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>FR1 bands</th>
+      <th>FR2 bands</th>
+      <th> </th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> </td>
+      <td>Reference device</td>
+      <td>RedCap device</td>
+      <td>Reference device</td>
+      <td>RedCap device</td>
+    </tr>
+    <tr>
+      <td>Maximum device bandwidth</td>
+      <td>100 MHz</td>
+      <td>20 MHz</td>
+      <td>200 MHz</td>
+      <td>100 MHz</td>
+    </tr>
+    <tr>
+      <td>Minimum antenna configuration¹</td>
+      <td>2 or 4 receiver branches</td>
+      <td>2 receiver branches</td>
+      <td>2 antenna panels, each supporting 4 dual polarized antenna elements</td>
+      <td>2 antenna panels, each supporting 4 dual polarized antenna elements</td>
+    </tr>
+    <tr>
+      <td>Minimum supported number of DL MIMO layers</td>
+      <td>2 or 4</td>
+      <td>1</td>
+      <td>2</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>Maximum DL modulation order</td>
+      <td>256QAM</td>
+      <td>64QAM</td>
+      <td>64QAM</td>
+      <td>64QAM</td>
+    </tr>
+    <tr>
+      <td>Duplex operation</td>
+      <td>TDD or full-duplex FDD</td>
+      <td>TDD or half-duplex FDD</td>
+      <td>TDD</td>
+      <td>TDD</td>
+    </tr>
+    <tr>
+      <td>Cost reduction</td>
+      <td>0%</td>
+      <td>~65%</td>
+      <td>0%</td>
+      <td>~50%</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>¹ In 3GPP the requirements on physical antenna implementation at the device are not specified for FR1 and FR2. However, the effective isotropic radiated power, the effective isotropic receiver sensitivity, and the spherical coverage requirements specified for different power classes in FR2 implicitly impose requirements on the actual antenna implementation. The minimum antenna configuration for the reference device indicated in this table assumes power class 3 [6]. Both NR devices and RedCap devices may support a different power class with different set of requirements. The reference device and RedCap device support the same minimum number of receiver branches in FR2.</p>
+
+<p>위의 표에 나열되어 있는 기능을 만족하면 상당한 비용 절감 효과를 얻을 수 있으며, 동시에 성능, 사양 및 공존(기기 간의 상호 간섭 등)에 미치는 영향은 관리 가능하다.</p>
+
+<p>하지만 RedCap UE는</p>
+<ol>
+  <li>FR1/FR2에서 20/100MHz 보다 넓은 주파수 대역</li>
+  <li>Carrier aggregation</li>
+  <li>Dual connectivity</li>
+  <li>2 device receiver/transmitter branches</li>
+  <li>2 DL/UL MIMO 레이어들</li>
+</ol>
+
+<p>을 사용할 수 없다.</p>
+
+<p>또한, Higher 레이어들에서의 제약사항들은 다음과 같다.</p>
+<ol>
+  <li>Data Radio Bearer(DRB) 수 감소: 기기가 필수적으로 지원해야 하는 DRB의 최대 수를 16개에서 8개로 감소</li>
+  <li>Sequence Number(SN) 길이 감소: PDU에서 PDCP 및 RLC 계층의 acknowledged 모드에 대한 SN 길이를 18비트에서 12비트로 감소</li>
+  <li>Automatic Neighbor Relation(ANR) 기능 비활성화: SON의 기능인 ANR 기능 지원이 필수 사항에서 제외</li>
+</ol>
+
+<h2 id="battery-lifetime-enhancement">Battery Lifetime Enhancement</h2>
+<p>아래의 기술들은 RedCap 기기에서 배터리 수명을 늘리기 위해 사용하는 기법들이다.</p>
+
+<h3 id="a-extended-drx-for-rrc-idle-and-inactive-states">A. Extended DRX for RRC idle and inactive states</h3>
+<p class="note">Discontinuous reception(DRX) mechanism: NR 릴리즈 15에서 소개되었고 디바이스가 inactive 기간에서 <code class="language-plaintext highlighter-rouge">sleep</code> 모드로 설정된다.</p>
+
+<p>일반적인 NR에서 DRX cycle의 최댓값은 2.56초이다. 하지만 RedCap use case에서는 eMBB/URLLC 만큼의 tight 혹은 deterministic한 latency 요구사항이 필요하지 않다.</p>
+
+<p>따라서 extended DRX(eDRX)에서는 10485.76초까지 RRC <code class="language-plaintext highlighter-rouge">idle state</code> 그리고 <code class="language-plaintext highlighter-rouge">inactive state</code>는 10.24초까지 정의되었다.</p>
+
+<p><img src="/assets/img/blog/RedCap2/Figure2.png" alt="Figure2" /></p>
+<ul>
+  <li>IAT: Inter-Arrival Times</li>
+</ul>
+
+<p>위의 그림은 다른 eDRX를 가지고 있을 때 battery 수명 증가를 그래프로 그린 것이다.</p>
+
+<h3 id="b-rrm-relaxation-for-stationary-devices">B. RRM relaxation for stationary devices</h3>
+<p><code class="language-plaintext highlighter-rouge">idle</code>과 <code class="language-plaintext highlighter-rouge">inactive</code>일 때 RSRP와 RSRQ에 기반한 RRM measurement는 serving cell과 neighbor cell들로부터 측정된다. 이러한 measurement들은 최적의 신호 quality를 달성하는데 도움은 되지만 데이터를 전송하지 않을 때 battery를 많이 소모하게 된다.</p>
+
+<p>Rel 16에서 low-mobility, not-at-cell-edge 시나리오에 대한 neighbor cell RRM measurements relaxation이 소개되었다.</p>
+
+<p>Rel 17에서는 네트워크가 RRC 연결 상태의 장치에 대해 RSRP/RSRQ 기반의 정지 조건을 추가로 구성할 수 있다. 디바이스는 네트워크에 이 조건이 만족할 때와 만족하지 않을 때를 보고해야 한다.</p>
+
+<h2 id="coexistence-coverage-and-capacity-impacts">Coexistence, coverage, and capacity impacts</h2>
+
+<h3 id="a-coexistence-with-other-nr-devices">A. Coexistence with other NR devices</h3>
+<p>RedCap과 다른 NR 디바이스간의 coexistence는 RedCap work item의 중요한 목표이다.
+Coexistence에 다음 두 가지 challenge들이 존재한다.</p>
+
+<ol>
+  <li>Identification of RedCap devices
+    <ul>
+      <li>NR 장치가 RedCap인지 여부는 Random Access 절차 완료 후 네트워크에 알려지므로, 초기에 모든 장치가 가장 최소한의 기능을 가진 것으로 간주하고 스케쥴링 해야 한다.</li>
+      <li>RedCap 장치는 기능이 축소된 장치이므로, 네트워크가 이 장치를 기준으로 스케쥴링하면 일반 NR 장치도 그에 맞춰 제한적으로 동작하게 된다.</li>
+      <li>이로 인해 네트워크 자원이 비효율적으로 사용된다.</li>
+      <li>해결책: 네트워크가 Random Access 절차 중 장치가 RedCap 장치인지 아닌지를 미리 알 수 있게하는 방법이 도입됨.
+        <ul>
+          <li>Message 1: RedCap 전용 PRACH 리소스가 셀에 구성된 경우</li>
+          <li>Message 3: Random access 절차에서 Common Control Channel(CCCH)에 RedCap 전용 논리 채널 ID 값을 포함</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Avoidance of PUSCH resource fragmentation
+<img src="/assets/img/blog/RedCap2/Figure3.png" alt="Figure3" /></li>
+</ol>
+
+<p>일반 NR 장치에 대해 구성된 initial BWP는 너무 넓을 수 있어 Release 17에서는 별도의 RedCap 전용 초기 UL 및 DL BWP 구성을 지원한다. 그러나 RedCap 전용 UL과 DL의 BWP가 carrier center frequency 근처에 배치되면, RedCap 장치의 POUCCH 전송이 다른 장치의 PUSCH 자원 단편화를 유발할 수 있다.</p>
+
+<p>이를 해결하기 위해 Release 17에서 RedCap 장치의 별도의 초기 UL BWP에서 PUCCH 주파수 호핑 비활성화를 지원하며, SSB 및 CORESET #0 없이 별도의 초기 DL BWP를 지원한다.</p>
+
+<p>BWP configuration 주요 사항</p>
+
+<ul>
+  <li>RedCap configuration 결정 요소
+    <ul>
+      <li>Carrier bandwidth</li>
+      <li>최대 데이터 속도 요구사항</li>
+      <li>장치 능력</li>
+      <li>트래픽 활동</li>
+    </ul>
+  </li>
+</ul>
+
+<p>이 요소들을 고려하여 네트워크는 RedCap 장치에 적합한 UL/DL BWP 위치를 결정할 수 있다.</p>
+
+<ul>
+  <li>신호 오버헤드 관점
+    <ul>
+      <li>RedCap과 일반 NR 장치 간에 BWP 구성을 공유하는 것이 바람직하다.
+        <ul>
+          <li>두 종류 장치 모두 동일한 BWP 설정을 사용하게 되어, 별도의 BWP 설정을 추가할 필요가 없다.</li>
+          <li>DL BWP 공유
+            <ul>
+              <li>RedCap 장치와 일반 NR 장치가 공유하는 DL BWP를 사용하면, 추가적인 BWP 설정이나 추가 SSB를 전송할 필요가 없다.
+                <ul>
+                  <li>SSB는 기지국과 장치 간의 초기 통신을 설정하는데 사용되는 신호로, 추가 SSB 전송이 필요 없으면 네트워크의 신호량이 줄어든다.</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p>위에서 설명한 개선 사항을 제외하고도 CSP가 SIB1에서 indication을 통해 RedCap 장치가 cell carrier에 접근하지 못할 수 있는 기능을 표준에서 정의하였다. 이는 네트워크 과부화 상황에서 셀 내 다른 NR 장치에 사용할 수 있는 무선 자원을 우선적으로 제공하거나, RedCap 장치의 접근이 다른 장치의 성능에 영향을 미칠 수 있다 의심되는 경우에 유용하다.</p>
+
+<h3 id="b-coverage-impacts">B. Coverage impacts</h3>
+
+<p>Reduced capabilities는 디바이스의 커버리지에 영향을 미칠 수 있다. 안테나 사이즈와 대역폭의 감소가 coverage에 가장 큰 영향을 미치게 된다. Coverage에 미치는 영향을 평가하는 것도 study item 중 하나이다. 평가는 link budget analysis를 통해 이루어진다.</p>
+
+<p>Message 1 (PRACH), Message 2 (PDSCH), Message 3 (PUSCH), and Message 4 (PDSCH), PUCCH, and the PDCCH scheduling Message 2/4 on common search space 모두 link budget analysis에 포함된다. 또한 analysis는 시골이나 도심지역에서 FR1, FR2를 가정한 다양한 환경에서 진행된다.</p>
+
+<p>Link budget analysis에서 사용되는 metric</p>
+<ul>
+  <li>Maximum Isotropic Loss (MIL): 기지국과 디바이스에서의 path loss와 beamforming gain을 포착</li>
+</ul>
+
+<p>만약 reference device의 lowest MIL보다 RedCap 디바이스의 MIL이 낮다면 coverage recovery가 상응하는 channel에 필요하다.이 때, Reference device의 lowerst MIL과 RedCap 디바이스의 MIL 차이만큼 coverage recovery가 필요하다.</p>
+
+<p>Link budget analysis 결과는 다음과 같이 요악할 수 있다.</p>
+<ul>
+  <li>UL(FR1 &amp; FR2)
+    <ul>
+      <li>FR1과 FR2의 UL에서 coverage recovery 필요없음</li>
+    </ul>
+  </li>
+  <li>DL (FR1)
+    <ul>
+      <li>Urban micro 시나리오
+        <ul>
+          <li>RedCap 장치가 1개의 수신기 branch(antenna)를 가진 경우 Message 2에 대해 커버리지 회복 필요</li>
+          <li>2개의 수신기 브랜치를 가진 경우 커버리지 회복이 필요하지 않음</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>DL (FR2)
+    <ul>
+      <li>Coverage 회복 필요 여부는 RedCap 및 참조 장치의 maximum transmitted radiated power(TRP) 선택에 따라 다름</li>
+      <li>TRP 23 dBm 가정 시:
+        <ul>
+          <li>Message 2, Message 4, PDSCH와 같은 일부 DL 채널에 대해 커버리지 회복 필요</li>
+        </ul>
+      </li>
+      <li>TRP 12 dBM 가정 시:
+        <ul>
+          <li>DL 채널에 대해 커버리지 회복 필요하지 않음</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p>이 때 커버리지 회복에 대해 쓰이는 기술은 Rel 15/16에서 쓰이는 기술들을 최대한 활용한다.</p>
+
+<h3 id="capacity-imapcts">Capacity imapcts</h3>
+<p>RedCap 기기의 lower capability는 시스템 성능에 악영향을 준다. 이를 평가하기 위해 3GPP에서 SLS를 수행하였다.
+<img src="/assets/img/blog/RedCap2/Figure4.png" alt="Figure4" /></p>
+
+<p>Figure 4는 FR1에서 1개의 수신기 branch를 가진 RedCap 장치의 비율이 증가하는 경우(0% - 90%)에 따른 셀 load에 대한 eMBB 사용자들의 DL 사용자 처리량을 보여준다.</p>
+
+<p>그림에서 볼 수 있듯이 채널 상태가 좋은 eMBB 유저들은 RedCap 유저들이 증가해도 크게 영향을 받지 않는다. 중간에 있는 유저들은 RedCap 유저들이 증가할수록 throughput이 감소하는 것을 확인할 수 있다. 이는 RedCap 장치가 스펙트럼 효율이 낮아 주어진 load에서 더 많은 자원을 사용하기 때문이다.</p>
+
+<ul>
+  <li>트래픽 모델링
+    <ul>
+      <li>eMBB users: \(2 * 10^7\) bit/s (200ms 마다 0.5MB 전송)</li>
+      <li>RedCap users: \(4 * 10^5\) bit.s (2초마다 0.1MB 전송)</li>
+      <li>RedCap user의 부하는 eMBB 사용자의 부하보다 50배 낮음</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="conclusion">Conclusion</h2>
+<p>본 논문은 3GPP 표준에서 어떻게 RedCap을 디자인하는지에 대한 overview를 제공하고 있다. 또한 RedCap과 다른 NR 디바이스들의 coexistence를 어떻게 표준이 실현시켰는지 보여주고 있다. 또한 Release 18의 RedCap도 Release 17 기반으로 강화될 것으로 예상한다. RedCap의 발전으로 Release 17 usecase에 대해 향상된 지원을 제공할 뿐 아니라, smart grid와 같은 새로운 usecase 세그먼트로의 확장을 지원할 수 있다.</p>
+
+<h1 id="3-take-away">3. Take Away</h1>
+<ul>
+  <li>Simulator 구성 시 필요한 metric</li>
+  <li>RedCap이 프로토콜이 아닌 device의 한 종류란 것</li>
+</ul>]]></content><author><name>Geon Kim</name><email>gun@khu.ac.kr</email></author><category term="paper" /><category term="ieee" /><summary type="html"><![CDATA[**Authors**: Sandeep Narayanan Kadan Veedu et al.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/blog/RedCap/RedCap-Usecases.png" /><media:content medium="image" url="http://localhost:4000/assets/img/blog/RedCap/RedCap-Usecases.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Research on 5G RedCap Standard and Key Technologies</title><link href="http://localhost:4000/blog/paper/2024-06-28-Research-on-5G-RedCap-Standard-and-Key-copy/" rel="alternate" type="text/html" title="Research on 5G RedCap Standard and Key Technologies" /><published>2024-06-28T00:00:00+09:00</published><updated>2024-06-28T00:00:00+09:00</updated><id>http://localhost:4000/blog/paper/Research-on-5G-RedCap-Standard-and-Key%20copy</id><content type="html" xml:base="http://localhost:4000/blog/paper/2024-06-28-Research-on-5G-RedCap-Standard-and-Key-copy/"><![CDATA[<p class="note" title="Keywords">RedCap, 5G, NR</p>
+
+<ul id="markdown-toc">
+  <li><a href="#1-why-this-paper" id="markdown-toc-1-why-this-paper">1. Why this paper</a></li>
+  <li><a href="#2-summary-of-paper" id="markdown-toc-2-summary-of-paper">2. Summary of paper</a>    <ul>
+      <li><a href="#rel-17-standardization-work-on-redcap-ue" id="markdown-toc-rel-17-standardization-work-on-redcap-ue">REL-17 Standardization Work on RedCap UE</a>        <ul>
+          <li><a href="#a-use-case-specific-requirements" id="markdown-toc-a-use-case-specific-requirements">A. Use Case Specific Requirements</a></li>
+          <li><a href="#b-objectives-of-rel-17-w1-on-redcap-ue" id="markdown-toc-b-objectives-of-rel-17-w1-on-redcap-ue">B. Objectives of Rel-17 W1 on RedCap UE</a></li>
+        </ul>
+      </li>
+      <li><a href="#key-characteristics-and-analysis-for-rel-17-redcap-ue" id="markdown-toc-key-characteristics-and-analysis-for-rel-17-redcap-ue">Key Characteristics and Analysis for REL-17 RedCap UE</a>        <ul>
+          <li><a href="#a-reduced-redcap-ue-bandwidth" id="markdown-toc-a-reduced-redcap-ue-bandwidth">A. Reduced RedCap Ue Bandwidth</a></li>
+          <li><a href="#b-collison-resolutions-in-half-duplex-mode" id="markdown-toc-b-collison-resolutions-in-half-duplex-mode">B. Collison Resolutions in Half-duplex Mode</a></li>
+          <li><a href="#c-early-indication" id="markdown-toc-c-early-indication">C. Early Indication</a></li>
+          <li><a href="#d-energy-saving" id="markdown-toc-d-energy-saving">D. Energy Saving</a></li>
+        </ul>
+      </li>
+      <li><a href="#analysis-and-solutions-for-coexistence-problems" id="markdown-toc-analysis-and-solutions-for-coexistence-problems">Analysis and Solutions for Coexistence Problems</a></li>
+      <li><a href="#rel-18-redcap-ue-evolution" id="markdown-toc-rel-18-redcap-ue-evolution">Rel-18 RedCap UE Evolution</a></li>
+    </ul>
+  </li>
+  <li><a href="#3-take-away" id="markdown-toc-3-take-away">3. Take Away</a></li>
+</ul>
+
+<h1 id="1-why-this-paper">1. Why this paper</h1>
+<ul>
+  <li>Network Slicing 논문의 구성요소인 RedCap 조사</li>
+</ul>
+
+<h1 id="2-summary-of-paper">2. Summary of paper</h1>
+
+<h2 id="rel-17-standardization-work-on-redcap-ue">REL-17 Standardization Work on RedCap UE</h2>
+
+<p>본 파트에서는 Rel-17 RecCap UE의 요구사항을 설명한다.</p>
+
+<h3 id="a-use-case-specific-requirements">A. Use Case Specific Requirements</h3>
+
+<p>Rel-17 RedCap UE는 세 개의 main usecase가 정의되어 있다.</p>
+
+<ul>
+  <li>
+    <p>Industrial wireless sensors</p>
+  </li>
+  <li>Video surveillance</li>
+  <li>Smart wearable devices</li>
+</ul>
+
+<p><img src="/assets/img/blog/RedCap/Table1.png" alt="Table1" /></p>
+
+<h3 id="b-objectives-of-rel-17-w1-on-redcap-ue">B. Objectives of Rel-17 W1 on RedCap UE</h3>
+
+<ol>
+  <li>UE complexity reduction features</li>
+</ol>
+
+<ul>
+  <li><strong>UE bandwidth</strong>
+    <ul>
+      <li>Maximum UE 대역폭이 FR1에서 20MHz, FR2에서 100MHz로 감소</li>
+      <li>UE 대역폭을 감소시킨 RedCap UE와 normal UE의 coexistence가 특정 시나리오에서 system performance에 영향을 미칠 것임</li>
+    </ul>
+  </li>
+  <li><strong>Number of receiving antennas</strong>
+    <ul>
+      <li>최소한의 Rx 안테나수(1개)가 NR RedCap에서 허용됨</li>
+      <li>UE의 complexity가 감소될 것으로 예상</li>
+    </ul>
+  </li>
+  <li><strong>Number of DL MIMO Layers</strong>
+    <ul>
+      <li>1 Rx를 가지고 있는 RedCap UE에게 1 DL MIMO layer 지원</li>
+      <li>2 RX를 가지고 있는 RedCap UE는 2 DL MIMO layer 지원</li>
+    </ul>
+  </li>
+  <li><strong>Modulation order</strong>
+    <ul>
+      <li>FR1 DL에서 256QAM을 필수로 사용하는 것이 아닌 선택 사항으로 허용 (RedCap UE를 보다 유연하게 구현 가능)</li>
+    </ul>
+  </li>
+  <li><strong>Duplex mode</strong>
+    <ul>
+      <li>목표는 Rel-15/16의 기존 프로토콜을 활용하여 사양에 미치는 영향을 최소화 하는 것임</li>
+      <li>RedCap UE는 UL 및 DL 전송에 서로 다른 local oscillator를 활용함으로써 duplexing 프로세스를 효과적으로 관리하고 효율적인 통신을 보장함</li>
+    </ul>
+  </li>
+</ul>
+
+<p class="note">UE의 최대 bandwidth를 40MHz로 늘리는 의견이 나왔지만, 대역폭을 늘리면 폼 펙터의 크기가 커지기 떄문에 기각됨.</p>
+
+<ol>
+  <li>Higher layer supported features</li>
+</ol>
+
+<ul>
+  <li><strong>RedCap UE type</strong>
+    <ul>
+      <li>Rel-17에서 한가지의 RedCap UE 타입이 필수 UE capability와 RRC parameter들과 정의됨.</li>
+    </ul>
+  </li>
+  <li><strong>Early indication</strong>
+    <ul>
+      <li>Initial access procedure에서 Msg1과 Msg3을 통한 early indication이 지원됨.</li>
+    </ul>
+  </li>
+  <li><strong>DRX enhancement</strong>
+    <ul>
+      <li>DRC cycle이 확장되어 길어진 sleeping time과 energy saving을 달성함.</li>
+      <li>정확한 signaling procedure들과 자세한 구현들은 3GPP RAN2에 정의되어 있음.</li>
+    </ul>
+  </li>
+  <li><strong>RRM measurement relaxations</strong>
+    <ul>
+      <li>Rel-17 RRM measurement relaxation들은 RedCap UE의 requirement들을 맞추기 위해 추가 연구가 필요함.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="key-characteristics-and-analysis-for-rel-17-redcap-ue">Key Characteristics and Analysis for REL-17 RedCap UE</h2>
+
+<h3 id="a-reduced-redcap-ue-bandwidth">A. Reduced RedCap Ue Bandwidth</h3>
+
+<p>RedCap UE의 bandwidth capability는 complexity 감소를 위해 대폭 절감되었다.</p>
+
+<p>일반 UE와 RedCap UE가 공존할 때, 초기 UL/DL BWP가 RedCap UE의 대역폭보다 넓은 경우에 RACH 접속 기회나 최적의 SSB가 RedCap UE의 대역폭을 벗어나는 경우가 발생한다. 이로 인해 RedCap UE는 정상적인 네트워크 접속에 실패할 수 있다.</p>
+
+<p>Bandwidth 불일치로 인한 문제를 최소화하기 위해 여러 방법이 제안되고 연구되고 있다. 즉 RedCap UE가 제한된 대역폭 내에서도 효율적으로 작동할 수 있도록 하는 연구가 진행되고 있다.[3GPP TSG RAN1#108, R1-2202535, RAN1 agreements for Rel-17 NR
+RedCap[R], Ericsson, Nov.2021]</p>
+
+<ul>
+  <li><strong>Method 1: Up to gNB implementation</strong>
+    <ul>
+      <li>초기에 회사들이 gNB의 resource configuration에 적절한 제약들을 걸어 bnadwidth의 불일치를 막는 방법을 제안함.</li>
+      <li>필연적으로 RedCap UE와 일반 UE에게 performance loss를 가져옴.</li>
+    </ul>
+  </li>
+</ul>
+
+<p><img src="/assets/img/blog/RedCap/Figure1.png" alt="Figure1" /></p>
+
+<ul>
+  <li><strong>Method 2: Proper RF retuning for RedCap UE</strong>
+    <ul>
+      <li>RF retuning의 기본 아이디어는 frequency 포인트를 다른 frequency 포인트로 이동시키는 것임.
+        <ul>
+          <li>이동시키는 과정에서 약간의 delay가 발생함.</li>
+          <li>저지연이 필요한 RedCap UE에서 적절한 RF retuning을 쓰는 것이 중요함</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><strong>Method 3: Separate initial UL/DL BWPs for RedCap UE</strong>
+    <ul>
+      <li>가장 효과적인 방법은 initial UL/DL BWP와 RedCap UE의 BWP를 분리시키는 것임.</li>
+      <li>SSB와 전체 CORESET#0을 별도의 초기 DL BWP에 포함시킬지 여부, TDD에서 초기 UL 및 DL BWP의 중심 주파수가 다른 경우를 지원할지 여부 등 몇 가지 논란이 존재하였음
+        <ul>
+          <li>Rel-17에서 specification impact와 system performance 사이의 균형을 고려하여 최종적으로 내려짐.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p>TDD에서 UL과 DL의 BWP center frequeny는 동일하게 설정되어야 한다. Rel-17에서 TDD의 UL과 DL center frequency가 다르다는 직접적인 언급은 없지만 다르게 설정한다면 표준에 큰 영향을 미치고 구현 복잡도가 증가하기 때문에 center frequency가 같아야한다는 암묵적인 동의가 존재한다.</p>
+
+<p><img src="/assets/img/blog/RedCap/Figure2.png" alt="Figure2" /></p>
+
+<p>요약하면 RedCap UE의 flexibility를 위해 UL과 DL의 초기 BWP를 분리할 수 있지만, center frequency가 다른 경우 이를 해결하기 위해 적절한 retuning 절차를 사용해야 한다.</p>
+
+<p>Rel-17에서 논의 끝에 <code class="language-plaintext highlighter-rouge">Method 3</code>이 UE bandwidth mismatch를 해결하기 위한 방법으로 선정되었다.</p>
+
+<h3 id="b-collison-resolutions-in-half-duplex-mode">B. Collison Resolutions in Half-duplex Mode</h3>
+
+<p>HD-FDD는 크게 두 가지 모드, Type A와 Type B로 나눌 수 있다. 두 모드의 차이점은 UL과 DL에서 같은 local oscillator를 사용하는지 여부이다.</p>
+
+<ul>
+  <li>HD-FDD Type A
+    <ul>
+      <li>UL과 DL이 서로 다른 local oscillator를 사용함</li>
+      <li>UL과 DL의 switching이 빠름</li>
+    </ul>
+  </li>
+  <li>HD-FDD Type B
+    <ul>
+      <li>UL과 DL이 같은 local oscillator를 사용함</li>
+      <li>비용을 절감할 수 있지만 complexity 증가</li>
+    </ul>
+  </li>
+</ul>
+
+<p class="note">Rel-17 RedCap UE는 HD-FDD Type A를 지원하기로 합의함</p>
+
+<p>HD-FDD RedCap UE는 신호 송수신이 동시에 불가능하기 때문에 UL 송신과 DL 수신에 충돌이 발생할 수 있다.</p>
+
+<p>이를 해결하기 위해</p>
+<ol>
+  <li>gNB에 의핸 합리적인 scheduling 필요</li>
+  <li>표준에 최소한의 영향을 주는 송신 prioritiy들 정의</li>
+</ol>
+
+<p>가 필수적이다.</p>
+
+<p>충돌의 대표적인 예를 아래와 같이 정리할 수 있다.</p>
+
+<ul>
+  <li><em>Case 1: Collision due to direction switching</em>
+    <ul>
+      <li>UL과 DL이 HD-FDD Type A에서 direction switching을 하기 때문에 UL과 DL의 overlapping을 방지하기 위해 specific transition time이 필요하다.</li>
+    </ul>
+  </li>
+  <li><em>Case 2: Dynamically scheduled DL reception conflicts with semi-statically configured UL transmission</em>
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">partialCancellation</code>: UL symbol이 DL dynamically scheduled symbol과 overlap 되어 UL symbol의 전송이 취소될 수 있다.</li>
+    </ul>
+  </li>
+  <li><em>Case 3: Semi-statically configured DL reception conflicts with dynamically scheduled UL transmission</em>
+    <ul>
+      <li>동적으로 스케쥴링된 UL 송신이 semi-statically 하게 구성된 DL 수신보다 더 높은 우선순위를 가진다.</li>
+    </ul>
+  </li>
+  <li><em>Case 4: Configured SSB conflicts with UL transmission</em>
+    <ul>
+      <li>Initial access 시 SSB가 매우 중요하기 때문에, UL 송신 시 configured SSB를 전송하는 것에 높은 우선순위를 둔다.</li>
+    </ul>
+  </li>
+  <li><em>Case 5: Valid RO(RACH Occasion) conflicts with DL reception</em>
+    <ul>
+      <li>Valid RACH Occasio에 RedCap은 두 가지 선택을 할 수 있음.
+        <ol>
+          <li>Downlink symbol을 계속 수신</li>
+          <li>PRACH 자원을 사용해서 데이터를 전송</li>
+        </ol>
+      </li>
+      <li>이는 각각의 장비나 상황에 따라 결정됨</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="c-early-indication">C. Early Indication</h3>
+<p>RedCap UE의 early indication은 normal UE와 공존할 때 resource allocation에서 유용함. RedCap UE가 initial access 시 early identified 되면 적절한 scheduling이 시스템 성능을 개선하기 위해 이뤄질 수 있음.</p>
+
+<p>Early indication에 두가지 옵션이 존재함</p>
+
+<ul>
+  <li><strong>Early indication via Msg1</strong>
+    <ul>
+      <li>RedCap UE에 대한 초기 신호를 더 빨리 제공하기 위해, PRACH(Physical Random Access Channel) 자원을 별도로 설정하거나, PRACH preamble을 분할하는 방식을 적용할 수 있다.</li>
+      <li>이 방법은 강한 scalability와 simplicity를 가지고 있지만 PRACH resource overhead와 PRACH user capacity를 감소시키는 단점을 가지고 있다.</li>
+    </ul>
+  </li>
+  <li><strong>Early indication via Msg3</strong>
+    <ul>
+      <li>Msg1 기반 early indication의 supplement로 사용</li>
+      <li>이 방법은 네트워크의 커버리지 회복, Msg4의 link adaptation, 필요한 경우 Msgㅇ의 resource scheduling 등에서 더 나은 성능을 달성할 수 있게 도와준다.</li>
+      <li>Msg3에서 사용할 수 있는 여분의 비트 수는 매우 제한적이며 이를 사용하게 되면 네트워크와 터미널 장치의 complexity가 증가한다.
+        <ul>
+          <li>이를 해결하기 위해 3GPP에서는 LCID(Logical Channel Index)를 사용하여 Msg3 기반 early indication을 적용하기로 합의하였다.</li>
+        </ul>
+      </li>
+    </ul>
+
+    <h3 id="d-energy-saving">D. Energy Saving</h3>
+  </li>
+  <li>DRX enhancement
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">idle</code>과 <code class="language-plaintext highlighter-rouge">inactive</code> 상태에 있는 DRX cycle을 늘리는 것으로 고려중임.</li>
+    </ul>
+  </li>
+  <li>RRM measurement relaxation
+    <ul>
+      <li>RRM measurement 주기 늘리기, 측정 지표의 수 줄이기, 새로운 측정 기준을 도입하기 등</li>
+      <li>최소한의 RRM measurement를 사용하여 장치의 배터리 수명을 연장시킨다.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="analysis-and-solutions-for-coexistence-problems">Analysis and Solutions for Coexistence Problems</h2>
+
+<p>서로 다른 UE capability 때문에 early indication과 BWP configuration에서 coexistence 문제들이 발생할 수 있다. Early indication에서 특정 RedCap UE를 구분하는 문제가 있다.</p>
+
+<p>또한, Msg1과 Msg3을 이용한 합리적인 resource allocation이 추가적으로 논의되어야 한다.</p>
+
+<p><img src="/assets/img/blog/RedCap/Figure3.png" alt="Figure3" /></p>
+
+<p>일반 UE와 다양한 타입의 RedCap UE가 공존하는 상황에서 하나의 initial BWP로는 성능 저하가 발생할 수 있다. 이를 개선하기 위해 여러 개의 초기 BWP들을 지원하는 것이 필요하다.</p>
+
+<ol>
+  <li>Dedicated ROs
+    <ul>
+      <li>특정 UE나 서비스에 전용으로 할당된 Random Access 기회를 의미함</li>
+      <li>특정한 요구사항이 있는 통신(ex. 긴급 통신, 특수 장비 사용 등)을 위해 사용</li>
+      <li>Dedicated RO를 사용하면 해당 UE는 더 빠르고 확실한 네트워크 접속을 보장받을 수 있음</li>
+    </ul>
+  </li>
+  <li>Shared ROs
+    <ul>
+      <li>여러 UE가 공유하는 Random Access 기회를 의미함</li>
+      <li>ROs는 네트워크 자원을 여러 사용자가 공유하여 효율적으로 사용할 수 있게 한다.</li>
+      <li>Shared ROs는 네트워크 트래픽이 많은 시간대에 여러 사용자가 접속을 시도할 때 사용된다.</li>
+    </ul>
+  </li>
+</ol>
+
+<h2 id="rel-18-redcap-ue-evolution">Rel-18 RedCap UE Evolution</h2>
+<p>Rel-18 RedCap UE는 두개의 main 목표를 가지고 있다.</p>
+<ol>
+  <li>UE complexity와 비용 감소</li>
+  <li>DRX 메커니즘 강화</li>
+</ol>
+
+<p>위와 같은 문제들은 Rel-17 RedCap, Rel-18 RedCap, Normal UE가 공존하는 상황을 바탕으로 연구가 된다.</p>
+
+<h1 id="3-take-away">3. Take Away</h1>
+<ul>
+  <li>RedCap에 대한 지식</li>
+  <li>RedCap UE에서 추가로 연구될만한 분야(conflicts in resource allocation)</li>
+</ul>]]></content><author><name>Geon Kim</name><email>gun@khu.ac.kr</email></author><category term="paper" /><category term="tp" /><category term="stat" /><summary type="html"><![CDATA[**Authors**: Xiao Li, Xiaohang Xu, Chunlei Hu]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/blog/RedCap/RedCap.png" /><media:content medium="image" url="http://localhost:4000/assets/img/blog/RedCap/RedCap.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Forecasting at Scale</title><link href="http://localhost:4000/blog/paper/2024-06-10-Forecasting-at-Scale-copy/" rel="alternate" type="text/html" title="Forecasting at Scale" /><published>2024-06-10T00:00:00+09:00</published><updated>2024-06-10T00:00:00+09:00</updated><id>http://localhost:4000/blog/paper/Forecasting-at-Scale%20copy</id><content type="html" xml:base="http://localhost:4000/blog/paper/2024-06-10-Forecasting-at-Scale-copy/"><![CDATA[<p class="note" title="Keywords">Time Series, Statistical Practice, Nonlinear Regression</p>
 
 <ul id="markdown-toc">
   <li><a href="#1-why-this-paper" id="markdown-toc-1-why-this-paper">1. Why this paper</a></li>

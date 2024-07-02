@@ -1,0 +1,1206 @@
+<!DOCTYPE html>
+<html lang="en"><!--
+ __  __                __                                     __
+/\ \/\ \              /\ \             __                    /\ \
+\ \ \_\ \   __  __    \_\ \      __   /\_\      __       ___ \ \ \/'\
+ \ \  _  \ /\ \/\ \   /'_` \   /'__`\ \/\ \   /'__`\    /'___\\ \ , <
+  \ \ \ \ \\ \ \_\ \ /\ \L\ \ /\  __/  \ \ \ /\ \L\.\_ /\ \__/ \ \ \\`\
+   \ \_\ \_\\/`____ \\ \___,_\\ \____\ _\ \ \\ \__/.\_\\ \____\ \ \_\ \_\
+    \/_/\/_/ `/___/> \\/__,_ / \/____//\ \_\ \\/__/\/_/ \/____/  \/_/\/_/
+                /\___/                \ \____/
+                \/__/                  \/___/
+
+Powered by Hydejack v9.1.6 <https://hydejack.com/>
+-->
+
+
+
+
+
+
+
+<head>
+  
+
+
+
+
+  <meta name="robots" content="noindex">
+
+
+
+  
+    
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Toward Smaller and Lower-Cost 5G Devices with Longer Battery Life - An Overview of 3GPP Release 17 RedCap | Escape Diary</title>
+<meta name="generator" content="Jekyll v3.9.5" />
+<meta property="og:title" content="Toward Smaller and Lower-Cost 5G Devices with Longer Battery Life - An Overview of 3GPP Release 17 RedCap" />
+<meta name="author" content="Geon Kim" />
+<meta property="og:locale" content="en" />
+<meta name="description" content="Authors: Sandeep Narayanan Kadan Veedu et al." />
+<meta property="og:description" content="Authors: Sandeep Narayanan Kadan Veedu et al." />
+<link rel="canonical" href="http://localhost:4000/blog/paper/2024-07-01-Overview-of-3GPP-Release-17-RedCap/" />
+<meta property="og:url" content="http://localhost:4000/blog/paper/2024-07-01-Overview-of-3GPP-Release-17-RedCap/" />
+<meta property="og:site_name" content="Escape Diary" />
+<meta property="og:image" content="http://localhost:4000/assets/img/blog/RedCap/RedCap-Usecases.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2024-07-01T00:00:00+09:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="http://localhost:4000/assets/img/blog/RedCap/RedCap-Usecases.png" />
+<meta property="twitter:title" content="Toward Smaller and Lower-Cost 5G Devices with Longer Battery Life - An Overview of 3GPP Release 17 RedCap" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Geon Kim"},"dateModified":"2024-07-01T00:00:00+09:00","datePublished":"2024-07-01T00:00:00+09:00","description":"Authors: Sandeep Narayanan Kadan Veedu et al.","headline":"Toward Smaller and Lower-Cost 5G Devices with Longer Battery Life - An Overview of 3GPP Release 17 RedCap","image":"http://localhost:4000/assets/img/blog/RedCap/RedCap-Usecases.png","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/blog/paper/2024-07-01-Overview-of-3GPP-Release-17-RedCap/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/img/logo.png"},"name":"Geon Kim"},"url":"http://localhost:4000/blog/paper/2024-07-01-Overview-of-3GPP-Release-17-RedCap/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  
+
+  
+    <meta name="keywords" content="IT,6G,RAN,vlog,AI/ML">
+  
+
+
+
+  <meta name="theme-color" content="rgb(25,55,71)">
+
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Escape Diary">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+<meta name="application-name" content="Escape Diary">
+
+<meta name="generator" content="Hydejack v9.1.6" />
+
+
+<link rel="alternate" href="http://localhost:4000/blog/paper/2024-07-01-Overview-of-3GPP-Release-17-RedCap/" hreflang="en">
+
+<link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Escape Diary" />
+
+
+<link rel="shortcut icon"    href="/assets/icons/favicon.ico">
+<link rel="apple-touch-icon" href="/assets/icons/icon-192x192.png">
+
+<link rel="manifest" href="/assets/site.webmanifest">
+
+<link rel="dns-prefetch" href="https://fonts.googleapis.com"><link rel="dns-prefetch" href="https://fonts.gstatic.com">
+
+
+  <link rel="dns-prefetch" href="https://www.google-analytics.com">
+
+
+<link rel="preload" href="/assets/img/swipe.svg" as="image" id="_hrefSwipeSVG">
+
+<link rel="dns-prefetch" href="/assets/js/search-worker-9.1.6.js" as="worker" id="_hrefSearch">
+
+
+
+
+<link rel="dns-prefetch" href="https://alvinnote.disqus.com" id="_hrefDisqus">
+
+
+<script>!function(r,c){"use strict";function a(e,t,n,o){e.addEventListener?e.addEventListener(t,n,o):e.attachEvent?e.attachEvent("on"+t,n):e["on"+t]=n}r.loadJS=function(e,t){var n=c.createElement("script"),e=(n.src=e,t&&a(n,"load",t,{once:!0}),c.scripts[0]);return e.parentNode.insertBefore(n,e),n},r._loaded=!1,r.loadJSDeferred=function(e,t){var n=c.createElement("script");function o(){r._loaded=!0,t&&a(n,"load",t,{once:!0});var e=c.scripts[0];e.parentNode.insertBefore(n,e)}return n.src=e,r._loaded?o():a(r,"load",o,{once:!0}),n},r.setRel=r.setRelStylesheet=function(e){a(c.getElementById(e),"load",function(){this.rel="stylesheet"},{once:!0})}}(window,document);
+!function(a){"use strict";var b=function(b,c,d){function e(a){return h.body?a():void setTimeout(function(){e(a)})}function f(){i.addEventListener&&i.removeEventListener("load",f),i.media=d||"all"}var g,h=a.document,i=h.createElement("link");if(c)g=c;else{var j=(h.body||h.getElementsByTagName("head")[0]).childNodes;g=j[j.length-1]}var k=h.styleSheets;i.rel="stylesheet",i.href=b,i.media="only x",e(function(){g.parentNode.insertBefore(i,c?g:g.nextSibling)});var l=function(a){for(var b=i.href,c=k.length;c--;)if(k[c].href===b)return a();setTimeout(function(){l(a)})};return i.addEventListener&&i.addEventListener("load",f),i.onloadcssdefined=l,l(f),i};"undefined"!=typeof exports?exports.loadCSS=b:a.loadCSS=b}("undefined"!=typeof global?global:this);
+!function(a){if(a.loadCSS){var b=loadCSS.relpreload={};if(b.support=function(){try{return a.document.createElement("link").relList.supports("preload")}catch(b){return!1}},b.poly=function(){for(var b=a.document.getElementsByTagName("link"),c=0;c<b.length;c++){var d=b[c];"preload"===d.rel&&"style"===d.getAttribute("as")&&(a.loadCSS(d.href,d,d.getAttribute("media")),d.rel=null)}},!b.support()){b.poly();var c=a.setInterval(b.poly,300);a.addEventListener&&a.addEventListener("load",function(){b.poly(),a.clearInterval(c)}),a.attachEvent&&a.attachEvent("onload",function(){a.clearInterval(c)})}}}(this);
+!function(w) {
+  w._baseURL = '/';
+  w._publicPath = '/assets/js/';
+  w._noPushState = false;
+  w._noDrawer = false;
+  w._noNavbar = false;
+  w._noToc = false;
+  w._noSearch = false;
+  w._advertise = true;
+  w._search = {
+    DATA_URL: '/assets/sitedata.json?no-cache',
+    STORAGE_KEY: 'mini-search/',
+    INDEX_KEY: 'index--2024-07-02T19:46:17+09:00',
+  };
+  w._clapButton = true;
+}(window);</script>
+
+
+<script async src="/assets/bower_components/MathJax/es5/tex-mml-chtml.js" id="_MathJax"></script>
+
+
+<!--[if gt IE 8]><!---->
+
+  
+
+
+
+
+<link rel="stylesheet" href="/assets/css/hydejack-9.1.6.css" id="_stylePreload">
+<link rel="stylesheet" href="/assets/icomoon/style.css" id="_iconsPreload">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab:700%7CNoto+Sans:400,400i,700,700i&display=swap" id="_fontsPreload">
+
+
+
+  <style id="_pageStyle">
+
+html{--accent-color: rgb(79,177,186);--accent-color-faded: rgba(79,177,186,0.5);--accent-color-highlight: rgba(79,177,186,0.1);--accent-color-darkened: #409ba3;--theme-color: rgb(25,55,71);--dark-mode-body-bg: #2a2d2f;--dark-mode-border-color: #363a3d}
+
+</style>
+
+
+<!--<![endif]-->
+
+
+
+
+
+</head>
+
+<body class="no-break-layout">
+  
+<script>
+  window._sunrise = 6;
+  window._sunset =  18;
+  !function(e,s){var d="light-mode",o="dark-mode",a=(new Date).getHours();"matchMedia"in e&&e.matchMedia("(prefers-color-scheme)")||(e=(a=a<=e._sunrise||a>=e._sunset?o:d)==o?d:o,s.body.classList.add(a),s.body.classList.remove(e))}(window,document);
+
+</script>
+
+
+
+<hy-push-state
+  id="_pushState"
+  replace-selector="#_main"
+  link-selector="a[href]:not([href^='/assets/']):not(.external):not(.no-push-state)"
+  script-selector="script"
+  duration="500"
+  hashchange
+>
+  
+  
+  <div id="_navbar" class="navbar fixed-top">
+  <div class="content">
+    <span class="sr-only">Jump to:</span>
+    <div class="nav-btn-bar">
+      <a id="_menu" class="nav-btn no-hover" href="#_drawer--opened">
+        <span class="sr-only">Navigation</span>
+        <span class="icon-menu"></span>
+      </a>
+      <div class="nav-span"></div>
+    </div>
+  </div>
+</div>
+<hr class="sr-only" hidden />
+
+  <main
+  id="_main"
+  class="content layout-post"
+  role="main"
+>
+  <nav id="breadcrumbs" class="screen-only"><ul>
+  
+  
+    <li><a href="/">home</a></li>
+    
+      <li>
+        
+          <span>/</span>
+          
+          
+          <a href="/blog/">blog</a>
+        
+      </li>
+    
+      <li>
+        
+          <span>/</span>
+          
+          
+          <a href="/blog/paper/">paper</a>
+        
+      </li>
+    
+      <li>
+        
+          <span>/</span>
+          <span>2024-07-01-Overview-of-3GPP-Release-17-RedCap</span>
+        
+      </li>
+    
+  
+</ul></nav>
+  
+
+
+
+
+
+
+
+
+
+
+<article id="post-blog-paper-Overview-of-3GPP-Release-17-RedCap" class="page post mb6" role="article">
+  <header>
+    <h1 class="post-title flip-project-title">
+      
+        Toward Smaller and Lower-Cost 5G Devices with Longer Battery Life - An Overview of 3GPP Release 17 RedCap
+      
+    </h1>
+
+    <div class="post-date">
+      
+      <span class="ellipsis mr1">
+        <time datetime="2024-07-01T00:00:00+09:00">01 Jul 2024</time> in <a href="/blog/paper/" class="flip-title">Paper</a> on <a href="/tag-ieee/" class="flip-title">IEEE</a>
+      </span>
+      
+    </div>
+
+    
+    
+      
+        <div class="img-wrapper lead aspect-ratio sixteen-nine flip-project-img">
+          
+
+
+<img
+  
+    src="/assets/img/blog/RedCap/RedCap-Usecases.png"
+  
+  alt="Toward Smaller and Lower-Cost 5G Devices with Longer Battery Life - An Overview of 3GPP Release 17 RedCap"
+  
+  
+  width="864"
+  height="486"
+  loading="lazy"
+/>
+
+        </div>
+      
+      
+    
+
+    
+
+
+
+  
+    <p class="note-sm" >
+      <strong>Authors</strong>: Sandeep Narayanan Kadan Veedu et al.
+
+    </p>
+  
+
+
+  </header>
+
+  
+    <p class="note" title="Keywords">RedCap, 5G, NR</p>
+
+<ul id="markdown-toc">
+  <li><a href="#1-why-this-paper" id="markdown-toc-1-why-this-paper">1. Why this paper</a></li>
+  <li><a href="#2-summary-of-paper" id="markdown-toc-2-summary-of-paper">2. Summary of paper</a>    <ul>
+      <li><a href="#introduction" id="markdown-toc-introduction">Introduction</a></li>
+      <li><a href="#use-cases-and-requirements" id="markdown-toc-use-cases-and-requirements">Use Cases and Requirements</a></li>
+      <li><a href="#reduced-device-capabilities" id="markdown-toc-reduced-device-capabilities">Reduced Device Capabilities</a></li>
+      <li><a href="#battery-lifetime-enhancement" id="markdown-toc-battery-lifetime-enhancement">Battery Lifetime Enhancement</a>        <ul>
+          <li><a href="#a-extended-drx-for-rrc-idle-and-inactive-states" id="markdown-toc-a-extended-drx-for-rrc-idle-and-inactive-states">A. Extended DRX for RRC idle and inactive states</a></li>
+          <li><a href="#b-rrm-relaxation-for-stationary-devices" id="markdown-toc-b-rrm-relaxation-for-stationary-devices">B. RRM relaxation for stationary devices</a></li>
+        </ul>
+      </li>
+      <li><a href="#coexistence-coverage-and-capacity-impacts" id="markdown-toc-coexistence-coverage-and-capacity-impacts">Coexistence, coverage, and capacity impacts</a>        <ul>
+          <li><a href="#a-coexistence-with-other-nr-devices" id="markdown-toc-a-coexistence-with-other-nr-devices">A. Coexistence with other NR devices</a></li>
+          <li><a href="#b-coverage-impacts" id="markdown-toc-b-coverage-impacts">B. Coverage impacts</a></li>
+          <li><a href="#capacity-imapcts" id="markdown-toc-capacity-imapcts">Capacity imapcts</a></li>
+        </ul>
+      </li>
+      <li><a href="#conclusion" id="markdown-toc-conclusion">Conclusion</a></li>
+    </ul>
+  </li>
+  <li><a href="#3-take-away" id="markdown-toc-3-take-away">3. Take Away</a></li>
+</ul>
+
+<h1 id="1-why-this-paper">1. Why this paper</h1>
+<ul>
+  <li>3GPP Release 17에 정의되어 있는 RedCap 심층조사</li>
+  <li>RedCap을 포함한 RAN Simulator 개발에 필요</li>
+</ul>
+
+<hr />
+
+<h1 id="2-summary-of-paper">2. Summary of paper</h1>
+
+<h2 id="introduction">Introduction</h2>
+<ul>
+  <li>RedCap use cases는 wearables, industrial wireless sensors, 그리고 video surveillance를 포함한다.</li>
+  <li>이러한 use case들을 지원하기 위해, eMBB, URLLC, 그리고 mMTC 사이에 있는 use case들을 지원하기 위해 3GPP는 RedCap NR Device들을 정의하였다.</li>
+  <li>본 논문은 3GPP 표준 시점에서의 RedCap에 대한 overview를 제공한다.</li>
+</ul>
+
+<h2 id="use-cases-and-requirements">Use Cases and Requirements</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>Wearables</th>
+      <th>Industrial wireless sensors</th>
+      <th>Video surveillance</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Data rate</strong> (Reference bit rate)</td>
+      <td>5-50 Mbps in DL and 2-5 Mbps in UL*</td>
+      <td>2 Mbps</td>
+      <td>2-4 Mbps for economic video<br />7.5-25 Mbps for high-end video</td>
+    </tr>
+    <tr>
+      <td><strong>Latency</strong></td>
+      <td>-</td>
+      <td>100 ms</td>
+      <td>500 ms</td>
+    </tr>
+    <tr>
+      <td><strong>Availability/reliability</strong></td>
+      <td>-</td>
+      <td>99.99%</td>
+      <td>99%-99.9%</td>
+    </tr>
+    <tr>
+      <td><strong>Device battery lifetime</strong></td>
+      <td>At least few days and up to 1-2 weeks</td>
+      <td>At least few years</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td><strong>Traffic pattern</strong></td>
+      <td>-</td>
+      <td>UL heavy</td>
+      <td>UL heavy</td>
+    </tr>
+    <tr>
+      <td><strong>Stationarity</strong></td>
+      <td>Non-stationary</td>
+      <td>Stationary</td>
+      <td>Stationary</td>
+    </tr>
+  </tbody>
+</table>
+
+<p class="note">Peak bit rate for wearables can be up to 150 Mbps in DL and 50 Mbps in UL.</p>
+
+<p>명확하게 말하자면, data rate와 latency는 NR eMBB/URLLC 만큼 높지 않고, 요구 배터리 수명은 mMTC만큼 길지 않다.</p>
+
+<p>위의 세 가지 usecase들을 하나의 RedCap에서 지원하는 것이 바람직하다.</p>
+
+<p><img src="/assets/img/blog/RedCap2/Figure1.png" alt="Figure1" /></p>
+
+<p>RedCap은 TR 38.875에서 정의되어있다.</p>
+
+<h2 id="reduced-device-capabilities">Reduced Device Capabilities</h2>
+<p>Release 17 RedCa work item으로 다음과 같은 항목들이 정의되었다.</p>
+<ul>
+  <li>Reduction of maximum device bandwidth</li>
+  <li>Reduction of minimum antenna configuration at the device</li>
+  <li>Reduction of minimum supported number of DL MIMO layers</li>
+  <li>Relaxed maximum DL modulation order</li>
+  <li>Support for half-duplex operation in FDD bands</li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>FR1 bands</th>
+      <th>FR2 bands</th>
+      <th> </th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> </td>
+      <td>Reference device</td>
+      <td>RedCap device</td>
+      <td>Reference device</td>
+      <td>RedCap device</td>
+    </tr>
+    <tr>
+      <td>Maximum device bandwidth</td>
+      <td>100 MHz</td>
+      <td>20 MHz</td>
+      <td>200 MHz</td>
+      <td>100 MHz</td>
+    </tr>
+    <tr>
+      <td>Minimum antenna configuration¹</td>
+      <td>2 or 4 receiver branches</td>
+      <td>2 receiver branches</td>
+      <td>2 antenna panels, each supporting 4 dual polarized antenna elements</td>
+      <td>2 antenna panels, each supporting 4 dual polarized antenna elements</td>
+    </tr>
+    <tr>
+      <td>Minimum supported number of DL MIMO layers</td>
+      <td>2 or 4</td>
+      <td>1</td>
+      <td>2</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>Maximum DL modulation order</td>
+      <td>256QAM</td>
+      <td>64QAM</td>
+      <td>64QAM</td>
+      <td>64QAM</td>
+    </tr>
+    <tr>
+      <td>Duplex operation</td>
+      <td>TDD or full-duplex FDD</td>
+      <td>TDD or half-duplex FDD</td>
+      <td>TDD</td>
+      <td>TDD</td>
+    </tr>
+    <tr>
+      <td>Cost reduction</td>
+      <td>0%</td>
+      <td>~65%</td>
+      <td>0%</td>
+      <td>~50%</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>¹ In 3GPP the requirements on physical antenna implementation at the device are not specified for FR1 and FR2. However, the effective isotropic radiated power, the effective isotropic receiver sensitivity, and the spherical coverage requirements specified for different power classes in FR2 implicitly impose requirements on the actual antenna implementation. The minimum antenna configuration for the reference device indicated in this table assumes power class 3 [6]. Both NR devices and RedCap devices may support a different power class with different set of requirements. The reference device and RedCap device support the same minimum number of receiver branches in FR2.</p>
+
+<p>위의 표에 나열되어 있는 기능을 만족하면 상당한 비용 절감 효과를 얻을 수 있으며, 동시에 성능, 사양 및 공존(기기 간의 상호 간섭 등)에 미치는 영향은 관리 가능하다.</p>
+
+<p>하지만 RedCap UE는</p>
+<ol>
+  <li>FR1/FR2에서 20/100MHz 보다 넓은 주파수 대역</li>
+  <li>Carrier aggregation</li>
+  <li>Dual connectivity</li>
+  <li>2 device receiver/transmitter branches</li>
+  <li>2 DL/UL MIMO 레이어들</li>
+</ol>
+
+<p>을 사용할 수 없다.</p>
+
+<p>또한, Higher 레이어들에서의 제약사항들은 다음과 같다.</p>
+<ol>
+  <li>Data Radio Bearer(DRB) 수 감소: 기기가 필수적으로 지원해야 하는 DRB의 최대 수를 16개에서 8개로 감소</li>
+  <li>Sequence Number(SN) 길이 감소: PDU에서 PDCP 및 RLC 계층의 acknowledged 모드에 대한 SN 길이를 18비트에서 12비트로 감소</li>
+  <li>Automatic Neighbor Relation(ANR) 기능 비활성화: SON의 기능인 ANR 기능 지원이 필수 사항에서 제외</li>
+</ol>
+
+<h2 id="battery-lifetime-enhancement">Battery Lifetime Enhancement</h2>
+<p>아래의 기술들은 RedCap 기기에서 배터리 수명을 늘리기 위해 사용하는 기법들이다.</p>
+
+<h3 id="a-extended-drx-for-rrc-idle-and-inactive-states">A. Extended DRX for RRC idle and inactive states</h3>
+<p class="note">Discontinuous reception(DRX) mechanism: NR 릴리즈 15에서 소개되었고 디바이스가 inactive 기간에서 <code class="language-plaintext highlighter-rouge">sleep</code> 모드로 설정된다.</p>
+
+<p>일반적인 NR에서 DRX cycle의 최댓값은 2.56초이다. 하지만 RedCap use case에서는 eMBB/URLLC 만큼의 tight 혹은 deterministic한 latency 요구사항이 필요하지 않다.</p>
+
+<p>따라서 extended DRX(eDRX)에서는 10485.76초까지 RRC <code class="language-plaintext highlighter-rouge">idle state</code> 그리고 <code class="language-plaintext highlighter-rouge">inactive state</code>는 10.24초까지 정의되었다.</p>
+
+<p><img src="/assets/img/blog/RedCap2/Figure2.png" alt="Figure2" /></p>
+<ul>
+  <li>IAT: Inter-Arrival Times</li>
+</ul>
+
+<p>위의 그림은 다른 eDRX를 가지고 있을 때 battery 수명 증가를 그래프로 그린 것이다.</p>
+
+<h3 id="b-rrm-relaxation-for-stationary-devices">B. RRM relaxation for stationary devices</h3>
+<p><code class="language-plaintext highlighter-rouge">idle</code>과 <code class="language-plaintext highlighter-rouge">inactive</code>일 때 RSRP와 RSRQ에 기반한 RRM measurement는 serving cell과 neighbor cell들로부터 측정된다. 이러한 measurement들은 최적의 신호 quality를 달성하는데 도움은 되지만 데이터를 전송하지 않을 때 battery를 많이 소모하게 된다.</p>
+
+<p>Rel 16에서 low-mobility, not-at-cell-edge 시나리오에 대한 neighbor cell RRM measurements relaxation이 소개되었다.</p>
+
+<p>Rel 17에서는 네트워크가 RRC 연결 상태의 장치에 대해 RSRP/RSRQ 기반의 정지 조건을 추가로 구성할 수 있다. 디바이스는 네트워크에 이 조건이 만족할 때와 만족하지 않을 때를 보고해야 한다.</p>
+
+<h2 id="coexistence-coverage-and-capacity-impacts">Coexistence, coverage, and capacity impacts</h2>
+
+<h3 id="a-coexistence-with-other-nr-devices">A. Coexistence with other NR devices</h3>
+<p>RedCap과 다른 NR 디바이스간의 coexistence는 RedCap work item의 중요한 목표이다.
+Coexistence에 다음 두 가지 challenge들이 존재한다.</p>
+
+<ol>
+  <li>Identification of RedCap devices
+    <ul>
+      <li>NR 장치가 RedCap인지 여부는 Random Access 절차 완료 후 네트워크에 알려지므로, 초기에 모든 장치가 가장 최소한의 기능을 가진 것으로 간주하고 스케쥴링 해야 한다.</li>
+      <li>RedCap 장치는 기능이 축소된 장치이므로, 네트워크가 이 장치를 기준으로 스케쥴링하면 일반 NR 장치도 그에 맞춰 제한적으로 동작하게 된다.</li>
+      <li>이로 인해 네트워크 자원이 비효율적으로 사용된다.</li>
+      <li>해결책: 네트워크가 Random Access 절차 중 장치가 RedCap 장치인지 아닌지를 미리 알 수 있게하는 방법이 도입됨.
+        <ul>
+          <li>Message 1: RedCap 전용 PRACH 리소스가 셀에 구성된 경우</li>
+          <li>Message 3: Random access 절차에서 Common Control Channel(CCCH)에 RedCap 전용 논리 채널 ID 값을 포함</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Avoidance of PUSCH resource fragmentation
+<img src="/assets/img/blog/RedCap2/Figure3.png" alt="Figure3" /></li>
+</ol>
+
+<p>일반 NR 장치에 대해 구성된 initial BWP는 너무 넓을 수 있어 Release 17에서는 별도의 RedCap 전용 초기 UL 및 DL BWP 구성을 지원한다. 그러나 RedCap 전용 UL과 DL의 BWP가 carrier center frequency 근처에 배치되면, RedCap 장치의 POUCCH 전송이 다른 장치의 PUSCH 자원 단편화를 유발할 수 있다.</p>
+
+<p>이를 해결하기 위해 Release 17에서 RedCap 장치의 별도의 초기 UL BWP에서 PUCCH 주파수 호핑 비활성화를 지원하며, SSB 및 CORESET #0 없이 별도의 초기 DL BWP를 지원한다.</p>
+
+<p>BWP configuration 주요 사항</p>
+
+<ul>
+  <li>RedCap configuration 결정 요소
+    <ul>
+      <li>Carrier bandwidth</li>
+      <li>최대 데이터 속도 요구사항</li>
+      <li>장치 능력</li>
+      <li>트래픽 활동</li>
+    </ul>
+  </li>
+</ul>
+
+<p>이 요소들을 고려하여 네트워크는 RedCap 장치에 적합한 UL/DL BWP 위치를 결정할 수 있다.</p>
+
+<ul>
+  <li>신호 오버헤드 관점
+    <ul>
+      <li>RedCap과 일반 NR 장치 간에 BWP 구성을 공유하는 것이 바람직하다.
+        <ul>
+          <li>두 종류 장치 모두 동일한 BWP 설정을 사용하게 되어, 별도의 BWP 설정을 추가할 필요가 없다.</li>
+          <li>DL BWP 공유
+            <ul>
+              <li>RedCap 장치와 일반 NR 장치가 공유하는 DL BWP를 사용하면, 추가적인 BWP 설정이나 추가 SSB를 전송할 필요가 없다.
+                <ul>
+                  <li>SSB는 기지국과 장치 간의 초기 통신을 설정하는데 사용되는 신호로, 추가 SSB 전송이 필요 없으면 네트워크의 신호량이 줄어든다.</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p>위에서 설명한 개선 사항을 제외하고도 CSP가 SIB1에서 indication을 통해 RedCap 장치가 cell carrier에 접근하지 못할 수 있는 기능을 표준에서 정의하였다. 이는 네트워크 과부화 상황에서 셀 내 다른 NR 장치에 사용할 수 있는 무선 자원을 우선적으로 제공하거나, RedCap 장치의 접근이 다른 장치의 성능에 영향을 미칠 수 있다 의심되는 경우에 유용하다.</p>
+
+<h3 id="b-coverage-impacts">B. Coverage impacts</h3>
+
+<p>Reduced capabilities는 디바이스의 커버리지에 영향을 미칠 수 있다. 안테나 사이즈와 대역폭의 감소가 coverage에 가장 큰 영향을 미치게 된다. Coverage에 미치는 영향을 평가하는 것도 study item 중 하나이다. 평가는 link budget analysis를 통해 이루어진다.</p>
+
+<p>Message 1 (PRACH), Message 2 (PDSCH), Message 3 (PUSCH), and Message 4 (PDSCH), PUCCH, and the PDCCH scheduling Message 2/4 on common search space 모두 link budget analysis에 포함된다. 또한 analysis는 시골이나 도심지역에서 FR1, FR2를 가정한 다양한 환경에서 진행된다.</p>
+
+<p>Link budget analysis에서 사용되는 metric</p>
+<ul>
+  <li>Maximum Isotropic Loss (MIL): 기지국과 디바이스에서의 path loss와 beamforming gain을 포착</li>
+</ul>
+
+<p>만약 reference device의 lowest MIL보다 RedCap 디바이스의 MIL이 낮다면 coverage recovery가 상응하는 channel에 필요하다.이 때, Reference device의 lowerst MIL과 RedCap 디바이스의 MIL 차이만큼 coverage recovery가 필요하다.</p>
+
+<p>Link budget analysis 결과는 다음과 같이 요악할 수 있다.</p>
+<ul>
+  <li>UL(FR1 &amp; FR2)
+    <ul>
+      <li>FR1과 FR2의 UL에서 coverage recovery 필요없음</li>
+    </ul>
+  </li>
+  <li>DL (FR1)
+    <ul>
+      <li>Urban micro 시나리오
+        <ul>
+          <li>RedCap 장치가 1개의 수신기 branch(antenna)를 가진 경우 Message 2에 대해 커버리지 회복 필요</li>
+          <li>2개의 수신기 브랜치를 가진 경우 커버리지 회복이 필요하지 않음</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>DL (FR2)
+    <ul>
+      <li>Coverage 회복 필요 여부는 RedCap 및 참조 장치의 maximum transmitted radiated power(TRP) 선택에 따라 다름</li>
+      <li>TRP 23 dBm 가정 시:
+        <ul>
+          <li>Message 2, Message 4, PDSCH와 같은 일부 DL 채널에 대해 커버리지 회복 필요</li>
+        </ul>
+      </li>
+      <li>TRP 12 dBM 가정 시:
+        <ul>
+          <li>DL 채널에 대해 커버리지 회복 필요하지 않음</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p>이 때 커버리지 회복에 대해 쓰이는 기술은 Rel 15/16에서 쓰이는 기술들을 최대한 활용한다.</p>
+
+<h3 id="capacity-imapcts">Capacity imapcts</h3>
+<p>RedCap 기기의 lower capability는 시스템 성능에 악영향을 준다. 이를 평가하기 위해 3GPP에서 SLS를 수행하였다.
+<img src="/assets/img/blog/RedCap2/Figure4.png" alt="Figure4" /></p>
+
+<p>Figure 4는 FR1에서 1개의 수신기 branch를 가진 RedCap 장치의 비율이 증가하는 경우(0% - 90%)에 따른 셀 load에 대한 eMBB 사용자들의 DL 사용자 처리량을 보여준다.</p>
+
+<p>그림에서 볼 수 있듯이 채널 상태가 좋은 eMBB 유저들은 RedCap 유저들이 증가해도 크게 영향을 받지 않는다. 중간에 있는 유저들은 RedCap 유저들이 증가할수록 throughput이 감소하는 것을 확인할 수 있다. 이는 RedCap 장치가 스펙트럼 효율이 낮아 주어진 load에서 더 많은 자원을 사용하기 때문이다.</p>
+
+<ul>
+  <li>트래픽 모델링
+    <ul>
+      <li>eMBB users: \(2 * 10^7\) bit/s (200ms 마다 0.5MB 전송)</li>
+      <li>RedCap users: \(4 * 10^5\) bit.s (2초마다 0.1MB 전송)</li>
+      <li>RedCap user의 부하는 eMBB 사용자의 부하보다 50배 낮음</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="conclusion">Conclusion</h2>
+<p>본 논문은 3GPP 표준에서 어떻게 RedCap을 디자인하는지에 대한 overview를 제공하고 있다. 또한 RedCap과 다른 NR 디바이스들의 coexistence를 어떻게 표준이 실현시켰는지 보여주고 있다. 또한 Release 18의 RedCap도 Release 17 기반으로 강화될 것으로 예상한다. RedCap의 발전으로 Release 17 usecase에 대해 향상된 지원을 제공할 뿐 아니라, smart grid와 같은 새로운 usecase 세그먼트로의 확장을 지원할 수 있다.</p>
+
+<h1 id="3-take-away">3. Take Away</h1>
+<ul>
+  <li>Simulator 구성 시 필요한 metric</li>
+  <li>RedCap이 프로토콜이 아닌 device의 한 종류란 것</li>
+</ul>
+
+  
+</article>
+
+
+
+  <hr class="dingbat related mb6" />
+
+
+
+
+
+
+  
+     
+
+
+  <aside class="about related mt4 mb4" role="complementary">
+    
+    
+
+<div class="author mt4">
+  
+
+  
+    
+
+
+<img
+  
+    src="/assets/img/author.jpeg"
+    srcset="/assets/img/author.jpeg 1x,/assets/img/author.jpeg 2x"
+    
+  
+  alt="Geon Kim"
+  class="avatar"
+  
+  width="120"
+  height="120"
+  loading="lazy"
+/>
+
+  
+
+  
+  
+  <h2  class="page-title hr-bottom">
+    About
+  </h2>
+
+  <p>From the master’s program to the PhD program, there were many moments during my time in post-graduate school when I wanted to escape.</p>
+
+<p>However, it seems to have been the most significant turning point in my life.</p>
+
+<p>Enjoy reading :)</p>
+
+
+  <div class="sidebar-social">
+    <span class="sr-only">Social:</span>
+<ul>
+  
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://github.com/41vin" title="GitHub" class="no-mark-external">
+      <span class="icon-github"></span>
+      <span class="sr-only">GitHub</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://www.youtube.com/channel/UClv7hh6WL_rMNAQ4iLevELw" title="YouTube" class="no-mark-external">
+      <span class="icon-youtube"></span>
+      <span class="sr-only">YouTube</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://www.linkedin.com/in/41vin" title="LinkedIn" class="no-mark-external">
+      <span class="icon-linkedin2"></span>
+      <span class="sr-only">LinkedIn</span>
+    </a>
+  </li>
+
+
+    
+  
+</ul>
+
+  </div>
+</div>
+
+  </aside>
+
+
+  
+
+  
+    
+
+
+  
+
+  
+    
+
+
+  <aside class="other-projects related mb0" role="complementary">  <h2>Related Posts</h2>  <div class="columns">          <div class="column column-1-2">                  <article class="project-card">  <a href="/blog/paper/2024-06-28-Research-on-5G-RedCap-Standard-and-Key-copy/" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine flip-project-img">              <img      src="/assets/img/blog/RedCap/RedCap.png"    alt="Research on 5G RedCap Standard and Key Technologies"      width="864"  height="486"  loading="lazy"/>          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/blog/paper/2024-06-28-Research-on-5G-RedCap-Standard-and-Key-copy/" class="flip-title">Research on 5G RedCap Standard and Key Technologies</a>  </h3>      <p class="project-card-text fine" property="disambiguatingDescription">      <strong>Authors</strong>: Xiao Li, Xiaohang Xu, Chunlei Hu    </p>      <a class="fill-card no-hover" href="/blog/paper/2024-06-28-Research-on-5G-RedCap-Standard-and-Key-copy/" tabindex="-1"><span class="sr-only">Continue reading Research on 5G RedCap Standard and Key Technologies</span></a></article>              </div>          <div class="column column-1-2">                  <article class="project-card">  <a href="/blog/paper/2024-06-10-Forecasting-at-Scale-copy/" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine flip-project-img">              <img      src="/assets/img/blog/prophet/prophet_logo.webp"    alt="Forecasting at Scale"      width="864"  height="486"  loading="lazy"/>          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/blog/paper/2024-06-10-Forecasting-at-Scale-copy/" class="flip-title">Forecasting at Scale</a>  </h3>      <p class="project-card-text fine" property="disambiguatingDescription">      <strong>Authors</strong>: Attai Ibrahim Abubakar, Hichael S. Mollel, Metin Ozturk, Sajjad Hussain, and Muhammad Ali Imran    </p>      <a class="fill-card no-hover" href="/blog/paper/2024-06-10-Forecasting-at-Scale-copy/" tabindex="-1"><span class="sr-only">Continue reading Forecasting at Scale</span></a></article>              </div>      </div></aside>
+
+  
+
+  
+    
+
+
+  <aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Random Posts</h2>  <ul class="related-posts">          <li class="h4">  <a href="/blog/paper/2024-06-10-Forecasting-at-Scale-copy/" class="flip-title"><span>Forecasting at Scale</span></a>  <time class="faded fine" datetime="2024-06-10T00:00:00+09:00">10 Jun 2024</time></li>          <li class="h4">  <a href="/blog/paper/2024-05-28-OpenRAN-Gym/" class="flip-title"><span>OpenRAN Gym- AI/ML Development, Data Collection, and Testing for O-RAN on PAWR Platforms</span></a>  <time class="faded fine" datetime="2024-05-28T00:00:00+09:00">28 May 2024</time></li>          <li class="h4">  <a href="/blog/paper/2024-06-04-lightweight-cell-switching/" class="flip-title"><span>A Lightweight Cell Switching and Traffic Offloading Scheme for Energy Optimization in Ultra-Dense Heterogeneous Netweorks</span></a>  <time class="faded fine" datetime="2024-06-04T00:00:00+09:00">04 Jun 2024</time></li>      </ul></aside>
+
+  
+
+  
+    
+
+  
+
+
+  
+<footer class="content" role="contentinfo">
+  <hr/>
+  
+    <p><small class="copyright">© 2021. All rights reserved.
+</small></p>
+  
+  
+    <nav class="legal"><small>
+    
+      
+      <a class="heading flip-title" href="/LICENSE/">LICENSE</a>
+      |
+    
+      
+      <a class="heading flip-title" href="/NOTICE/">NOTICE</a>
+      |
+    
+      
+      <a class="heading flip-title" href="/CHANGELOG/">CHANGELOG</a>
+      
+    
+    </small></nav>
+  
+  
+    <p><small>Powered by <a class="external" href="https://hydejack.com/">Hydejack</a> v<span id="_version">9.1.6</span></small></p>
+  
+  <hr class="sr-only"/>
+</footer>
+
+
+</main>
+
+  <hy-drawer
+  id="_drawer"
+  class=""
+  side="left"
+  threshold="10"
+  noscroll
+  
+>
+  <header id="_sidebar" class="sidebar" role="banner">
+    
+
+
+
+
+<div class="sidebar-bg sidebar-overlay" style="background-color:rgb(25,55,71);background-image:url(/assets/img/sidebar-bg.jpg)"></div>
+
+    <div class="sidebar-sticky">
+  <div class="sidebar-about">
+    
+      <a class="no-hover" href="/" tabindex="-1">
+        <img src="/assets/img/logo.png" class="avatar" alt="Escape Diary" width="120" height="120" loading="lazy" />
+      </a>
+    
+    <a class="sidebar-title" href="/"><h2 class="h1">Escape Diary</h2></a>
+    
+    
+      <p class="">
+        Standing on the shoulders of giants
+
+      </p>
+    
+  </div>
+
+  <nav class="sidebar-nav heading" role="navigation">
+    <span class="sr-only">Navigation:</span>
+<ul>
+  
+    
+      
+      <li>
+        <a
+          id="_drawer--opened"
+          href="/blog/"
+          class="sidebar-nav-item "
+          
+        >
+          Blog
+        </a>
+      </li>
+    
+      
+      <li>
+        <a
+          
+          href="/projects/"
+          class="sidebar-nav-item "
+          
+        >
+          Projects
+        </a>
+      </li>
+    
+      
+      <li>
+        <a
+          
+          href="/resume/"
+          class="sidebar-nav-item "
+          
+        >
+          Biography
+        </a>
+      </li>
+    
+      
+      <li>
+        <a
+          
+          href="/docs/"
+          class="sidebar-nav-item "
+          
+        >
+          Docs
+        </a>
+      </li>
+    
+  
+</ul>
+
+  </nav>
+
+  
+  <div class="sidebar-social">
+    <span class="sr-only">Social:</span>
+<ul>
+  
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://github.com/41vin" title="GitHub" class="no-mark-external">
+      <span class="icon-github"></span>
+      <span class="sr-only">GitHub</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://www.youtube.com/channel/UClv7hh6WL_rMNAQ4iLevELw" title="YouTube" class="no-mark-external">
+      <span class="icon-youtube"></span>
+      <span class="sr-only">YouTube</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://www.linkedin.com/in/41vin" title="LinkedIn" class="no-mark-external">
+      <span class="icon-linkedin2"></span>
+      <span class="sr-only">LinkedIn</span>
+    </a>
+  </li>
+
+
+    
+  
+</ul>
+
+  </div>
+</div>
+  </header>
+</hy-drawer>
+<hr class="sr-only" hidden />
+
+</hy-push-state>
+
+
+  <!--[if gt IE 10]><!---->
+  <script nomodule>!function(){var t,n=document.createElement("script");!("noModule"in n)&&"onbeforeload"in n&&(t=!1,document.addEventListener("beforeload",function(e){if(e.target===n)t=!0;else if(!e.target.hasAttribute("nomodule")||!t)return;e.preventDefault()},!0),n.type="module",n.src=".",document.head.appendChild(n),n.remove())}();
+</script>
+  <script src="/assets/js/hydejack-9.1.6.js" type="module"></script>
+  <script src="/assets/js/LEGACY-hydejack-9.1.6.js" nomodule defer></script>
+  
+
+  
+  <script>!function(w, d) {
+    w.ga=w.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+
+    /**/
+      if (navigator.CookiesOK) {
+        ga('create', 'G-Y3JQ64LC5Z', 'auto');
+      } else if (d.cookie.indexOf("hy--cookies-ok=true") > -1) {
+        ga('create', 'G-Y3JQ64LC5Z', {
+          'storage': 'none',
+          'clientId': localStorage ? localStorage.getItem('ga--client-id') : undefined
+        });
+      } else {
+        ga('create', 'G-Y3JQ64LC5Z', {
+          'storage': 'none'
+        });
+        ga('set', 'forceSSL', true);
+        ga('set', 'anonymizeIp', true);
+      }
+    /**/
+
+    var pushStateEl = d.getElementById('_pushState');
+    var timeoutId;
+    pushStateEl.addEventListener('hy-push-state-load', function() {
+      w.clearTimeout(timeoutId);
+      timeoutId = w.setTimeout(function() {
+        ga('set', 'page', w.location.pathname);
+        ga('send', 'pageview');
+      }, 500);
+    });
+
+    d.addEventListener('hy--cookies-ok', function () {
+      w.ga(function(tracker) {
+        w.ga("set", "anonymizeIp", undefined);
+        localStorage && localStorage.setItem("ga--client-id", tracker.get("clientId"));
+      });
+    });
+
+    w.loadJSDeferred('https://www.google-analytics.com/analytics.js');
+  }(window, document);</script>
+
+
+  <script type="module">
+    if ('serviceWorker' in navigator) {
+      /**/
+      navigator.serviceWorker.getRegistration()
+        .then(r => r.unregister())
+        .catch(() => {});
+      /**/
+    }
+  </script>
+<!--<![endif]-->
+  
+
+
+
+<div hidden>
+  
+  <h2 class="sr-only">Templates (for web app):</h2>
+
+  <template id="_animation-template">
+  <div class="animation-main fixed-top">
+    <nav id="breadcrumbs" class="screen-only"><ul>
+  
+  
+</ul></nav>
+    <div class="content">
+      <div class="page"></div>
+    </div>
+  </div>
+</template>
+
+  <template id="_loading-template">
+  <div class="loading nav-btn fr">
+    <span class="sr-only">Loading…</span>
+    <span class="icon-cog"></span>
+  </div>
+</template>
+
+  <template id="_error-template">
+  <div class="page">
+    <h1 class="page-title">Error</h1>
+    
+    
+    <p class="lead">
+      Sorry, an error occurred while loading <a class="this-link" href=""></a>.
+
+    </p>
+  </div>
+</template>
+
+  <template id="_permalink-template">
+  <a href="#" class="permalink">
+    <span class="sr-only">Permalink</span>
+    <span class="content-hash"></span>
+  </a>
+</template>
+
+  
+    <template id="_cookies-banner-template">
+  <div id="_cookies-banner" class="navbar fixed-bottom CookiesOK">
+    <div class="content">
+      <div class="nav-btn-bar">
+        <small class="faded">
+          <span>블로그 개편 중입니다. 조금만 기다려주세요 :) <a href="/cookies-policy/">Markdo n allo ed</a>!
+</span>
+          <button id="_cookies-ok" class="btn btn-primary btn-sm">Okay</button>
+        </small>
+      </div>
+    </div>
+  </div>
+</template>
+
+  
+  
+    <template id="_dark-mode-template">
+  <button id="_dark-mode" class="nav-btn no-hover" >
+    <span class="sr-only">Dark Mode</span>
+    <span class="icon-brightness-contrast"></span>
+  </button>
+</template>
+
+  
+  
+    <template id="_search-template">
+  <button id="_search" class="nav-btn no-hover">
+    <label class="sr-only" for="_search-input">Search</label>
+    <span class="icon-search"></span>
+  </button>
+  <div id="_search-box">
+    <div class="nav-btn">
+      <span class="icon-search"></span>
+    </div>
+    <input 
+      id="_search-input"
+      type="search"
+      class="form-control form-control-lg nav-btn"
+      placeholder="Build with JEKYLL_ENV=production to enable search."
+    />
+    <button type="reset" class="nav-btn no-hover">
+      <span class="sr-only">Close</span>
+      <span class="icon-cross"></span>
+    </button>
+  </div>
+  <div id="_hits"></div>
+</template>
+
+  
+</div>
+
+</body>
+</html>
