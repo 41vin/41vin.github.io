@@ -1,5 +1,82 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="3.9.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en" /><updated>2024-07-02T19:46:17+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Escape Diary</title><subtitle>From the master's program to the doctoral program, there were many moments during my time in post-graduate school when I wanted to escape. However, it seems to have been the most significant turning point in my life. Enjoy reading :)
-</subtitle><author><name>Geon Kim</name><email>gun@khu.ac.kr</email></author><entry><title type="html">Toward Smaller and Lower-Cost 5G Devices with Longer Battery Life - An Overview of 3GPP Release 17 RedCap</title><link href="http://localhost:4000/blog/paper/2024-07-01-Overview-of-3GPP-Release-17-RedCap/" rel="alternate" type="text/html" title="Toward Smaller and Lower-Cost 5G Devices with Longer Battery Life - An Overview of 3GPP Release 17 RedCap" /><published>2024-07-01T00:00:00+09:00</published><updated>2024-07-01T00:00:00+09:00</updated><id>http://localhost:4000/blog/paper/Overview-of-3GPP-Release-17-RedCap</id><content type="html" xml:base="http://localhost:4000/blog/paper/2024-07-01-Overview-of-3GPP-Release-17-RedCap/"><![CDATA[<p class="note" title="Keywords">RedCap, 5G, NR</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="3.9.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en" /><updated>2024-07-04T17:15:03+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Escape Diary</title><subtitle>From the master's program to the doctoral program, there were many moments during my time in post-graduate school when I wanted to escape. However, it seems to have been the most significant turning point in my life. Enjoy reading :)
+</subtitle><author><name>Geon Kim</name><email>gun@khu.ac.kr</email></author><entry><title type="html">Intent-Aware Radio Resource Scheduling in a RAN Slicing Scenario Using Reinforcement Learning</title><link href="http://localhost:4000/blog/paper/2024-07-03-Intent-Aware-Radio-Resource-Scheduling-in-a-RAN-Slicing-Scenario-Using-Reinforcement-Learning/" rel="alternate" type="text/html" title="Intent-Aware Radio Resource Scheduling in a RAN Slicing Scenario Using Reinforcement Learning" /><published>2024-07-03T00:00:00+09:00</published><updated>2024-07-03T00:00:00+09:00</updated><id>http://localhost:4000/blog/paper/Intent-Aware-Radio-Resource-Scheduling-in-a-RAN-Slicing-Scenario-Using-Reinforcement-Learning</id><content type="html" xml:base="http://localhost:4000/blog/paper/2024-07-03-Intent-Aware-Radio-Resource-Scheduling-in-a-RAN-Slicing-Scenario-Using-Reinforcement-Learning/"><![CDATA[<p class="note" title="Keywords">Radio resource scheduling, RAN slicing, intent-aware sheduling, reinforcement learning</p>
+
+<ul id="markdown-toc">
+  <li><a href="#1-why-this-paper" id="markdown-toc-1-why-this-paper">1. Why this paper</a></li>
+  <li><a href="#2-summary-of-paper" id="markdown-toc-2-summary-of-paper">2. Summary of paper</a>    <ul>
+      <li><a href="#21-introduction" id="markdown-toc-21-introduction">2.1 Introduction</a></li>
+    </ul>
+  </li>
+  <li><a href="#3-take-away" id="markdown-toc-3-take-away">3. Take Away</a></li>
+</ul>
+
+<h1 id="1-why-this-paper">1. Why this paper</h1>
+<ul>
+  <li>머신러닝을 활용한 RAN Slicing 프레임워크 이해</li>
+  <li><code class="language-plaintext highlighter-rouge">Intent-driven</code> 개념 설명</li>
+  <li>Simulation 코드가 존재함</li>
+</ul>
+
+<hr />
+
+<h1 id="2-summary-of-paper">2. Summary of paper</h1>
+
+<h2 id="21-introduction">2.1 Introduction</h2>
+
+<p>5G 시스템은 서로 다른 <code class="language-plaintext highlighter-rouge">network slice</code>의 구성과 구조를 slice들의 요구에 맞춰 배치할 수 있고 기능들을 online으로 바꿀 수 있다.</p>
+
+<p class="note">End-to-end network slicing: RAN + Transport network + Core network</p>
+
+<ul>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">inter-slice scheduling</code>: <code class="language-plaintext highlighter-rouge">RAN slicing</code>의 기능 중 하나는 slice 인스턴스들간의 무선 자원들을 배치하는 Radio Resource Scheduling(RRS)를 배포하는 것이다.</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">intra-slice scheduling</code>: 다른 RRS는 slice 인스턴스 내에 있는 자원들을 담당한다.</p>
+  </li>
+</ul>
+
+<p>위에서 설명한 inter, intra-slice RRS scheduler들은 반드시 slice들의 intent들을 만족시키며 무선 자원을 분산시켜야 한다.</p>
+
+<p>새로운 RRS는 아래의 조건들을 만족시켜야 한다.</p>
+
+<ol>
+  <li>서로 다른 slice 종류들의 다른 요구사항들을 만족시킬 것</li>
+  <li>각 slice에 충분한 무선 자원을 제공하여 네트워크 intent를 만족시킬 것</li>
+  <li>모든 slice들의 요구사항을 만족시킬만큼의 무선 자원이 없을 때, 가장 중요한 slice intent를 우선시할 것</li>
+</ol>
+
+<p>RAN은 데이터가 풍부한 환경을 가지고 있기 때문에 <code class="language-plaintext highlighter-rouge">data-driven</code> 접근법이 큰 각광을 받고 있다. 특히, 강화학습은 환경에 상관없이 유연한 결정을 정책을 실현시킬 수 있어 큰 주목을 받고 있다.</p>
+
+<p>알고리즘만큼 중요한 것이 <code class="language-plaintext highlighter-rouge">Autonomous RRS system</code>이다. <code class="language-plaintext highlighter-rouge">Autonomous RRS system</code>은 서로 다른 slice들로부터의 요구사항들을 만족시킬 수 있다. 특히 본 논문은 <code class="language-plaintext highlighter-rouge">TM Forum</code>에서 정의한 네트워크 요구사항들을 이용해 intent를 구체화시키고 있다.</p>
+
+<p>RRS는 다른 슬라이스 intent들을 받고 네트워크가 이 intent들을 만족시킬 수 있게 변화시켜야 한다.</p>
+
+<p class="note">본 논문은 강화학습을 사용한 RAN slicing을 위한 intent-aware RRS를 제안하고 있다. 이 RRS는 서로 다른 slice 종류들과 QoS intent(throughput, latency, 그리고 packet loss rate에 기반한)를 사용한다.</p>
+
+<p>저자가 제안하는 방법을 크게 나눠보면</p>
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">inter-slice</code> allocation: RL agent</li>
+  <li><code class="language-plaintext highlighter-rouge">intra-slice</code> allocation: RRS가 <code class="language-plaintext highlighter-rouge">round-robin</code> 스케쥴러를 이용</li>
+</ol>
+
+<p>으로 정리할 수 있다.</p>
+
+<p>RL agent는</p>
+<ol>
+  <li>slice들의 intent들을 만족시킬 수 있는 RRS의 action들</li>
+  <li>SLA에 정의되어 있는 weight들에 따라 slice intent의 priority를</li>
+</ol>
+
+<p>학습한다.</p>
+
+<hr />
+
+<h1 id="3-take-away">3. Take Away</h1>
+
+<ul>
+  <li>논문에서 사용한 채널 시뮬레이터 <code class="language-plaintext highlighter-rouge">QuaDRiGa</code> 대신 ns-3로 구현해보기</li>
+</ul>]]></content><author><name>Geon Kim</name><email>gun@khu.ac.kr</email></author><category term="paper" /><category term="ieee" /><summary type="html"><![CDATA[**Authors**: Sihem Bakri et al.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/blog/ran-slicing/RAN-AI.png" /><media:content medium="image" url="http://localhost:4000/assets/img/blog/ran-slicing/RAN-AI.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Toward Smaller and Lower-Cost 5G Devices with Longer Battery Life - An Overview of 3GPP Release 17 RedCap</title><link href="http://localhost:4000/blog/paper/2024-07-01-Overview-of-3GPP-Release-17-RedCap-copy/" rel="alternate" type="text/html" title="Toward Smaller and Lower-Cost 5G Devices with Longer Battery Life - An Overview of 3GPP Release 17 RedCap" /><published>2024-07-01T00:00:00+09:00</published><updated>2024-07-01T00:00:00+09:00</updated><id>http://localhost:4000/blog/paper/Overview-of-3GPP-Release-17-RedCap%20copy</id><content type="html" xml:base="http://localhost:4000/blog/paper/2024-07-01-Overview-of-3GPP-Release-17-RedCap-copy/"><![CDATA[<p class="note" title="Keywords">RedCap, 5G, NR</p>
 
 <ul id="markdown-toc">
   <li><a href="#1-why-this-paper" id="markdown-toc-1-why-this-paper">1. Why this paper</a></li>

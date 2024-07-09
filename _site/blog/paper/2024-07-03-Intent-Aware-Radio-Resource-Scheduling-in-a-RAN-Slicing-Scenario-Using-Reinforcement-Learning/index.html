@@ -25,26 +25,31 @@ Powered by Hydejack v9.1.6 <https://hydejack.com/>
 
 
 
+  <meta name="robots" content="noindex">
+
 
 
   
     
 <!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>How to generate new metrics | Escape Diary</title>
+<title>Intent-Aware Radio Resource Scheduling in a RAN Slicing Scenario Using Reinforcement Learning | Escape Diary</title>
 <meta name="generator" content="Jekyll v3.9.5" />
-<meta property="og:title" content="How to generate new metrics" />
+<meta property="og:title" content="Intent-Aware Radio Resource Scheduling in a RAN Slicing Scenario Using Reinforcement Learning" />
 <meta name="author" content="Geon Kim" />
 <meta property="og:locale" content="en" />
-<meta name="description" content="From the master’s program to the doctoral program, there were many moments during my time in post-graduate school when I wanted to escape. However, it seems to have been the most significant turning point in my life. Enjoy reading :)" />
-<meta property="og:description" content="From the master’s program to the doctoral program, there were many moments during my time in post-graduate school when I wanted to escape. However, it seems to have been the most significant turning point in my life. Enjoy reading :)" />
-<link rel="canonical" href="http://localhost:4000/node_modules/katex/src/" />
-<meta property="og:url" content="http://localhost:4000/node_modules/katex/src/" />
+<meta name="description" content="Authors: Sihem Bakri et al." />
+<meta property="og:description" content="Authors: Sihem Bakri et al." />
+<link rel="canonical" href="http://localhost:4000/blog/paper/2024-07-03-Intent-Aware-Radio-Resource-Scheduling-in-a-RAN-Slicing-Scenario-Using-Reinforcement-Learning/" />
+<meta property="og:url" content="http://localhost:4000/blog/paper/2024-07-03-Intent-Aware-Radio-Resource-Scheduling-in-a-RAN-Slicing-Scenario-Using-Reinforcement-Learning/" />
 <meta property="og:site_name" content="Escape Diary" />
-<meta property="og:type" content="website" />
-<meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="How to generate new metrics" />
+<meta property="og:image" content="http://localhost:4000/assets/img/blog/ran-slicing/RAN-AI.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2024-07-03T00:00:00+09:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="http://localhost:4000/assets/img/blog/ran-slicing/RAN-AI.png" />
+<meta property="twitter:title" content="Intent-Aware Radio Resource Scheduling in a RAN Slicing Scenario Using Reinforcement Learning" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Geon Kim"},"description":"From the master’s program to the doctoral program, there were many moments during my time in post-graduate school when I wanted to escape. However, it seems to have been the most significant turning point in my life. Enjoy reading :)","headline":"How to generate new metrics","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/img/logo.png"},"name":"Geon Kim"},"url":"http://localhost:4000/node_modules/katex/src/"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Geon Kim"},"dateModified":"2024-07-03T00:00:00+09:00","datePublished":"2024-07-03T00:00:00+09:00","description":"Authors: Sihem Bakri et al.","headline":"Intent-Aware Radio Resource Scheduling in a RAN Slicing Scenario Using Reinforcement Learning","image":"http://localhost:4000/assets/img/blog/ran-slicing/RAN-AI.png","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/blog/paper/2024-07-03-Intent-Aware-Radio-Resource-Scheduling-in-a-RAN-Slicing-Scenario-Using-Reinforcement-Learning/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/img/logo.png"},"name":"Geon Kim"},"url":"http://localhost:4000/blog/paper/2024-07-03-Intent-Aware-Radio-Resource-Scheduling-in-a-RAN-Slicing-Scenario-Using-Reinforcement-Learning/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -74,7 +79,7 @@ Powered by Hydejack v9.1.6 <https://hydejack.com/>
 <meta name="generator" content="Hydejack v9.1.6" />
 
 
-<link rel="alternate" href="http://localhost:4000/node_modules/katex/src/" hreflang="en">
+<link rel="alternate" href="http://localhost:4000/blog/paper/2024-07-03-Intent-Aware-Radio-Resource-Scheduling-in-a-RAN-Slicing-Scenario-Using-Reinforcement-Learning/" hreflang="en">
 
 <link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Escape Diary" />
 
@@ -189,7 +194,7 @@ html{--accent-color: rgb(79,177,186);--accent-color-faded: rgba(79,177,186,0.5);
 
   <main
   id="_main"
-  class="content layout-page"
+  class="content layout-post"
   role="main"
 >
   <nav id="breadcrumbs" class="screen-only"><ul>
@@ -202,7 +207,7 @@ html{--accent-color: rgb(79,177,186);--accent-color-faded: rgba(79,177,186,0.5);
           <span>/</span>
           
           
-          <a href="/node_modules/">node_modules</a>
+          <a href="/blog/">blog</a>
         
       </li>
     
@@ -211,67 +216,334 @@ html{--accent-color: rgb(79,177,186);--accent-color-faded: rgba(79,177,186,0.5);
           <span>/</span>
           
           
-          <a href="/node_modules/katex/">katex</a>
+          <a href="/blog/paper/">paper</a>
         
       </li>
     
       <li>
         
           <span>/</span>
-          <span>src</span>
+          <span>2024-07-03-Intent-Aware-Radio-Resource-Scheduling-in-a-RAN-Slicing-Scenario-Using-Reinforcement-Learning</span>
         
       </li>
     
   
 </ul></nav>
-  <article class="page mb6" role="article">
+  
+
+
+
+
+
+
+
+
+
+
+<article id="post-blog-paper-Intent-Aware-Radio-Resource-Scheduling-in-a-RAN-Slicing-Scenario-Using-Reinforcement-Learning" class="page post mb6" role="article">
   <header>
-    <h1 class="page-title">How to generate new metrics</h1>
+    <h1 class="post-title flip-project-title">
+      
+        Intent-Aware Radio Resource Scheduling in a RAN Slicing Scenario Using Reinforcement Learning
+      
+    </h1>
+
+    <div class="post-date">
+      
+      <span class="ellipsis mr1">
+        <time datetime="2024-07-03T00:00:00+09:00">03 Jul 2024</time> in <a href="/blog/paper/" class="flip-title">Paper</a> on <a href="/tag-ieee/" class="flip-title">IEEE</a>
+      </span>
+      
+    </div>
+
+    
+    
+      
+        <div class="img-wrapper lead aspect-ratio sixteen-nine flip-project-img">
+          
+
+
+<img
+  
+    src="/assets/img/blog/ran-slicing/RAN-AI.png"
+  
+  alt="Intent-Aware Radio Resource Scheduling in a RAN Slicing Scenario Using Reinforcement Learning"
+  
+  
+  width="864"
+  height="486"
+  loading="lazy"
+/>
+
+        </div>
+      
+      
+    
+
     
 
 
 
-  <div class="hr pb0"></div>
+  
+    <p class="note-sm" >
+      <strong>Authors</strong>: Sihem Bakri et al.
+
+    </p>
+  
 
 
   </header>
 
-  <hr />
+  
+    <p class="note" title="Keywords">Radio resource scheduling, RAN slicing, intent-aware sheduling, reinforcement learning</p>
 
-<p>There are several requirements for generating the metrics used by KaTeX.</p>
-
-<ul>
-  <li>You need to have an installation of TeX which supports kpathsea. You can check
-this by running <code class="language-plaintext highlighter-rouge">tex --version</code>, and seeing if it has a line that looks like
-    <blockquote>
-      <p>kpathsea version 6.2.0</p>
-    </blockquote>
+<ul id="markdown-toc">
+  <li><a href="#1-why-this-paper" id="markdown-toc-1-why-this-paper">1. Why this paper</a></li>
+  <li><a href="#2-summary-of-paper" id="markdown-toc-2-summary-of-paper">2. Summary of paper</a>    <ul>
+      <li><a href="#21-introduction" id="markdown-toc-21-introduction">2.1 Introduction</a></li>
+    </ul>
   </li>
-  <li>
-    <p>You need the Perl module <code class="language-plaintext highlighter-rouge">JSON</code>. You can install this either from CPAN
-(e.g. using the <code class="language-plaintext highlighter-rouge">cpan</code> command line tool: <code class="language-plaintext highlighter-rouge">cpan install JSON</code>)
-or with your package manager.</p>
-  </li>
-  <li>You need the Python module <code class="language-plaintext highlighter-rouge">fonttools</code>. You can install this either from PyPI
-(using <code class="language-plaintext highlighter-rouge">easy_install</code> or <code class="language-plaintext highlighter-rouge">pip</code>: <code class="language-plaintext highlighter-rouge">pip install fonttools</code>)
-or with your package manager.</li>
+  <li><a href="#3-take-away" id="markdown-toc-3-take-away">3. Take Away</a></li>
 </ul>
 
-<p>Once you have these things, run the following command from the root directory:</p>
+<h1 id="1-why-this-paper">1. Why this paper</h1>
+<ul>
+  <li>머신러닝을 활용한 RAN Slicing 프레임워크 이해</li>
+  <li><code class="language-plaintext highlighter-rouge">Intent-driven</code> 개념 설명</li>
+  <li>Simulation 코드가 존재함</li>
+</ul>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sh ./dockers/fonts/buildMetrics.sh
-</code></pre></div></div>
+<hr />
 
-<p>which should generate new metrics and place them into <code class="language-plaintext highlighter-rouge">fontMetricsData.json</code>.
-You’re done!</p>
+<h1 id="2-summary-of-paper">2. Summary of paper</h1>
 
+<h2 id="21-introduction">2.1 Introduction</h2>
+
+<p>5G 시스템은 서로 다른 <code class="language-plaintext highlighter-rouge">network slice</code>의 구성과 구조를 slice들의 요구에 맞춰 배치할 수 있고 기능들을 online으로 바꿀 수 있다.</p>
+
+<p class="note">End-to-end network slicing: RAN + Transport network + Core network</p>
+
+<ul>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">inter-slice scheduling</code>: <code class="language-plaintext highlighter-rouge">RAN slicing</code>의 기능 중 하나는 slice 인스턴스들간의 무선 자원들을 배치하는 Radio Resource Scheduling(RRS)를 배포하는 것이다.</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">intra-slice scheduling</code>: 다른 RRS는 slice 인스턴스 내에 있는 자원들을 담당한다.</p>
+  </li>
+</ul>
+
+<p>위에서 설명한 inter, intra-slice RRS scheduler들은 반드시 slice들의 intent들을 만족시키며 무선 자원을 분산시켜야 한다.</p>
+
+<p>새로운 RRS는 아래의 조건들을 만족시켜야 한다.</p>
+
+<ol>
+  <li>서로 다른 slice 종류들의 다른 요구사항들을 만족시킬 것</li>
+  <li>각 slice에 충분한 무선 자원을 제공하여 네트워크 intent를 만족시킬 것</li>
+  <li>모든 slice들의 요구사항을 만족시킬만큼의 무선 자원이 없을 때, 가장 중요한 slice intent를 우선시할 것</li>
+</ol>
+
+<p>RAN은 데이터가 풍부한 환경을 가지고 있기 때문에 <code class="language-plaintext highlighter-rouge">data-driven</code> 접근법이 큰 각광을 받고 있다. 특히, 강화학습은 환경에 상관없이 유연한 결정을 정책을 실현시킬 수 있어 큰 주목을 받고 있다.</p>
+
+<p>알고리즘만큼 중요한 것이 <code class="language-plaintext highlighter-rouge">Autonomous RRS system</code>이다. <code class="language-plaintext highlighter-rouge">Autonomous RRS system</code>은 서로 다른 slice들로부터의 요구사항들을 만족시킬 수 있다. 특히 본 논문은 <code class="language-plaintext highlighter-rouge">TM Forum</code>에서 정의한 네트워크 요구사항들을 이용해 intent를 구체화시키고 있다.</p>
+
+<p>RRS는 다른 슬라이스 intent들을 받고 네트워크가 이 intent들을 만족시킬 수 있게 변화시켜야 한다.</p>
+
+<p class="note">본 논문은 강화학습을 사용한 RAN slicing을 위한 intent-aware RRS를 제안하고 있다. 이 RRS는 서로 다른 slice 종류들과 QoS intent(throughput, latency, 그리고 packet loss rate에 기반한)를 사용한다.</p>
+
+<p>저자가 제안하는 방법을 크게 나눠보면</p>
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">inter-slice</code> allocation: RL agent</li>
+  <li><code class="language-plaintext highlighter-rouge">intra-slice</code> allocation: RRS가 <code class="language-plaintext highlighter-rouge">round-robin</code> 스케쥴러를 이용</li>
+</ol>
+
+<p>으로 정리할 수 있다.</p>
+
+<p>RL agent는</p>
+<ol>
+  <li>slice들의 intent들을 만족시킬 수 있는 RRS의 action들</li>
+  <li>SLA에 정의되어 있는 weight들에 따라 slice intent의 priority를</li>
+</ol>
+
+<p>학습한다.</p>
+
+<hr />
+
+<h1 id="3-take-away">3. Take Away</h1>
+
+<ul>
+  <li>논문에서 사용한 채널 시뮬레이터 <code class="language-plaintext highlighter-rouge">QuaDRiGa</code> 대신 ns-3로 구현해보기</li>
+</ul>
+
+  
 </article>
+
 
 
   <hr class="dingbat related mb6" />
 
 
 
+
+
+
+  
+     
+
+
+  <aside class="about related mt4 mb4" role="complementary">
+    
+    
+
+<div class="author mt4">
+  
+
+  
+    
+
+
+<img
+  
+    src="/assets/img/author.jpeg"
+    srcset="/assets/img/author.jpeg 1x,/assets/img/author.jpeg 2x"
+    
+  
+  alt="Geon Kim"
+  class="avatar"
+  
+  width="120"
+  height="120"
+  loading="lazy"
+/>
+
+  
+
+  
+  
+  <h2  class="page-title hr-bottom">
+    About
+  </h2>
+
+  <p>From the master’s program to the PhD program, there were many moments during my time in post-graduate school when I wanted to escape.</p>
+
+<p>However, it seems to have been the most significant turning point in my life.</p>
+
+<p>Enjoy reading :)</p>
+
+
+  <div class="sidebar-social">
+    <span class="sr-only">Social:</span>
+<ul>
+  
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://github.com/41vin" title="GitHub" class="no-mark-external">
+      <span class="icon-github"></span>
+      <span class="sr-only">GitHub</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://www.youtube.com/channel/UClv7hh6WL_rMNAQ4iLevELw" title="YouTube" class="no-mark-external">
+      <span class="icon-youtube"></span>
+      <span class="sr-only">YouTube</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://www.linkedin.com/in/41vin" title="LinkedIn" class="no-mark-external">
+      <span class="icon-linkedin2"></span>
+      <span class="sr-only">LinkedIn</span>
+    </a>
+  </li>
+
+
+    
+  
+</ul>
+
+  </div>
+</div>
+
+  </aside>
+
+
+  
+
+  
+    
+
+
+  
+
+  
+    
+
+
+  <aside class="other-projects related mb0" role="complementary">  <h2>Related Posts</h2>  <div class="columns">          <div class="column column-1-2">                  <article class="project-card">  <a href="/blog/paper/2024-07-01-Overview-of-3GPP-Release-17-RedCap-copy/" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine flip-project-img">              <img      src="/assets/img/blog/RedCap/RedCap-Usecases.png"    alt="Toward Smaller and Lower-Cost 5G Devices with Longer Battery Life - An Overview of 3GPP Release 17 RedCap"      width="864"  height="486"  loading="lazy"/>          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/blog/paper/2024-07-01-Overview-of-3GPP-Release-17-RedCap-copy/" class="flip-title">Toward Smaller and Lower-Cost 5G Devices with Longer Battery Life - An Overview of 3GPP Release 17 RedCap</a>  </h3>      <p class="project-card-text fine" property="disambiguatingDescription">      <strong>Authors</strong>: Sandeep Narayanan Kadan Veedu et al.    </p>      <a class="fill-card no-hover" href="/blog/paper/2024-07-01-Overview-of-3GPP-Release-17-RedCap-copy/" tabindex="-1"><span class="sr-only">Continue reading Toward Smaller and Lower-Cost 5G Devices with Longer Battery Life - An Overview of 3GPP Release 17 RedCap</span></a></article>              </div>          <div class="column column-1-2">                  <article class="project-card">  <a href="/blog/paper/2024-06-28-Research-on-5G-RedCap-Standard-and-Key-copy/" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine flip-project-img">              <img      src="/assets/img/blog/RedCap/RedCap.png"    alt="Research on 5G RedCap Standard and Key Technologies"      width="864"  height="486"  loading="lazy"/>          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/blog/paper/2024-06-28-Research-on-5G-RedCap-Standard-and-Key-copy/" class="flip-title">Research on 5G RedCap Standard and Key Technologies</a>  </h3>      <p class="project-card-text fine" property="disambiguatingDescription">      <strong>Authors</strong>: Xiao Li, Xiaohang Xu, Chunlei Hu    </p>      <a class="fill-card no-hover" href="/blog/paper/2024-06-28-Research-on-5G-RedCap-Standard-and-Key-copy/" tabindex="-1"><span class="sr-only">Continue reading Research on 5G RedCap Standard and Key Technologies</span></a></article>              </div>      </div></aside>
+
+  
+
+  
+    
+
+
+  <aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Random Posts</h2>  <ul class="related-posts">          <li class="h4">  <a href="/blog/paper/2024-06-10-Forecasting-at-Scale-copy/" class="flip-title"><span>Forecasting at Scale</span></a>  <time class="faded fine" datetime="2024-06-10T00:00:00+09:00">10 Jun 2024</time></li>          <li class="h4">  <a href="/blog/paper/2024-07-01-Overview-of-3GPP-Release-17-RedCap-copy/" class="flip-title"><span>Toward Smaller and Lower-Cost 5G Devices with Longer Battery Life - An Overview of 3GPP Release 17 RedCap</span></a>  <time class="faded fine" datetime="2024-07-01T00:00:00+09:00">01 Jul 2024</time></li>          <li class="h4">  <a href="/blog/paper/2024-06-28-Research-on-5G-RedCap-Standard-and-Key-copy/" class="flip-title"><span>Research on 5G RedCap Standard and Key Technologies</span></a>  <time class="faded fine" datetime="2024-06-28T00:00:00+09:00">28 Jun 2024</time></li>      </ul></aside>
+
+  
+
+  
+    
+
+  
 
 
   
