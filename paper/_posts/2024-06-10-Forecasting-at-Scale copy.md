@@ -110,9 +110,10 @@ ARIMA와 같은 생성 모델을 이용하면 얻을 수 있는 inferential 장�
 Growth 예측에 있어 데이터 생성 프로세스의 중요 구성요소는 population이 어떻게 증가하였고 증가할 것인지를 모델링하는 것이다. 주로 logistic growth 모델을 사용하여 이러한 종류의 growth를 모델링한다.
 
 $$ g(t) = \frac{C}{1 + \exp(-l(t - m))} $$
-- $$C$$: carrying capacity
-- $$k$$: growth rate
-- $$m$$: offset 파라미터
+
+- $C$: carrying capacity
+- $k$: growth rate
+- $m$: offset 파라미터
 
 하지만 Facebook이 포착해내지 못한 두가지 요소가 있다.
 1. Carrying capacity는 일정하지 않다.
