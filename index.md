@@ -1,7 +1,15 @@
 ---
-layout: page
-title: Thank You!
-sitemap: false
+slayout: Welcome
+title:  Welcome
+cover:  true
 ---
 
-블로그 개편중입니다!
+<!--author-->
+
+
+## My Projects
+<!--projects-->
+
+
+## My Posts
+<!--posts-->
